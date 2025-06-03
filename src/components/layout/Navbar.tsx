@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-40 mt-8">
-      <div className="container flex flex-col md:flex-row md:items-center md:justify-between py-4">
+      <div className="container flex flex-col md:flex-row md:items-center md:justify-between py-4 shadow-lg">
         {/* Left: Logo & Event Info */}
         <div className="flex items-center gap-4 w-full md:w-auto">
           <div className="flex items-center gap-4">
@@ -61,10 +61,10 @@ const Navbar = () => {
         <div className="flex flex-col md:flex-col md:items-end gap-4 w-full md:w-auto">
           {/* Buttons */}
           <div className="flex gap-3 justify-center md:justify-end w-full md:w-auto">
-            <button className="bg-[#64a63a] hover:bg-[#55952c] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide">
+            <button className="bg-[#64a63a] hover:bg-[#5cb030] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide">
               EXHIBIT OR SPONSOR
             </button>
-            <button className="bg-[#ffda3a] hover:bg-[#e6c733] text-black font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide">
+            <button className="bg-[#d4ed31] hover:bg-[#d4ed31] text-black font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide">
               REGISTER INTEREST
             </button>
           </div>
