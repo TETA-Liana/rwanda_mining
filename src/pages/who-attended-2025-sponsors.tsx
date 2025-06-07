@@ -103,7 +103,7 @@ const sponsorsData = {
       name: "thyssenkrupp Industrial Solutions",
     },
     { logo: "/logos/weir-minerals.png", name: "Weir Minerals" },
-    { logo: "/placeholder-logo.png", name: "Participating Company" }, // Placeholder for the last one
+    // Placeholder for the last one
   ],
 };
 

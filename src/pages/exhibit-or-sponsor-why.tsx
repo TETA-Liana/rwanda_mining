@@ -182,7 +182,7 @@ const ExhibitOrSponsorWhy = () => {
         <div className="flex-1 w-full">
           {/* Placeholder for Image - Please provide the image path */}
           <img
-            src="/placeholder-image.jpg"
+            src="/exhibit-or-sponsor/WhoWeAre.png"
             alt="Mining Indaba Event Image"
             className="w-full h-auto rounded-lg shadow-lg object-cover"
           />
@@ -225,7 +225,7 @@ const ExhibitOrSponsorWhy = () => {
         <div className="flex-1 w-full">
           {/* Placeholder for Image - Please provide the image path */}
           <img
-            src="/placeholder-image-2.jpg"
+            src="/exhibit-or-sponsor/OurMission.png"
             alt="Mining Indaba Mission Image"
             className="w-full h-auto rounded-lg shadow-lg object-cover"
           />
@@ -251,7 +251,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-card-image-1.jpg"
+                src="/exhibit-or-sponsor/card-1image.png"
                 alt="Card image 1"
                 className="w-full h-48 object-cover"
               />
@@ -271,7 +271,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-card-image-2.jpg"
+                src="/exhibit-or-sponsor/card-2image.png"
                 alt="Card image 2"
                 className="w-full h-48 object-cover"
               />
@@ -291,7 +291,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-card-image-3.jpg"
+                src="/exhibit-or-sponsor/card-3image.png"
                 alt="Card image 3"
                 className="w-full h-48 object-cover"
               />
@@ -311,7 +311,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-card-image-4.jpg"
+                src="/exhibit-or-sponsor/card-4image.png"
                 alt="Card image 4"
                 className="w-full h-48 object-cover"
               />
@@ -336,7 +336,7 @@ const ExhibitOrSponsorWhy = () => {
         <div className="flex-1 w-full">
           {/* Placeholder for Image - Please provide the image path */}
           <img
-            src="/placeholder-sponsor-image.jpg"
+            src="/exhibit-or-sponsor/sponsor-mining.png"
             alt="Sponsor Mining Indaba Image"
             className="w-full h-auto rounded-lg shadow-lg object-cover"
           />
@@ -380,7 +380,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-update-image-1.jpg"
+                src="/exhibit-or-sponsor/download-2026-exhibitor.png"
                 alt="Exhibitor Brochure Image"
                 className="w-full h-48 object-cover"
               />
@@ -402,7 +402,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-update-image-2.jpg"
+                src="/exhibit-or-sponsor/post-event.png"
                 alt="Post Event Report Image"
                 className="w-full h-48 object-cover"
               />
@@ -427,7 +427,7 @@ const ExhibitOrSponsorWhy = () => {
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               {/* Placeholder Image */}
               <img
-                src="/placeholder-update-image-3.jpg"
+                src="/exhibit-or-sponsor/mining-Indaba.png"
                 alt="Companies Attended Image"
                 className="w-full h-48 object-cover"
               />

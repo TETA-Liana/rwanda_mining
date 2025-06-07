@@ -35,13 +35,33 @@ const navigation = [
   },
   {
     label: "Attend",
-    to: "/attend",
     children: [
-      { label: "Why Attend", to: "/attend/why-attend" },
-      { label: "Who Attends", to: "/attend/who-attends" },
-      { label: "Attendee Handbook", to: "/attend/handbook" },
-      { label: "Visas & Travel", to: "/attend/visas" },
-      { label: "Accommodation", to: "/attend/accommodation" },
+      {
+        label: "Why Attend?",
+        children: [
+          {
+            label: "Exploration & Junior Mining Companies",
+            to: "/attend/why-attend/exploration-junior-mining-companies",
+          },
+          {
+            label: "Majors & Mid-tiers",
+            to: "/attend/why-attend/majors-mid-tiers",
+          },
+          {
+            label: "Mining Service Providers",
+            to: "/attend/why-attend/mining-service-providers",
+          },
+          { label: "Governments", to: "/attend/why-attend/governments" },
+          { label: "Investors", to: "/attend/why-attend/investors" },
+          {
+            label: "Downstream Buyers",
+            to: "/attend/why-attend/downstream-buyers",
+          },
+        ],
+      },
+      { label: "Testimonials", to: "/exhibit-sponsor/testimonials" },
+      { label: "2025 Post Event Report", to: "/2025-post-event-report" },
+      { label: "Register Interest", to: "/register-interest" },
     ],
   },
   {

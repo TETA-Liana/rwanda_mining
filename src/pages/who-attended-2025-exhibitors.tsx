@@ -179,7 +179,7 @@ const WhoAttended2025Exhibitors = () => {
   const exhibitorsData = Array.from({ length: 108 }, (_, i) => ({
     name: `Exhibitor Company ${i + 1}`,
     stand: `Stand A${i + 1}`,
-    logo: "/placeholder-logo.png",
+    logo: "/logos/vedanta.png",
     sector: sectors[i % sectors.length], // Assign sectors from the list
     country: countries[i % countries.length], // Assign countries from the list
     // Add other relevant fields if needed

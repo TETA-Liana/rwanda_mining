@@ -10,6 +10,8 @@ import WhoAttended2025Exhibitors from "./pages/who-attended-2025-exhibitors";
 import Testimonials from "./pages/Testimonials";
 import Enquire from "./pages/Enquire";
 import ClientZone from "./pages/ClientZone";
+import PostEventReport2025 from "./pages/PostEventReport2025";
+import RegisterInterest from "./pages/RegisterInterest";
 
 function App() {
   return (
@@ -41,6 +43,11 @@ function App() {
           />
           <Route path="/exhibit-sponsor/enquire" element={<Enquire />} />
           <Route path="/exhibit-sponsor/client-zone" element={<ClientZone />} />
+          <Route
+            path="/2025-post-event-report"
+            element={<PostEventReport2025 />}
+          />
+          <Route path="/register-interest" element={<RegisterInterest />} />
         </Routes>
       </Layout>
     </Router>

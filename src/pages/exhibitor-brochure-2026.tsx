@@ -24,7 +24,7 @@ const ExhibitorBrochure2026 = () => {
         {/* Left Column: Brochure Image and Enquire Section */}
         <div className="flex-1 flex flex-col items-center md:items-start">
           <img
-            src="/placeholder-brochure.png" // Placeholder image
+            src="/exhibit-or-sponsor/exhibitor-brochure.png" // Placeholder image
             alt="2026 Exhibitor Brochure"
             className="w-full md:w-2/3 lg:w-1/2 rounded-lg shadow-lg"
           />

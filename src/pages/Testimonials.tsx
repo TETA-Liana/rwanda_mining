@@ -38,7 +38,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1"
+                src="https://www.youtube.com/embed/Dn3kxK8m-Os"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -68,7 +68,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2"
+                src="https://www.youtube.com/embed/mcsH1ihdrxw"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -99,7 +99,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3"
+                src="https://www.youtube.com/embed/DCNU8TBaf9U"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -127,7 +127,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_4"
+                src="https://www.youtube.com/embed/lbOTo1V8V_4"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -159,7 +159,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_5"
+                src="https://www.youtube.com/embed/0wtoG5QfXdU"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -191,7 +191,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_6"
+                src="https://www.youtube.com/embed/vmyDZFlAZiM"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -223,7 +223,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_7"
+                src="https://www.youtube.com/embed/da4IBP0Heqw"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -257,7 +257,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_8"
+                src="https://www.youtube.com/embed/-fwoA-SrvUQ"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -290,7 +290,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_9"
+                src="https://www.youtube.com/embed/NEjDY2-jsXI"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -323,7 +323,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_10"
+                src="https://www.youtube.com/embed/QMIwkLSQl0U"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -353,7 +353,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_11"
+                src="https://www.youtube.com/embed/p-wL1PM8grI"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -384,7 +384,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_12"
+                src="https://www.youtube.com/embed/sEXLveu9VDc"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -418,7 +418,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_13"
+                src="https://www.youtube.com/embed/U0z3SPWH_6M"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -448,7 +448,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_14"
+                src="https://www.youtube.com/embed/XVewzXWDOYk"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -479,7 +479,7 @@ const Testimonials = () => {
               style={{ paddingBottom: "56.25%" }}
             >
               <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_15"
+                src="https://www.youtube.com/embed/oGAsPwYBAyY"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -570,7 +570,7 @@ const Testimonials = () => {
         <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 text-center mb-8">
           2025 Exhibitor Highlights
         </h2>
-        <div className="flex flex-col md:flex-row items-center gap-8">
+        <div className="flex flex-col md:flex-row items-stretch gap-8">
           {/* Text Content */}
           <div className="md:w-1/2 bg-[#5da033] p-8 text-white">
             <h2 className=" text-2xl md:text-3xl font-bold mb-4">
@@ -591,7 +591,7 @@ const Testimonials = () => {
             <img
               src="/placeholder-exhibitor-highlights.png"
               alt="Exhibitor Highlights"
-              className="w-full h-auto rounded-lg shadow-md"
+              className="w-full h-full object-cover rounded-lg shadow-md"
             />
           </div>
         </div>
