@@ -160,12 +160,10 @@ const AdvisoryTeamSection = () => {
   const handleCloseModal = () => {
     setSelectedMember(null);
   };
-
-  // Calculate the transform value based on card width and gap
-  // Assuming card width is 256px (w-64) and gap is 24px (gap-x-6)
-  const cardWidth = 256; // w-64 in Tailwind default config
-  const gapWidth = 24; // gap-x-6 in Tailwind default config
-  const slideDistance = cardWidth + gapWidth; // Distance for a single card including gap
+  
+  const cardWidth = 256;
+  const gapWidth = 24;
+  const slideDistance = cardWidth + gapWidth;
 
   return (
     <section className="py-16 bg-white">

@@ -11,7 +11,7 @@ const StrongerTogetherSection = () => {
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
           <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
             <iframe
-              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+              className="absolute top-0 left-0 w-full h-full shadow-xl"
               src={embedUrl}
               title="Mining Indaba Theme 2026"
               frameBorder="0"

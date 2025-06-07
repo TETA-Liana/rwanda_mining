@@ -5,7 +5,7 @@ import NavDropdown from './NavDropdown'
 
 // Define the nested navigation structure
 const navigation = [
-  { label: 'About', to: '/about', children: [
+  { label: 'About', children: [
     { label: 'About Mining Indaba', to: '/about/mining-indaba', children: [
       { label: 'Meet the team', to: '/about/mining-indaba/team' },
       // Add other nested items for 'About Mining Indaba' as needed based on screenshot

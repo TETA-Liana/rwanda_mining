@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 interface NavItem {
   label: string;
@@ -14,28 +13,11 @@ interface NavDropdownProps {
 }
 
 const NavDropdown: React.FC<NavDropdownProps> = ({ item }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Handle dropdown toggle on hover for desktop
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (item.children) {
-      setIsOpen(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    // Keep dropdown open if still hovering over the dropdown content
-    // This is handled by Tailwind's group-hover classes on the parent div
-  };
-
   return (
-    <div className="relative group" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className="relative group">
       <Link
         to={item.to}
-        className={`flex items-center px-3 py-2 rounded text-base font-medium transition-colors ${item.children ? 'cursor-pointer' : ''} ${isHovered ? 'text-primary' : 'text-gray-700'}`}
+        className={`flex items-center px-3 py-2 rounded text-base font-medium transition-colors ${item.children ? 'cursor-pointer' : ''} text-gray-700 group-hover:text-primary`}
       >
         {item.label}
         {item.children && (
@@ -52,17 +34,18 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ item }) => {
           <div className="py-1">
             {item.children.map((childItem) => (
               // Render as a link if no children, otherwise recurse
-              childItem.children ? (
-                <NavDropdown key={childItem.label} item={childItem} />
-              ) : (
-                <Link
-                  key={childItem.label}
-                  to={childItem.to}
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary"
-                >
-                  {childItem.label}
-                </Link>
-              )
+              <div key={childItem.label} className="relative group">
+                {childItem.children ? (
+                  <NavDropdown item={childItem} />
+                ) : (
+                  <Link
+                    to={childItem.to}
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary"
+                  >
+                    {childItem.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
         </div>
