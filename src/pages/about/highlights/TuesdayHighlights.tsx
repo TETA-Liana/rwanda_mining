@@ -13,6 +13,8 @@ import Cont1 from "../../../../public/tues-content-1.jpg";
 import Cont2 from "../../../../public/tues-content-2.jpg";
 import Cont3 from "../../../../public/tues-content-3.jpg";
 import HaHoImage from "../../../../public/tues-happy-hour.jpg"
+import CelebImage from "../../../../public/tues-celeb.jpg";
+import Footer from "../../../components/sections/FooterSection"
 
 const TuesdayHighlights = () => {
 
@@ -182,41 +184,18 @@ const TuesdayHighlights = () => {
       </div>
 
       {/* Happy Hour Section */}
-      {/* <div className="bg-green-700 text-white py-12">
-        <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
-        
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            
-            <div className="bg-gray-300 h-96 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
-            </div>
-          </div>
-         
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Happy Hour at the Mining Indaba Wine Farm</h2>
-            <p className="text-lg leading-relaxed">
-              An hour of networking drinks at the Mining Indaba Wine Farm. Today, attendees enjoyed a specially selected wine, offering a taste of the surrounding South African vineyards. A different wine is featured each day, creating a unique experience. Don't miss out—it's happening again tomorrow!
-            </p>
-          </div>
-        </div>
-      </div> */}
-      
-      <div className="text-white py-12 mx-5 rounded-lg">
-        <div className="container mx-auto px-4 flex flex-wrap items-center mx-4 gap-0">
+      <div className="text-white py-12 rounded-lg overflow-hidden">
+        <div className="container mx-auto flex flex-wrap items-center gap-0">
           {/* Left Column */}
-          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
-            <img src={HaHoImage} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-l-lg" />
+          <div className="w-full md:w-1/2 flex">
+            <img src={HaHoImage} alt="Wednesday Highlights" className="h-[350px] w-[550px] shadow-xl" />
           </div>
           {/* Right Column */}
-          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-r-lg p-5 h-[350px] py-18">
+          <div className="w-full md:w-1/2 bg-[#64a63a] items-stretch p-5 h-[350px]">
             <h2 className="text-2xl font-bold mb-4">Happy Hour at the Mining Indaba Wine Farm</h2>
             <p className="text-sm leading-relaxed mb-8">
             An hour of networking drinks at the Mining Indaba Wine Farm. Today, attendees enjoyed a specially selected wine, offering a taste of the surrounding South African vineyards. A different wine is featured each day, creating a unique experience. Don't miss out—it’s happening again tomorrow!
             </p>
-            <div className="flex space-x-4">
-            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW EXHIBITORS</button>
-            <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">VIEW SPONSORS</button>
-            </div>
           </div>
         </div>
       </div>
@@ -227,7 +206,7 @@ const TuesdayHighlights = () => {
           <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Tomorrow's Content Highlights</h2>
           <div className="space-y-8">
             {/* Event 1 */}
-            <div>
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
               <div className="flex items-center text-gray-600 mb-2">
                 {/* Calendar Icon Placeholder */}
                 <span className="mr-2">📅</span>
@@ -248,7 +227,7 @@ const TuesdayHighlights = () => {
             </div>
 
             {/* Event 2 */}
-            <div>
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
               <div className="flex items-center text-gray-600 mb-2">
                 {/* Calendar Icon Placeholder */}
                 <span className="mr-2">📅</span>
@@ -259,9 +238,74 @@ const TuesdayHighlights = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">The New Frontier: Treasury's Strategic Role in Africa's Mining Revolution</h3>
               <p className="text-gray-600 leading-relaxed">
-                As the mining companies navigate the changing mining sector landscape, treasury function has emerged as pivotal in driving efficient trade, settlement, and risk management. This panel will bring together leading international and regional mining companies...
+                As the mining companies navigate the changing mining sector landscape, treasury function has emerged as pivotal in driving efficient trade, settlement, and risk management. This panel will bring together leading international and regional mining companies to explore how treasury teams are enabling the Africa’ mining resurgence, facilitating collaborative financing, adapting to decarbonization challenges, leveraging technology to ensure sustainable, future-proof operations across treasury function.
               </p>
             </div>
+
+            {/* Event 3 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Wednesday 05 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>13:00 - 14:30</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Workshop 7 - Automotive focus session</h3>
+              <p className="text-gray-600 leading-relaxed">
+                The convergence of the mining and automotive sectors, and how this will shape company and countries' industrial strategies
+              </p>
+              <h4 className="font-bold text-gray-700 mt-4 mb-2">Working Group Sessions</h4>
+              <ul className="list-disc list-inside text-gray-600 leading-relaxed ml-4">
+                <li><span className="font-semibold">Public policy:</span> Can commodity dependent countries work with the automotive sector to re think industrial policy around critical minerals?</li>
+                <li><span className="font-semibold">M&A strategies:</span> What strategies are auto OEMs employing to invest in the critical minerals mining space?</li>
+                <li><span className="font-semibold">Auto value chains:</span> How are OEMs securing critical metals supply in line with the energy transition agenda?</li>
+                <li><span className="font-semibold">Critical minerals and energy transition:</span> How are critical minerals mining companies considering supplying the battery industry toward the energy transition?</li>
+                <li><span className="font-semibold">Converging industries and Industrial strategy:</span> How are states considering investing in the auto and metals sectors to drive national competitiveness and industrialisation?</li>
+              </ul>
+            </div>
+
+            {/* Event 4 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Wednesday 05 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>14:00 - 15:30</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Country Showcase - Côte d'Ivoire</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Examination of Côte d'Ivoire's mining activity, emphasizing its growing gold production and untapped potential in nickel, manganese, and bauxite. Focus on investment-friendly policies, improved geological mapping, and infrastructure advancements driving sector growth.
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                Delve into how the government fosters sustainable mining practices, local community development, and Côte d'Ivoire's ambitions to become a leading mining hub in West Africa.
+              </p>
+            </div>
+
+            {/* Event 5 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Wednesday 05 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>16:00 - 17:30</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Country Showcase - Republic of Mozambique</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Overview of Mozambique's mining efforts, highlighting its rich reserves of coal, graphite, and heavy mineral sands, as well as its emerging role in the global lithium supply chain.
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                Focus on government initiatives to attract investment, improve infrastructure, and support sustainable mining practices. Opportunities for partnerships to enhance exploration, production, and downstream processing.
+              </p>
+            </div>
+          </div>
+          <div className="text-center mt-12">
+            <button className="bg-[#64a63a] text-white font-bold py-3 px-8 rounded hover:bg-[#55952c] transition duration-300">VIEW AGENDA</button>
           </div>
         </div>
       </div>
@@ -307,29 +351,40 @@ const TuesdayHighlights = () => {
         </div>
       </div>
 
+      
       {/* Celebrating Our Incredible Sponsors and Exhibitors Section */}
-      <div className="bg-green-700 text-white py-12">
+      <div className="text-white py-12 mx-5 rounded-lg">
         <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
-          {/* Left Column: Text and Buttons */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Celebrating Our Incredible Sponsors and Exhibitors</h2>
-            <p className="text-lg leading-relaxed mb-8">
-              Day two has been extraordinary! We're thrilled to be showcasing some exceptional sponsors and exhibitors, including Liugong, Vivo Energy, AECI, and many more.
+          {/* Left Column: Text and Button */}
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px] py-18">
+            <h2 className="text-2xl font-bold mb-4 mt-16">Celebrating Our Incredible Sponsors and Exhibitors</h2>
+            <p className="text-sm leading-relaxed mb-8">
+            Day two has been extraordinary! We’re thrilled to be showcasing some exceptional sponsors and exhibitors, including Liugong, Vivo Energy, AECI, and many more.
             </p>
             <div className="flex space-x-4">
-              <button className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300">VIEW EXHIBITORS</button>
-              <button className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300">VIEW SPONSORS</button>
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW EXHIBITORS</button>
+            <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">VIEW SPONSORS</button>
             </div>
           </div>
           {/* Right Column: Image */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            {/* Image Placeholder */}
-            <div className="bg-gray-300 h-96 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
-            </div>
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <img src={CelebImage} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-r-lg" />
           </div>
         </div>
       </div>
+
+      {/* Join Us Section */}
+      <div className="py-16 text-white text-center" style={{ background: 'linear-gradient(to bottom, #5cb030, #d4ed31)' }}>
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">Join Us at Mining Indaba 2026</h2>
+          <p className="text-sm leading-relaxed mb-8">
+            The premier meeting place for African and global mining leaders. It is all set to be an unmissable experience, shaping the future of African mining.<br/> Register your interest today and stay ahead in this dynamic industry!
+          </p>
+          <button className="bg-[#55952c] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">REGISTER INTEREST</button>
+        </div>
+      </div>
+
+      <Footer/>
     </div>
   );
 };
