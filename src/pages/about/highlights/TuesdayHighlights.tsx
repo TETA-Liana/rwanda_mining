@@ -12,6 +12,7 @@ import Gallery8 from "../../../../public/gallery-8.jpg";
 import Cont1 from "../../../../public/tues-content-1.jpg";
 import Cont2 from "../../../../public/tues-content-2.jpg";
 import Cont3 from "../../../../public/tues-content-3.jpg";
+import HaHoImage from "../../../../public/tues-happy-hour.jpg"
 
 const TuesdayHighlights = () => {
 
@@ -201,21 +202,21 @@ const TuesdayHighlights = () => {
       </div> */}
       
       <div className="text-white py-12 mx-5 rounded-lg">
-        <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
-          {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px] py-18">
-            <h2 className="text-2xl font-bold mb-4">Celebrating Our Incredible Sponsors and Exhibitors</h2>
+        <div className="container mx-auto px-4 flex flex-wrap items-center mx-4 gap-0">
+          {/* Left Column */}
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <img src={HaHoImage} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-l-lg" />
+          </div>
+          {/* Right Column */}
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-r-lg p-5 h-[350px] py-18">
+            <h2 className="text-2xl font-bold mb-4">Happy Hour at the Mining Indaba Wine Farm</h2>
             <p className="text-sm leading-relaxed mb-8">
-            Wrapping up yet another productive day at Mining Indaba, we’re thrilled to showcase some exceptional sponsors and exhibitors, including Kanona Power Company Limited, AECI Mining, JOGMEC, Liebherr Africa, Rawbank SA, and many more.
+            An hour of networking drinks at the Mining Indaba Wine Farm. Today, attendees enjoyed a specially selected wine, offering a taste of the surrounding South African vineyards. A different wine is featured each day, creating a unique experience. Don't miss out—it’s happening again tomorrow!
             </p>
             <div className="flex space-x-4">
             <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW EXHIBITORS</button>
             <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">VIEW SPONSORS</button>
             </div>
-          </div>
-          {/* Right Column: Image */}
-          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
-            <img src={CelebImage} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-r-lg" />
           </div>
         </div>
       </div>

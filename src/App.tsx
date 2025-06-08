@@ -14,6 +14,7 @@ import TuesdayHighlights from './pages/about/highlights/TuesdayHighlights'
 import MondayHighlights from './pages/about/highlights/MondayHighlights'
 import SundayHighlights from './pages/about/highlights/SundayHighlights'
 import Contact from './pages/about/Contact'
+import ExplorationJuniorMiningCompanies from './pages/attend/why-attend/ExplorationJuniorMiningCompanies'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/about/highlights/monday" element={<MondayHighlights />} />
           <Route path="/about/highlights/sunday" element={<SundayHighlights />} />
           <Route path="/about/contact" element={<Contact />} />
+          <Route path="/attend/why-attend/exploration-junior" element={<ExplorationJuniorMiningCompanies />} />
         </Routes>
         {/* Fixed Chat Icon Placeholder */}
         <div className="fixed bottom-6 right-6 bg-[#64a63a] text-white rounded-full p-3 shadow-lg cursor-pointer">
