@@ -11,6 +11,9 @@ import Gallery7 from "../../../../public/gallery-7.jpg";
 import Gallery8 from "../../../../public/gallery-8.jpg";
 import Cont1 from "../../../../public/mon-content-1.jpg";
 import Cont2 from "../../../../public/mon-content-2.jpg";
+import InteraImage1 from "../../../../public/mon-intera-1.jpg";
+import InteraImage2 from "../../../../public/mon-intera-2.jpg";
+import CelebImage from "../../../../public/mon-celeb.jpg";
 import Footer from "../../../components/sections/FooterSection";
 
 const MondayHighlights = () => {
@@ -132,31 +135,31 @@ const MondayHighlights = () => {
       </div>
 
       {/* Content Highlights Section */}
-      <div>
+      <div className='mx-12'>
         <div className="container mx-auto px-4">
           <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Content Highlights</h2>
           <div className="flex flex-wrap -mx-4">
             {/* Content Item 1: Lithium and graphite */}
-            <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+            <div className="w-full md:w-1/2 px-4 mb-8">
               <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
                 <img src={Cont1} alt="Lithium and graphite" className="h-78 w-full object-cover rounded-t-lg" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Is policy a blocker to technology and innovation?</h3>
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Future-Proofing African mining today - Uncovering the Top 5 elements for success</h3>
                   <p className="text-gray-600 leading-relaxed text-sm">
-                  It's widely acknowledged that African countries export raw minerals without processing them locally. Policies rarely encourage downstream beneficiation, which could drive industrialization and technological innovation. Africa has the potential to leverage its vast mineral resources to become a global tech powerhouse, but mining policies need to be reoriented toward long-term innovation and sustainability.
+                  Dreams of streamlined downstream value addition can be turned into reality. This session explored combined roles of governments, investors, indigenous communities, adopters of technology and managed risk and the vast opportunities to future proof mining in Africa.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Content Item 2: The Dealmakers Den */}
-            <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+            <div className="w-full md:w-1/2 px-4 mb-8">
               <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
                 <img src={Cont2} alt="The Dealmakers Den" className="h-78 w-full object-cover rounded-t-lg" />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">Commodity outlook - an African perspective</h3>
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">The Global Investor Commission on Mining 2030 - Historic legacies addressed and positive legacies created</h3>
                   <p className="text-gray-600 leading-relaxed text-sm">
-                  Growing demand for energy transition metals presents an opportunity for Africa and initiatives like the African Continental Free Trade Area should enable African countries build supply chains and retain more value domestically. Gold demand remains strong as global economic uncertainty drives demand and platinum, cobalt, lithium and nickel share the podium as the green energy transition gathers momentum.
+                  The Global Investor Commission on Mining 2030 aims to shape a socially and environmentally responsible mining sector by 2030 and clarified finance's role in achieving this. Through its workstream on addressing historic legacies and creating positive ones, the Commission helped define "legacy" and how to frame future efforts.
                   </p>
                 </div>
               </div>
@@ -165,6 +168,68 @@ const MondayHighlights = () => {
         </div>
       </div>
 
+            <div className='mx-12 mt-14'>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap -mx-4">
+            {/* Content Item 1: Lithium and graphite */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">How do we future-proof African communities from the effects of climate change?</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Key points from this session included how miners can implement water recycling systems, transition to renewable energy sources, restore mined lands with vegetation and integrate climate modelling into planning and operational risk management.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Item 2: The Dealmakers Den */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Critical for who – how producers can flip the script on critical minerals</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Critical minerals are vital to Africa's energy security and development. Top tier panelists explained how Africa's energy security depends on how these resources are managed and integrated into local energy strategies.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Interactive Section */}
+      <div className="text-white py-12 rounded-lg overflow-hidden">
+        <div className="container mx-auto flex flex-wrap items-center gap-0">
+          {/* Left Column */}
+          <div className="w-full md:w-1/2 flex">
+            <img src={InteraImage1} alt="Wednesday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-l-lg"/>
+          </div>
+          {/* Right Column */}
+          <div className="w-full md:w-1/2 bg-[#64a63a] items-stretch p-5 h-[350px] rounded-r-lg">
+            <h2 className="text-3xl font-bold my-4">Maximising Africa's critical minerals endowment, sponsored by African Finance Corporation</h2>
+            <p className="text-md leading-relaxed mb-8">
+            Africa can maximise its critical minerals by fostering local beneficiation, developing renewable energy industries, and leveraging regional collaboration to negotiate fair trade terms. Prioritizing domestic energy projects, technology transfer, and equitable financing ensures sustainability and global impact.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-white pt-12 mx-10 rounded-lg">
+        <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
+          {/* Left Column: Text and Button */}
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px] py-18">
+            <h2 className="text-3xl font-bold mb-4 mt-16">Game-changing Technologies, sponsored by Microsoft</h2>
+            <p className="text-md leading-relaxed mb-8">
+            An immersive, hands-on workshop where participants can try out new technologies and configure their own Industrial Copilots relevant to their mining persona.
+            </p>
+          </div>
+          {/* Right Column: Image */}
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <img src={InteraImage2} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-r-lg" />
+          </div>
+        </div>
+      </div>
 
       {/* Gallery Section */}
       <div className="py-12 text-center">
@@ -206,6 +271,178 @@ const MondayHighlights = () => {
           </div>
         </div>
       </div>
+
+      
+      {/* Tomorrow's Content Highlights Section */}
+      <div className="py-12">
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Tomorrow's Content Highlights</h2>
+          <div className="space-y-8">
+            {/* Event 1 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Tuesday 04 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>09:00 - 10:00</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">What needs to change to harness the full potential of ASM?</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Session sponsored by EPRM
+              </p>
+              <ul className="list-disc list-inside text-gray-600 leading-relaxed ml-4">
+                <li>What worked, what didn't and want needs to change to ensure the artisanal and small-scale mining sector formalizes and professionalizes across the continent</li>
+                <li>How to pivot from pilot projects and short-lived interventions to sector wide change</li>
+                <li>Zooming in on the Ivorian gold sector and the Congolese cobalt sector, the panel will discuss what impact at scale could look like, if the right investments are made into the sector.</li>
+              </ul>
+            </div>
+
+            {/* Event 2 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Tuesday 04 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>09:30 - 11:00</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Workshop 3 - Industrialising Africa</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Unlocking potential: Value addition and industrial transformation in Africa
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                Session 1: High Level Panel Discussion on the Challenges and Opportunities of Industrializing Africa's through Minerals
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-2">
+                Session 2: Practical level Discussions on the Challenges and Opportunities of Industrializing Africa's through Minerals
+              </p>
+            </div>
+
+            {/* Event 3 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Tuesday 04 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>09:45 - 10:30</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Industrialising Africa - what will it take to increase investment in midstream and downstream manufacturing facilities?</h3>
+              <ul className="list-disc list-inside text-gray-600 leading-relaxed ml-4">
+                <li>Why this government objective?</li>
+                <li>Unpacking enabling conditions for mining companies and international players to foray into local value addition for critical energy transition minerals</li>
+                <li>Understanding the perspectives of battery and electric vehicles manufacturers to better understand midstream opportunities and actions needed to unlock those segments</li>
+                <li>The role of private sector and state-owned enterprises in implementing the vision of governments to transform domestic mining sectors to deliver greater value addition</li>
+              </ul>
+            </div>
+
+            {/* Event 4 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Tuesday 04 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>10:00 - 10:45</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Is policy a blocker to technology and innovation?</h3>
+              <ul className="list-disc list-inside text-gray-600 leading-relaxed ml-4">
+                <li>What is the importance of government policies in supporting technological innovation?</li>
+                <li>Why is policy not keeping pace with the rate of technological advancement?</li>
+                <li>Can collaboration between governments, businesses, and academia to drive technological advancements.</li>
+              </ul>
+            </div>
+
+            {/* Event 5 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Tuesday 04 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>11:30 - 12:00</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Commodity Roundtables - Graphite, Lithium and Rare Earth Elements</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Participate in an open dialogue discussion with industry peers about current trends, challenges, and opportunities. Expect to gain valuable insights into market forecasts, risk management strategies, and the impact of global economic factors on commodity prices.
+              </p>
+            </div>
+            {/* Event 6 */}
+            <div className="bg-[#f0f0f0] p-5 mx-8 hover:shadow-2xl">
+              <div className="flex items-center text-gray-600 mb-2">
+                {/* Calendar Icon Placeholder */}
+                <span className="mr-2">📅</span>
+                <span>Tuesday 04 February</span>
+                {/* Clock Icon Placeholder */}
+                <span className="ml-4 mr-2">⏰</span>
+                <span>13:00 - 14:30</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">Workshop 4 - Prioritising health and safety</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Mining and Zero harm: Achieving the goal
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                The main goal of the workshop is to stimulate an open discussion about the challenges the mining industry is facing related to health and safety; how they can maintain a right to operate and attract further investment within this context; how to drive improvement; and how new thinking and new technologies can help to sustainably reduce the number, frequency and severity of accidents in mines across Africa.
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
+                The session will open with a panel discussion that will discuss how mining operations are evolving, how this has augmented risk, as well as the challenges and opportunities that companies have in improving their health and safety systems and practices. This will be followed by roundtable discussions where participants will delve more deeply into specific challenges that miners are facing, with a focus on pragmatic solutions:
+              </p>
+              <ul className="list-disc list-inside text-gray-600 leading-relaxed ml-4">
+                <li>Effectively managing safety during M&A</li>
+                <li>Managing and positively influencing contractors, sub-contractors and value chain partners (artisanal & small-scale miners)</li>
+                <li>Technology and AI are seen as the silver bullet for improve safety performance, but what actually works and what data and monitoring strategies and frameworks are necessary to introduce new tech/AI effectively</li>
+                <li>Engaging and building capabilities of employees; providing a safe working environment for all demographics</li>
+                <li>Cultivating the right cultural context for safety</li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-12">
+            <button className="bg-[#64a63a] text-white font-bold py-3 px-8 rounded hover:bg-[#55952c] transition duration-300">VIEW AGENDA</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Celebrating Our Incredible Sponsors and Exhibitors Section */}
+      <div className="text-white py-12 mx-10 rounded-lg">
+        <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
+          {/* Left Column: Text and Button */}
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px] py-18">
+            <h2 className="text-3xl font-bold mb-4 mt-8">Celebrating Our Incredible Sponsors and Exhibitors</h2>
+            <p className="text-md leading-relaxed mb-8">
+            Wrapping up yet another productive day at Mining Indaba, we’re thrilled to showcase some exceptional sponsors and exhibitors, including Kanona Power Company Limited, AECI Mining, JOGMEC, Liebherr Africa, Rawbank SA, and many more.
+            </p>
+            <div className="flex space-x-4">
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW EXHIBITORS</button>
+            <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">VIEW SPONSORS</button>
+            </div>
+          </div>
+          {/* Right Column: Image */}
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <img src={CelebImage} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-r-lg" />
+          </div>
+        </div>
+      </div>
+
+      {/* Join Us Section */}
+      <div className="py-16 text-white text-center" style={{ background: 'linear-gradient(to bottom, #5cb030, #d4ed31)' }}>
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">Join Us at Mining Indaba 2026</h2>
+          <p className="text-sm leading-relaxed mb-8">
+            The premier meeting place for African and global mining leaders. It is all set to be an unmissable experience, shaping the future of African mining.<br/> Register your interest today and stay ahead in this dynamic industry!
+          </p>
+          <button className="bg-[#55952c] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">REGISTER INTEREST</button>
+        </div>
+      </div>
+
+      <Footer/>
+
+
     </div>
   );
 };

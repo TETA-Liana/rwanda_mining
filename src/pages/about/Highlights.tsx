@@ -5,16 +5,16 @@ const Highlights = () => {
   return (
     <div className="pt-40">
       {/* Hero Section */}
-      <div className="h-60 flex items-center justify-center text-white text-4xl font-bold" style={{ backgroundImage: 'linear-gradient(to right, #4CAF50, #8BC34A)' }}>
-        Event Highlights
+      <div className="h-40 flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-r from-[#64a63a] to-[#d4ed31]">
+      Event Highlights
       </div>
 
       {/* Introductory Text Section */}
-      <div className="py-12">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-            This year's conference marked a significant shift by placing indigenous peoples and local communities at the forefront of our discussions, acknowledging their vital role in shaping the industry's future.<br /><br />
-            For the first time, representatives from these groups actively participated in key sessions, offering their perspectives on sustainable and equitable mining practices. Indaba represents a commitment to inclusivity, sustainability, and strategic collaboration, aiming to position Africa's mining industry for a resilient and prosperous future.<br /><br />
+      <div className="py-12 mx-10">
+        <div className="container py-5 text-center border-2 rounded-md">
+          <p className="text-md text-black leading-relaxed max-w-4xl mx-auto">
+            This year's conference marked a significant shift by placing indigenous peoples and local communities at the forefront of our discussions, acknowledging their vital role in shaping the industry's future.<br/>
+            For the first time, representatives from these groups actively participated in key sessions, offering their perspectives on sustainable and equitable mining practices. Indaba represents a commitment to inclusivity, sustainability, and strategic collaboration, aiming to position Africa's mining industry for a resilient and prosperous future.<br/>
             The conference further addressed the complex geopolitical landscape affecting Africa's mining sector. Discussions emphasized the continent's strategic decisions between engaging with the U.S., under President Trump's protectionist policies, or aligning with the China-led BRICS group. This choice is crucial for Africa's mineral-rich countries as they navigate global mineral demand driven by the energy transition.
           </p>
         </div>
