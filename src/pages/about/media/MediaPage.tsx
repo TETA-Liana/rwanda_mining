@@ -3,8 +3,8 @@ import MediaHeroSection from '../../../components/media-sections/MediaHeroSectio
 import MediaExposureSection from '../../../components/media-sections/MediaExposureSection';
 import OverallCoverageSection from '../../../components/media-sections/OverallCoverageSection';
 import AttendingMediaSection from '../../../components/media-sections/AttendingMediaSection';
-import PressReleasesSection from '../../../components/media-sections/PressReleasesSection';
 import FooterSection from "../../../components/sections/FooterSection"
+import FeaturedArticlesSection from '../../../components/sections/FeaturedArticlesSection';
 
 const MediaPage = () => {
   return (
@@ -13,7 +13,7 @@ const MediaPage = () => {
       <MediaExposureSection />
       <OverallCoverageSection />
       <AttendingMediaSection />
-      <PressReleasesSection />
+      <FeaturedArticlesSection/>
       <FooterSection />
     </div>
   );

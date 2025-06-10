@@ -227,9 +227,9 @@ const attendingMedia = [
 const AttendingMediaSection = () => {
   return (
     <section className="py-16 bg-gray-100">
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container px-6 lg:px-8 mx-10">
         <h2 className="text-3xl font-bold text-[#0f172a] text-center">2025 attending media:</h2>
-        <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[#0f172a]">
+        <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[#0f172a] text-lg">
           {attendingMedia.map((media, index) => (
             <p key={index} className="mb-2 leading-relaxed">
               &bull; {media}

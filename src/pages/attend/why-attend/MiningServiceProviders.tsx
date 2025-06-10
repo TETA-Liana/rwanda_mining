@@ -1,20 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Why1 from "../../../../public/why-attend-min-1.jpg";
+import Why2 from "../../../../public/why-attend-min-2.jpg";
+import Why3 from "../../../../public/why-attend-min-3.jpg";
+import Why4 from "../../../../public/why-attend-min-4.jpg";
+import FeaturedArticlesSection from '../../../components/sections/FeaturedArticlesSection';
+import FooterSection from '../../../components/sections/FooterSection';
 
 const MiningServiceProviders = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
       <div className="relative h-60 bg-gradient-to-r from-[#64a63a] to-[#d4ed31] flex items-center justify-center">
-        <h1 className="text-white text-4xl font-bold">Mining Indaba for Mining Service Providers</h1>
+        <h1 className="text-white text-4xl font-bold mt-16">Mining Indaba for Junior Miners</h1>
       </div>
 
-      {/* Connect with Mining Companies Section */}
-      <section className="container mx-auto px-4 py-16 text-center max-w-4xl">
-        <h2 className="text-4xl font-bold mb-6">Connect with Mining Companies at Mining Indaba 2026: Opportunities for Mining Service Providers</h2>
+      {/* Connect with Investors Section */}
+      <section  className="container text-center border-2 rounded-md mx-auto p-5 my-12 mx-10 max-w-6xl shadow-lg">
+        <h2 className="text-4xl font-bold mb-6">Connect with Investors at Mining Indaba 2026: Opportunities for Junior Mining Companies</h2>
         <p className="text-lg mb-8">
           Mining Indaba is the ultimate networking, deal-making, and discussion forum for the industry's current trends and challenges. This event offers unparalleled opportunities for
-          mining service providers to form connections, discuss project progression and explore financing opportunities. Additional value lies in
+          junior mining companies and exploration mining companies to form connections, discuss project progression and explore financing opportunities. Additional value lies in
           gaining valuable insights into market trends, new technologies, and regulatory changes affecting the mining sector.
           <br /><br />
           Interested in attending Mining Indaba 2026?
@@ -25,45 +31,66 @@ const MiningServiceProviders = () => {
       </section>
 
       {/* Why attend Mining Indaba Section */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-12">Why attend Mining Indaba?</h2>
-        <div className="flex flex-col lg:flex-row gap-8 items-center">
-          {/* Showcase projects block */}
-          <div className="flex-1 text-center">
-            <img src="/images/why-attend-1.png" alt="Showcase projects" className="w-full h-auto mb-6 rounded-lg shadow-lg" />
-            <h3 className="text-2xl font-semibold mb-4">Showcase projects to a global audience</h3>
-            <p className="text-gray-700 mb-6">
-              Dedicated space with booths for exploration companies with African assets to exhibit their projects. Taking part in the Explorers Showcase enables exploration
-              companies to raise their profile, increase visibility, and showcase their projects to a
-              global audience, gaining access to Mining Indaba's elite network of dealmakers to
-              raise finance and find the right partner to advance their projects.
-            </p>
-            <button className="bg-[#d4ed31] hover:bg-[#cbe02b] text-black font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors">
-              LEARN MORE
-            </button>
-          </div>
+      <div className='mx-12'>
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Why attend Mining Indaba?</h2>
+          <div className="flex flex-wrap -mx-4">
+            {/* Content Item 1: Lithium and graphite */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <img src={Why1} alt="Lithium and graphite" className="h-78 w-full object-cover rounded-t-lg" />
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Business Development and Partnerships</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Building relationships and forging partnerships is essential for growth in the mining sector. Service providers and equipment companies can engage in networking, identify potential clients and projects, and explore collaborations with mining companies, investors, and other industry stakeholders.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-          {/* Meet Investors and Financiers block */}
-          <div className="flex-1 text-center">
-            <img src="/images/why-attend-2.png" alt="Meet Investors" className="w-full h-auto mb-6 rounded-lg shadow-lg" />
-            <h3 className="text-2xl font-semibold mb-4">Meet Investors and Financiers</h3>
-            <p className="text-gray-700 mb-6">
-              Mining Indaba is attended by a diverse array of investors, including private equity
-              firms, sovereign wealth fund, institutional investors, automotives and high-net-worth
-              individuals that are mandated to invest funds directly into mining companies.
-              Through the Business Matchmaking platform, attendees can set-up meetings with
-              investors and financiers to attract investment capital and explore financing options
-              to support their growth initiatives.
-            </p>
-            <button className="bg-[#d4ed31] hover:bg-[#cbe02b] text-black font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors">
-              LEARN MORE
-            </button>
+            {/* Content Item 2: Showcase Products and Services */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <img src={Why2} alt="The Dealmakers Den" className="h-78 w-full object-cover rounded-t-lg" />
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Showcase Products and Services</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Showcase your products, technologies, and expertise to a highly targeted audience. From the latest innovations in mining equipment to software solutions and professional services, Mining Indaba provides a prime opportunity to demonstrate your value propositions and stand out from competitors.
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Content Item 3: Access to Market Insights */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <img src={Why3} alt="The Dealmakers Den" className="h-78 w-full object-cover rounded-t-lg" />
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Access to Market Insights</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  The comprehensive conference program covers key trends, challenges, and opportunities shaping the African mining industry. Attending the event enables service providers and professional service companies to acquire valuable market insights, industry intelligence, and regulatory updates crucial for informing business strategies and decision-making processes.
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* Content Item 4: Networking Opportunities */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <img src={Why4} alt="The Dealmakers Den" className="h-78 w-full object-cover rounded-t-lg" />
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Networking Opportunities</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Mining Indaba serves as a platform that unites key stakeholders, investors, mining companies, government representatives, and industry experts from around the world. For service providers and equipment companies, this presents invaluable networking opportunities to connect with potential clients, partners, and decision-makers in the African mining sector.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+
 
       {/* Testimonials Section */}
-      <section className="container mx-auto px-4 py-16">
+      <section className="container mx-3 py-16">
         <h2 className="text-4xl font-bold text-center mb-12">2025 Attendee Testimonials</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Testimonial 1 */}
@@ -71,17 +98,17 @@ const MiningServiceProviders = () => {
             <div className="w-full h-48 mb-4">
               <iframe
                 className="w-full h-full rounded-lg"
-                src="https://www.youtube.com/embed/gL_3wQYl_5w"
+                src="https://www.youtube.com/watch?v=da4IBP0Heqw"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
-            <p className="italic text-gray-700 mb-4">"Mining Indaba is a very different platform. It's Africa for Africa. We have everyone under one roof."</p>
-            <h4 className="font-semibold text-lg">Raadiyah Emam</h4>
-            <p className="text-gray-600">Head of Investor Relations</p>
-            <p className="text-gray-600">Anith Resources Ltd</p>
+            <p className="italic text-gray-700 mb-4">"Anybody who is anybody in Mining in Africa is here. The show this year is really good, it's been really well organised, that created a very positive vibe, it's worked really well, compliments to you guys."</p>
+            <h4 className="font-semibold text-lg">AnneMarie Viljoen</h4>
+            <p className="text-gray-600">Marketing and Brand Manager</p>
+            <p className="text-gray-600">Komatsu</p>
           </div>
 
           {/* Testimonial 2 */}
@@ -89,17 +116,17 @@ const MiningServiceProviders = () => {
             <div className="w-full h-48 mb-4">
               <iframe
                 className="w-full h-full rounded-lg"
-                src="https://www.youtube.com/embed/E-0tY_Rk-0s"
+                src="https://www.youtube.com/watch?v=0wtoG5QfXdU"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
-            <p className="italic text-gray-700 mb-4">"It was just incredible to see the depth of projects and everything going on."</p>
-            <h4 className="font-semibold text-lg">Adrian O'Brien</h4>
-            <p className="text-gray-600">VP - Business Development & Communications</p>
-            <p className="text-gray-600">Midnight Sun Mining</p>
+            <p className="italic text-gray-700 mb-4">"It's not every day you get you get the whole of the mining industry in one spot. It's a good opportunity to showcase what we do and network with our clients and possible future clients. Having a presence is important because these are our cilents and if they are familiar with our brand then they reach out when they have projects to get off the ground."</p>
+            <h4 className="font-semibold text-lg">Japie Du Plessis</h4>
+            <p className="text-gray-600">Managing Director</p>
+            <p className="text-gray-600">Murray & Roberts</p>
           </div>
 
           {/* Testimonial 3 */}
@@ -107,83 +134,37 @@ const MiningServiceProviders = () => {
             <div className="w-full h-48 mb-4">
               <iframe
                 className="w-full h-full rounded-lg"
-                src="https://www.youtube.com/embed/zL_1M5cK-m0"
+                src="https://www.youtube.com/watch?v=mcsH1ihdrxw"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               ></iframe>
             </div>
-            <p className="italic text-gray-700 mb-4">"There's a good diversity of people here. It's not just people from one sector - it is quite a broader spectrum. I have met with investors, potential new suppliers, some product suppliers who have been very interesting and certainly some new leads."</p>
-            <h4 className="font-semibold text-lg">James Philip</h4>
-            <p className="text-gray-600">COO</p>
-            <p className="text-gray-600">Thor Explorations</p>
+            <p className="italic text-gray-700 mb-4">"Super insightful event and everyone's here – also this is the best place to meet people, build a network in the critical minerals space, in the region."</p>
+            <h4 className="font-semibold text-lg">Anastasia Kuskova</h4>
+            <p className="text-gray-600">Sirius</p>
+            <p className="text-gray-600">CEO and Co-Founder</p>
           </div>
         </div>
       </section>
 
-      {/* Top reasons why Juniors Attend Mining Indaba Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold mb-12">Top reasons why Mining Service Providers Attend Mining Indaba</h2>
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-          <div className="flex-shrink-0">
-            <img src="/images/pie-chart.png" alt="Reasons Pie Chart" className="w-80 h-auto" />
-          </div>
-          <div className="text-left max-w-md">
-            <ul className="space-y-4 text-lg">
-              <li className="flex items-center gap-3"><span className="w-5 h-5 bg-black"></span> Network & Make New Contacts (32%)</li>
-              <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#64a63a]"></span> Raise Capital (19%)</li>
-              <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#d4ed31]"></span> Attend Content Sessions (18%)</li>
-              <li className="flex items-center gap-3"><span className="w-5 h-5 bg-gray-500"></span> Source Investment Opportunities & Acquisitions (31%)</li>
-            </ul>
-          </div>
+      
+            {/* Join Us Section */}
+            <div className="py-16 text-white text-center" style={{ background: 'linear-gradient(to bottom, #5cb030, #d4ed31)' }}>
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">Join Us at Mining Indaba 2026</h2>
+          <p className="text-sm leading-relaxed mb-8">
+            The premier meeting place for African and global mining leaders. It is all set to be an unmissable experience, shaping the future of African mining.<br/> Register your interest today and stay ahead in this dynamic industry!
+          </p>
+          <button className="bg-[#55952c] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">REGISTER INTEREST</button>
         </div>
-        <p className="text-xl mt-12 mb-8">
-          <span className="font-bold">Connect with capital. Discover opportunity. Drive growth.</span>
-          <br />
-          Mining Indaba is where mining service providers come to get deals moving. Whether you're looking to <span className="font-bold">raise capital</span>, <span className="font-bold">attract new investors</span>, or explore
-          <span className="font-bold">strategic partnerships and acquisitions</span>, the opportunities are real and within reach. With direct access to financiers, industry leaders, and
-        </p>
-      </section>
+      </div>
 
-      {/* Discover more Mining Indaba Section */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-12">Discover more Mining Indaba</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Mining companies attending */}
-          <div className="bg-[#64a63a] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Mining companies attending</h3>
-              <p className="mb-6">Discover the list of mining companies that registered to attend Mining Indaba 2025.</p>
-            </div>
-            <button className="bg-[#d4ed31] hover:bg-[#cbe02b] text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
-              BROWSE THE LIST
-            </button>
-          </div>
-
-          {/* Explorers Showcase */}
-          <div className="bg-[#64a63a] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Explorers Showcase</h3>
-              <p className="mb-6">Explorers Showcase is a dedicated space for private/unlisted or listed exploration companies with African assets to showcase their projects at Mining Indaba.</p>
-            </div>
-            <button className="bg-[#d4ed31] hover:bg-[#cbe02b] text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
-              LEARN MORE
-            </button>
-          </div>
-
-          {/* Meet the Advisory Board */}
-          <div className="bg-[#64a63a] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">Meet the Advisory Board</h3>
-              <p className="mb-6">Alongside the theme, we are honoured to introduce the distinguished members of our 2026 Advisory Board and Committees.</p>
-            </div>
-            <button className="bg-[#d4ed31] hover:bg-[#cbe02b] text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
-              MEET THE BOARD
-            </button>
-          </div>
-        </div>
-      </section>
+      
+      {/* Featured Articles Section */}
+      <FeaturedArticlesSection />
+      <FooterSection/>
     </div>
   );
 };

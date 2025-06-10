@@ -1,7 +1,96 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import Wedn from "../../../public/weds-high.jpg";
+import Tues from "../../../public/tues-high.jpg";
+import Mon from "../../../public/mon-high.jpg";
+import Sun from "../../../public/sun-cont-1.jpg";
+import Gallery1 from "../../../public/gallery-1.jpg";
+import Gallery2 from "../../../public/gallery-2.jpg";
+import Gallery3 from "../../../public/gallery-3.jpg";
+import Gallery4 from "../../../public/gallery-4.jpg";
+import Gallery5 from "../../../public/gallery-5.jpg";
+import Gallery6 from "../../../public/gallery-6.jpg";
+import Gallery7 from "../../../public/gallery-7.jpg";
+import Gallery8 from "../../../public/gallery-8.jpg";
+import Footer from "../../components/sections/FooterSection";
 
 const Highlights = () => {
+
+  interface GalleryMember {
+    id: number;
+    image: string;
+  }
+
+  const images = [
+    'gallery-1.jpg',
+    'gallery-2.jpg',
+    'gallery-3.jpg',
+    'gallery-4.jpg',
+    'gallery-5.jpg',
+    'gallery-6.jpg',
+    'gallery-7.jpg',
+    'gallery-8.jpg'
+  ];
+
+  const galleryImageImports = [
+    Gallery1,
+    Gallery2,
+    Gallery3,
+    Gallery4,
+    Gallery5,
+    Gallery6,
+    Gallery7,
+    Gallery8,
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const membersPerPage = 4;
+  const totalSlides = Math.ceil(images.length / membersPerPage);
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+    }, 10000); // Change slide every 10 seconds
+
+    return () => clearInterval(interval); // Clean up the interval on component unmount
+  }, [totalSlides]); // Re-run effect if totalSlides changes
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
+  
+  const galleryMembers: GalleryMember[] = galleryImageImports.map((image, index) => ({
+    id: index + 1,
+    image: image,
+  }));
+  
+  interface GalleryMemberCardProps {
+    member: GalleryMember;
+  }
+  
+  const GalleryMemberCard: React.FC<GalleryMemberCardProps> = ({ member}) => {
+  
+    return (
+      <div className="relative rounded-lg shadow-md text-center cursor-pointer flex flex-col items-center border border-gray-300 w-64 h-48 flex-shrink-0 transition-colors duration-300 overflow-hidden">
+          <img src={member.image} alt="Gallery Image" className="w-full h-full object-cover" />
+      </div>
+    );
+  };
+
+  const cardWidth = 256;
+  const gapWidth = 24;
+  const slideDistance = (cardWidth + gapWidth) * membersPerPage;
+
   return (
     <div className="pt-40">
       {/* Hero Section */}
@@ -21,105 +110,103 @@ const Highlights = () => {
       </div>
 
       {/* Thursday Highlights Section */}
-      <div className="bg-green-700 text-white py-12">
+      <div className="text-white py-12 mx-5 rounded-lg">
         <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
           {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Thursday Highlights</h2>
-            <p className="text-lg leading-relaxed mb-8">
-              As Mining Indaba comes to a close, we're looking back at an incredible week of connections, innovations, and industry-shaping insights. Don't miss the key takeaways from the final day!
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px]">
+            <h2 className="text-3xl font-bold mb-4 mt-10">Thursday Highlights</h2>
+            <p className="text-md leading-relaxed mb-8">
+            As Mining Indaba comes to a close, we’re looking back at an incredible week of connections, innovations, and industry-shaping insights. Don’t miss the key takeaways from the final day!
             </p>
-            <Link to="/about/highlights/thursday" className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300 inline-block">VIEW HIGHLIGHTS</Link>
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded hover:bg-white transition duration-300">VIEW HIGHLIGHTS</button>
           </div>
           {/* Right Column: Video */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-             {/* Image Placeholder */}
-             <div className="bg-gray-300 h-60 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <div className="aspect-w-16 aspect-h-9 w-full">
+              <iframe
+                src="https://www.youtube.com/embed/elg4ujpzVuo"
+                title="Day One Highlights Mining Indaba 2025"
+                className="h-[350px] w-[550px] shadow-xl rounded-r-lg"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>
       </div>
 
       {/* Wednesday Highlights Section */}
-      <div className="bg-green-700 text-white py-12">
-        <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
-           {/* Left Column: Image */}
-           <div className="w-full md:w-1/2 px-4 mb-8">
-             {/* Image Placeholder */}
-             <div className="bg-gray-300 h-60 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
-            </div>
+      <div className="text-white py-12 rounded-lg overflow-hidden">
+        <div className="container mx-auto flex flex-wrap items-center gap-0">
+          {/* Left Column */}
+          <div className="w-full md:w-1/2 flex">
+            <img src={Wedn} alt="Wednesday Highlights" className="h-[350px] w-[550px] shadow-xl" />
           </div>
-          {/* Right Column: Text and Button */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Wednesday Highlights</h2>
-            <p className="text-lg leading-relaxed mb-8">
-              Another impactful day at Mining Indaba with engaging sessions and valuable connections. Catch up on the top takeaways!
+          {/* Right Column */}
+          <div className="w-full md:w-1/2 bg-[#64a63a] items-stretch p-5 h-[350px]">
+            <h2 className="text-3xl font-bold mb-4 mt-10">Wednesday Highlights</h2>
+            <p className="text-md leading-relaxed mb-8">
+            Another impactful day at Mining Indaba with engaging sessions and valuable connections. Catch up on the top takeaways!
             </p>
-            <Link to="/about/highlights/wednesday" className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300 inline-block">VIEW HIGHLIGHTS</Link>
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW HIGHLIGHTS</button>
           </div>
         </div>
       </div>
 
       {/* Tuesday Highlights Section */}
-      <div className="bg-green-700 text-white py-12">
+      <div className="text-white py-12 mx-5 rounded-lg">
         <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
           {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Tuesday Highlights</h2>
-            <p className="text-lg leading-relaxed mb-8">
-              An eventful day filled with thought-provoking discussions and industry insights! Explore the highlights and key moments that shaped the conversations.
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px]">
+            <h2 className="text-3xl font-bold mb-4 mt-10">Tuesday Highlights</h2>
+            <p className="text-md leading-relaxed mb-8">
+            An eventful day filled with thought-provoking discussions and industry insights! Explore the highlights and key moments that shaped the conversations.
             </p>
-            <Link to="/about/highlights/tuesday" className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300 inline-block">VIEW HIGHLIGHTS</Link>
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW HIGHLIGHTS</button>
           </div>
-           {/* Right Column: Image */}
-           <div className="w-full md:w-1/2 px-4 mb-8">
-             {/* Image Placeholder */}
-             <div className="bg-gray-300 h-60 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
+          {/* Right Column: Video */}
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <div className="aspect-w-16 aspect-h-9 w-full">
+              <img src={Tues} className="h-[350px] w-[550px] shadow-xl rounded-r-lg"/>
             </div>
           </div>
         </div>
       </div>
 
       {/* Monday Highlights Section */}
-      <div className="bg-green-700 text-white py-12">
-        <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
-           {/* Left Column: Image */}
-           <div className="w-full md:w-1/2 px-4 mb-8">
-             {/* Image Placeholder */}
-             <div className="bg-gray-300 h-60 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
-            </div>
+      <div className="text-white py-12 rounded-lg overflow-hidden">
+        <div className="container mx-auto flex flex-wrap items-center gap-0">
+          {/* Left Column */}
+          <div className="w-full md:w-1/2 flex">
+            <img src={Mon} alt="Wednesday Highlights" className="h-[350px] w-[550px] shadow-xl" />
           </div>
-          {/* Right Column: Text and Button */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Monday Highlights</h2>
-            <p className="text-lg leading-relaxed mb-8">
-              What an incredible start to Mining Indaba it was. Click below to watch the highlights video and read the summaries of some of the key sessions.
+          {/* Right Column */}
+          <div className="w-full md:w-1/2 bg-[#64a63a] items-stretch p-5 h-[350px]">
+            <h2 className="text-3xl font-bold mb-4 mt-10">Monday Highlights</h2>
+            <p className="text-md leading-relaxed mb-8">
+            What an incredible start to Mining Indaba it was. Click below to watch the highlights video and read the summaries of some of the key sessions.
             </p>
-            <Link to="/about/highlights/monday" className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300 inline-block">VIEW HIGHLIGHTS</Link>
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW HIGHLIGHTS</button>
           </div>
         </div>
       </div>
 
       {/* Sunday Highlights Section */}
-      <div className="bg-green-700 text-white py-12">
+      <div className="text-white py-12 mx-5 rounded-lg">
         <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
           {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 px-4 mb-8">
-            <h2 className="text-4xl font-bold mb-4">Sunday Highlights</h2>
-            <p className="text-lg leading-relaxed mb-8">
-              The 2025 Ministerial Symposium provided a platform for fostering partnerships and driving conversations on local beneficiation and resource legislation to empower Africa's mineral endowment, artisanal mining, and safety.
+          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px]">
+            <h2 className="text-3xl mt-10 font-bold mb-4">Sunday Highlights</h2>
+            <p className="text-md leading-relaxed mb-8">
+            The 2025 Ministerial Symposium provided a platform for fostering partnerships and driving conversations on local beneficiation and resource legislation to empower Africa’s mineral endowment, artisanal mining, and safety.
             </p>
-            <Link to="/about/highlights/sunday" className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300 inline-block">VIEW HIGHLIGHTS</Link>
+            <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">VIEW HIGHLIGHTS</button>
           </div>
-           {/* Right Column: Image */}
-           <div className="w-full md:w-1/2 px-4 mb-8">
-             {/* Image Placeholder */}
-             <div className="bg-gray-300 h-60 w-full flex items-center justify-center text-gray-700 text-xl">
-              Image Placeholder
+          {/* Right Column: Video */}
+          <div className="w-full md:w-1/2 mb-8 flex items-stretch rounded-r-lg">
+            <div className="aspect-w-16 aspect-h-9 w-full">
+              <img src={Sun} className="h-[350px] w-[550px] shadow-xl rounded-r-lg"/>
             </div>
           </div>
         </div>
@@ -129,16 +216,45 @@ const Highlights = () => {
       <div className="py-12 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">2025 Gallery</h2>
-          {/* Gallery Placeholder */}
-          <div className="bg-gray-300 h-96 flex items-center justify-center text-gray-700 text-xl mb-8">
-            Image Gallery Placeholder
+          <div className="flex items-center justify-center gap-8">
+            <button onClick={prevSlide} className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent">
+              <ChevronLeftIcon className="h-6 w-6" />
+            </button>
+            {/* Slideshow container */}
+            <div className="flex overflow-hidden w-full">
+              {/* Inner container holding all cards with horizontal gap */}
+              <div
+                className="flex transition-transform duration-500 ease-in-out gap-x-6"
+                style={{ transform: `translateX(${-currentIndex * slideDistance}px)` }}
+              >
+                {galleryMembers.map((member) => (
+                  <GalleryMemberCard key={member.id} member={member} />
+                ))}
+              </div>
+            </div>
+            <button onClick={nextSlide} className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent">
+              <ChevronRightIcon className="h-6 w-6" />
+            </button>
           </div>
-          <button className="bg-green-700 text-white font-bold py-2 px-4 rounded hover:bg-green-800 transition duration-300">VIEW GALLERY</button>
+          <div className="flex justify-center items-center gap-2 mt-8">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                className="mx-1 focus:outline-none bg-transparent border-none p-0"
+                onClick={() => goToSlide(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                <div
+                  className={`h-3 w-3 rounded-full border-2 border-[#5cb030] ${currentIndex === index ? 'bg-[#5cb030]' : 'bg-transparent'}`}
+                ></div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Programme, Speakers & Ministerial Presence Section */}
-      <div className="py-12">
+      <div className="py-12 mx-12">
         <div className="container mx-auto px-4">
           <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Programme, Speakers & Ministerial Presence</h2>
           <div className="flex flex-wrap -mx-4">
@@ -152,7 +268,7 @@ const Highlights = () => {
                   <p className="text-gray-600 leading-relaxed mb-4">
                     Discover what topics were discussed at Mining Indaba 2025.
                   </p>
-                  <button className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300">DISCOVER THE 2025 AGENDA</button>
+                  <button className="bg-[#d4ed31] text-sm text-gray-800 font-bold py-2 px-4 rounded transition duration-300">DISCOVER THE 2025 AGENDA</button>
                 </div>
               </div>
             </div>
@@ -167,7 +283,7 @@ const Highlights = () => {
                   <p className="text-gray-600 leading-relaxed mb-4">
                     Explore who spoke at Mining Indaba 2025.
                   </p>
-                  <button className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300">EXPLORE THE SPEAKER LIST</button>
+                  <button  className="bg-[#d4ed31] text-sm text-gray-800 font-bold py-2 px-4 rounded transition duration-300">EXPLORE THE SPEAKER LIST</button>
                 </div>
               </div>
             </div>
@@ -182,7 +298,7 @@ const Highlights = () => {
                   <p className="text-gray-600 leading-relaxed mb-4">
                     Explore the government presence at Mining Indaba 2025.
                   </p>
-                  <button className="bg-yellow-400 text-gray-800 font-bold py-2 px-4 rounded hover:bg-yellow-500 transition duration-300">GOVERNMENT PRESENCE</button>
+                  <button  className="bg-[#d4ed31] text-gray-800 text-sm font-bold py-2 px-4 rounded transition duration-300">GOVERNMENT PRESENCE</button>
                 </div>
               </div>
             </div>
@@ -191,7 +307,7 @@ const Highlights = () => {
       </div>
 
       {/* Additional Section: Investment Village, Critical Minerals, Community */}
-      <div className="py-12">
+      <div className="py-12 mx-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap -mx-4">
             {/* Investment Village */}
@@ -238,8 +354,10 @@ const Highlights = () => {
           </div>
         </div>
       </div>
+
+      <Footer/>
     </div>
   );
 };
 
-export default Highlights;
+export default Highlights; 
