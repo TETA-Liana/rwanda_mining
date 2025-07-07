@@ -42,13 +42,6 @@ const config /*: Config*/ = {
     },
   },
   plugins: [],
-
-<<<<<<< HEAD
-export default config
- 
-=======
-  // mode: 'jit', // 'jit' mode is default in Tailwind CSS v3+
 };
 
 export default config;
->>>>>>> 62931182f38edd52392a50aeb38651255909b2a4
