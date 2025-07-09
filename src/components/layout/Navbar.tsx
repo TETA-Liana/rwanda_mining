@@ -41,7 +41,7 @@ const navigation = [
         children: [
           {
             label: "Exploration & Junior Mining Companies",
-            to: "/attend/why-attend/exploration-junior-mining-companies",
+            to: "/attend/why-attend/exploration-junior",
           },
           {
             label: "Majors & Mid-tiers",
