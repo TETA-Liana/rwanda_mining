@@ -1,4 +1,5 @@
 import React from "react";
+import FooterSection from "../components/sections/FooterSection";
 
 const ClientZone = () => {
   return (
@@ -50,6 +51,7 @@ const ClientZone = () => {
           />
         </div>
       </div>
+      <FooterSection/>
     </>
   );
 };

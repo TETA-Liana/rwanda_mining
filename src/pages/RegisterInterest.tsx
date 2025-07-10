@@ -1,6 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
 const RegisterInterest = () => {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    country: "",
+    email: "",
+    phoneCode: "",
+    phoneNumber: "",
+    companyName: "",
+    jobTitle: "",
+    jobFunction: "",
+    interestedIn: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess("");
+    setError("");
+    try {
+      const res = await fetch("http://localhost:8080/api/register-interest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to register interest");
+      setSuccess("Thank you for registering your interest!");
+      setForm({
+        firstName: "",
+        lastName: "",
+        country: "",
+        email: "",
+        phoneCode: "",
+        phoneNumber: "",
+        companyName: "",
+        jobTitle: "",
+        jobFunction: "",
+        interestedIn: "",
+      });
+    } catch (err) {
+      setError(
+        "There was an error submitting your registration. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       {/* Header with gradient background */}
@@ -80,185 +135,223 @@ const RegisterInterest = () => {
 
           {/* Right Column - Form */}
           <div className="md:w-1/2 bg-white p-6 rounded-lg shadow-md">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div>
+            <form onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    First name*
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={form.firstName}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Last name*
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={form.lastName}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="mb-4">
                 <label
-                  htmlFor="firstName"
+                  htmlFor="country"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  First name*
+                  Country*
                 </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Last name*
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                />
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="country"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Country*
-              </label>
-              <select
-                id="country"
-                name="country"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              >
-                <option>Please Select</option>
-                {/* Add country options here */}
-              </select>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email*
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="phoneNumber"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Phone number*
-              </label>
-              <div className="flex gap-2">
                 <select
-                  id="phoneCode"
-                  name="phoneCode"
-                  className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  id="country"
+                  name="country"
+                  value={form.country}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  required
                 >
-                  <option>Rwanda</option>
-                  {/* Add other country codes */}
+                  <option value="">Please Select</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Other">Other</option>
                 </select>
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Email*
+                </label>
                 <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  placeholder="+250"
-                  className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  required
                 />
               </div>
-            </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="companyName"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Company name*
-              </label>
-              <input
-                type="text"
-                id="companyName"
-                name="companyName"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              />
-            </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Phone number*
+                </label>
+                <div className="flex gap-2">
+                  <select
+                    id="phoneCode"
+                    name="phoneCode"
+                    value={form.phoneCode}
+                    onChange={handleChange}
+                    className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  >
+                    <option value="">Select</option>
+                    <option value="+250">Rwanda (+250)</option>
+                    <option value="+27">South Africa (+27)</option>
+                    <option value="+233">Ghana (+233)</option>
+                    <option value="+234">Nigeria (+234)</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <input
+                    type="text"
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={form.phoneNumber}
+                    onChange={handleChange}
+                    placeholder="e.g. 123456789"
+                    className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+              </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="jobTitle"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Job title*
-              </label>
-              <input
-                type="text"
-                id="jobTitle"
-                name="jobTitle"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              />
-            </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="companyName"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Company name*
+                </label>
+                <input
+                  type="text"
+                  id="companyName"
+                  name="companyName"
+                  value={form.companyName}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  required
+                />
+              </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="jobFunction"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Job function*
-              </label>
-              <select
-                id="jobFunction"
-                name="jobFunction"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              >
-                <option>Please Select</option>
-                {/* Add job function options here */}
-              </select>
-            </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="jobTitle"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Job title*
+                </label>
+                <input
+                  type="text"
+                  id="jobTitle"
+                  name="jobTitle"
+                  value={form.jobTitle}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  required
+                />
+              </div>
 
-            <div className="mb-6">
-              <label
-                htmlFor="interestedIn"
-                className="block text-sm font-medium text-gray-700"
-              >
-                I am interested in*
-              </label>
-              <select
-                id="interestedIn"
-                name="interestedIn"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              >
-                <option>Please Select</option>
-                {/* Add interested in options here */}
-              </select>
-            </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="jobFunction"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Job function*
+                </label>
+                <select
+                  id="jobFunction"
+                  name="jobFunction"
+                  value={form.jobFunction}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  required
+                >
+                  <option value="">Please Select</option>
+                  <option value="Management">Management</option>
+                  <option value="Operations">Operations</option>
+                  <option value="Technical">Technical</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
 
-            <p className="text-xs text-gray-600 mb-6">
-              Hyve Group takes your privacy seriously – you can read more about
-              this in our{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
-                Privacy Notice
-              </a>
-              . We use your personal information to provide the services you
-              have requested from us and for other carefully considered
-              legitimate business purposes. This includes sending you marketing
-              communications and advertising about our events as well as
-              information and publications which we think would be of interest
-              to you. You have the right to object to this processing and, if
-              you wish to do so, you can{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
-                update your preferences here
-              </a>
-              .{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
-                View a list of the events organised by Hyve Group here
-              </a>
-              .
-            </p>
+              <div className="mb-6">
+                <label
+                  htmlFor="interestedIn"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  I am interested in*
+                </label>
+                <select
+                  id="interestedIn"
+                  name="interestedIn"
+                  value={form.interestedIn}
+                  onChange={handleChange}
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                  required
+                >
+                  <option value="">Please Select</option>
+                  <option value="Attending">Attending</option>
+                  <option value="Exhibiting">Exhibiting</option>
+                  <option value="Sponsoring">Sponsoring</option>
+                  <option value="Speaking">Speaking</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
 
-            <button className="bg-[#64a63a] hover:bg-[#5cb030] text-white font-bold px-8 py-3 rounded text-base shadow-md uppercase tracking-wide float-right">
-              SUBMIT
-            </button>
+              {success && (
+                <div className="mb-4 text-green-600 font-semibold">
+                  {success}
+                </div>
+              )}
+              {error && (
+                <div className="mb-4 text-red-600 font-semibold">{error}</div>
+              )}
+
+              <button
+                type="submit"
+                className="bg-[#64a63a] hover:bg-[#5cb030] text-white font-bold px-8 py-3 rounded text-base shadow-md uppercase tracking-wide float-right"
+                disabled={loading}
+              >
+                {loading ? "Submitting..." : "SUBMIT"}
+              </button>
+            </form>
           </div>
         </div>
       </div>

@@ -10,9 +10,7 @@ const navigation = [
       {
         label: "About Mining Indaba",
         to: "/about/mining-indaba",
-        children: [
-          { label: "Meet the team", to: "/about/mining-indaba/team" },
-        ],
+        children: [{ label: "Meet the team", to: "/about/mining-indaba/team" }],
       },
       { label: "Strategic & Media Partners", to: "/about/partners" },
       { label: "PR & Media", to: "/about/media" },
@@ -53,16 +51,15 @@ const navigation = [
           },
           { label: "Governments", to: "/attend/why-attend/governments" },
           { label: "Investors", to: "/attend/why-attend/investors" },
-          { label: "Downstream Buyers", to: "/attend/why-attend/downstream-buyers" },
+          {
+            label: "Downstream Buyers",
+            to: "/attend/why-attend/downstream-buyers",
+          },
         ],
       },
       { label: "Testimonials", to: "/exhibit-sponsor/testimonials" },
       { label: "2025 Post Event Report", to: "/2025-post-event-report" },
       { label: "Register Interest", to: "/register-interest" },
-      { label: "Who Attends", to: "/attend/who-attends" },
-      { label: "Attendee Handbook", to: "/attend/handbook" },
-      { label: "Visas & Travel", to: "/attend/visas" },
-      { label: "Accommodation", to: "/attend/accommodation" },
     ],
   },
   {
@@ -89,9 +86,15 @@ const navigation = [
         ],
       },
       { label: "Testimonials", to: "/exhibit-sponsor/testimonials" },
-      { label: "Enquire to Exhibit or Sponsor", to: "/exhibit-sponsor/enquire" },
+      {
+        label: "Enquire to Exhibit or Sponsor",
+        to: "/exhibit-sponsor/enquire",
+      },
       { label: "Client Zone", to: "/exhibit-sponsor/client-zone" },
-      { label: "Exhibitor & Sponsor Handbook", to: "/exhibit-sponsor/handbook" },
+      {
+        label: "Exhibitor & Sponsor Handbook",
+        to: "/exhibit-sponsor/handbook",
+      },
       { label: "Become an Exhibitor", to: "/exhibit-sponsor/become-exhibitor" },
       { label: "Become a Sponsor", to: "/exhibit-sponsor/become-sponsor" },
       { label: "Networking Opportunities", to: "/exhibit-sponsor/networking" },
@@ -109,7 +112,11 @@ const Navbar = () => {
       <div className="container flex flex-col md:flex-row md:items-center md:justify-between py-4 shadow-lg">
         {/* Logo Section */}
         <div className="flex items-center gap-4 w-full md:w-auto">
-          <img className="h-20 w-auto" src="/mining_indaba_logo_1.png" alt="Mining Indaba" />
+          <img
+            className="h-20 w-auto"
+            src="/mining_indaba_logo_1.png"
+            alt="Mining Indaba"
+          />
         </div>
 
         {/* Buttons & Nav */}
@@ -122,9 +129,12 @@ const Navbar = () => {
             >
               EXHIBIT OR SPONSOR
             </Link>
-            <button className="bg-[#d4ed31] hover:bg-[#d4ed31] text-black font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide">
+            <Link
+              to="/register-interest"
+              className="bg-[#d4ed31] hover:bg-[#d4ed31] text-black font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide"
+            >
               REGISTER INTEREST
-            </button>
+            </Link>
           </div>
 
           {/* Navigation Links */}

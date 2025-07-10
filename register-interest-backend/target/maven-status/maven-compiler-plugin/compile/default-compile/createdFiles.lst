@@ -1,0 +1,5 @@
+com\example\registerinterest\RegisterInterestApplication.class
+com\example\registerinterest\repository\RegisterInterestRepository.class
+com\example\registerinterest\model\RegisterInterest.class
+com\example\registerinterest\service\RegisterInterestService.class
+com\example\registerinterest\controller\RegisterInterestController.class
