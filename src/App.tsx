@@ -12,7 +12,6 @@ import Enquire from "./pages/Enquire";
 import ClientZone from "./pages/ClientZone";
 import PostEventReport2025 from "./pages/PostEventReport2025";
 import RegisterInterest from "./pages/RegisterInterest";
-
 import MiningIndaba from "./pages/about/MiningIndaba";
 import Team from "./pages/about/mining-indaba/Team";
 import MediaPage from "./pages/about/media/MediaPage";
@@ -31,106 +30,68 @@ import MiningServiceProviders from "./pages/attend/why-attend/MiningServiceProvi
 import Governments from "./pages/attend/why-attend/Governments";
 import MiningIndabaForInvestors from "./pages/attend/why-attend/Investors";
 import MiningIndabaForDownstreamBuyers from "./pages/attend/why-attend/Dowstream";
-import Login from "./pages/Admin/AdminLogin"
+import AdminLogin from "./pages/Admin/AdminLogin";
 import Dashboard from "./pages/Admin/Dashboard";
+import HighlightsManager from "./pages/Admin/HighlightsManager";
+import ArticlesManager from "./pages/Admin/ArticlesManager";
+import UpdatesManager from "./pages/Admin/UpdatesManager";
+import TestimonialsManager from "./pages/Admin/TestimonialsManager";
 
 function App() {
   return (
     <Router>
-      <TopBar />
-      <Navbar />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/exhibit-sponsor/why"
-            element={<ExhibitOrSponsorWhy />}
-          />
-          <Route
-            path="/adminLogin"
-            element={<Login/>}
-            />
-          <Route
-            path="/exhibit-sponsor/why/2026-exhibitor-brochure"
-            element={<ExhibitorBrochure2026 />}
-          />
-          <Route
-            path="/exhibit-sponsor/who-attended-in-2025/sponsors"
-            element={<WhoAttended2025Sponsors />}
-          />
-          <Route
-            path="/exhibit-sponsor/who-attended-in-2025/exhibitors"
-            element={<WhoAttended2025Exhibitors />}
-          />
-          <Route
-            path="/exhibit-sponsor/testimonials"
-            element={<Testimonials />}
-          />
-          <Route path="/exhibit-sponsor/enquire" element={<Enquire />} />
-          <Route path="/exhibit-sponsor/client-zone" element={<ClientZone />} />
-          <Route
-            path="/2025-post-event-report"
-            element={<PostEventReport2025 />}
-          />
-          <Route path="/register-interest" element={<RegisterInterest />} />
-          <Route path="/about/mining-indaba" element={<MiningIndaba />} />
-          <Route path="/about/mining-indaba/team" element={<Team />} />
-          <Route path="/about/partners" element={<PartnersPage />} />
-          <Route path="/about/media" element={<MediaPage />} />
-          <Route path="/about/sustainability" element={<Sustainability />} />
-          <Route path="/about/highlights" element={<Highlights />} />
-          <Route
-            path="/about/highlights/thursday"
-            element={<ThursdayHighlights />}
-          />
-          <Route
-            path="/about/highlights/wednesday"
-            element={<WednesdayHighlights />}
-          />
-          <Route
-            path="/about/highlights/tuesday"
-            element={<TuesdayHighlights />}
-          />
-          <Route
-            path="/about/highlights/monday"
-            element={<MondayHighlights />}
-          />
-          <Route
-            path="/about/highlights/sunday"
-            element={<SundayHighlights />}
-          />
-          <Route path="/about/contact" element={<Contact />} />
-          <Route
-            path="/attend/why-attend/exploration-junior"
-            element={<ExplorationJuniorMiningCompanies />}
-          />
-          <Route
-            path="/attend/why-attend/majors-mid-tiers"
-            element={<MajorsMidTiers />}
-          />
-          <Route
-            path="/attend/why-attend/mining-service-providers"
-            element={<MiningServiceProviders />}
-          />
-          <Route
-            path="/attend/why-attend/governments"
-            element={<Governments />}
-          />
-          <Route
-            path="/attend/why-attend/investors"
-            element={<MiningIndabaForInvestors />}
-          />
-          <Route
-            path="/attend/why-attend/downstream-buyers"
-            element={<MiningIndabaForDownstreamBuyers />}
-          />
-          {/* Admin routes */}
-          <Route
-            path="/admin/dashboard"
-            element={<Dashboard />}
-          />
-        </Routes>
-      </Layout>
+      <Routes>
+        {/* Admin routes: do NOT render TopBar, Navbar, or Layout */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/highlights" element={<HighlightsManager />} />
+        <Route path="/admin/articles" element={<ArticlesManager />} />
+        <Route path="/admin/updates" element={<UpdatesManager />} />
+        <Route path="/admin/testimonials" element={<TestimonialsManager />} />
+
+        {/* Public routes: wrap in TopBar, Navbar, and Layout */}
+        <Route
+          path="*"
+          element={
+            <>
+              <TopBar />
+              <Navbar />
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/exhibit-sponsor/why" element={<ExhibitOrSponsorWhy />} />
+                  <Route path="/exhibit-sponsor/why/2026-exhibitor-brochure" element={<ExhibitorBrochure2026 />} />
+                  <Route path="/exhibit-sponsor/who-attended-in-2025/sponsors" element={<WhoAttended2025Sponsors />} />
+                  <Route path="/exhibit-sponsor/who-attended-in-2025/exhibitors" element={<WhoAttended2025Exhibitors />} />
+                  <Route path="/exhibit-sponsor/testimonials" element={<Testimonials />} />
+                  <Route path="/exhibit-sponsor/enquire" element={<Enquire />} />
+                  <Route path="/exhibit-sponsor/client-zone" element={<ClientZone />} />
+                  <Route path="/2025-post-event-report" element={<PostEventReport2025 />} />
+                  <Route path="/register-interest" element={<RegisterInterest />} />
+                  <Route path="/about/mining-indaba" element={<MiningIndaba />} />
+                  <Route path="/about/mining-indaba/team" element={<Team />} />
+                  <Route path="/about/partners" element={<PartnersPage />} />
+                  <Route path="/about/media" element={<MediaPage />} />
+                  <Route path="/about/sustainability" element={<Sustainability />} />
+                  <Route path="/about/highlights" element={<Highlights />} />
+                  <Route path="/about/highlights/thursday" element={<ThursdayHighlights />} />
+                  <Route path="/about/highlights/wednesday" element={<WednesdayHighlights />} />
+                  <Route path="/about/highlights/tuesday" element={<TuesdayHighlights />} />
+                  <Route path="/about/highlights/monday" element={<MondayHighlights />} />
+                  <Route path="/about/highlights/sunday" element={<SundayHighlights />} />
+                  <Route path="/about/contact" element={<Contact />} />
+                  <Route path="/attend/why-attend/exploration-junior" element={<ExplorationJuniorMiningCompanies />} />
+                  <Route path="/attend/why-attend/majors-mid-tiers" element={<MajorsMidTiers />} />
+                  <Route path="/attend/why-attend/mining-service-providers" element={<MiningServiceProviders />} />
+                  <Route path="/attend/why-attend/governments" element={<Governments />} />
+                  <Route path="/attend/why-attend/investors" element={<MiningIndabaForInvestors />} />
+                  <Route path="/attend/why-attend/downstream-buyers" element={<MiningIndabaForDownstreamBuyers />} />
+                </Routes>
+              </Layout>
+            </>
+          }
+        />
+      </Routes>
 
       {/* Fixed Chat Icon Placeholder */}
       <div className="fixed bottom-6 right-6 bg-[#64a63a] text-white rounded-full p-3 shadow-lg cursor-pointer">
