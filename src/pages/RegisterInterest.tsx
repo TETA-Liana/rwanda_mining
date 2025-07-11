@@ -351,6 +351,15 @@ const RegisterInterest = () => {
               >
                 {loading ? "Submitting..." : "SUBMIT"}
               </button>
+              {/* Admin Login Button */}
+              <div className="mt-4 flex justify-end">
+                <a
+                  href="/adminlogin"
+                  className="text-sm text-blue-600 hover:underline border border-blue-600 rounded px-3 py-1 ml-2"
+                >
+                  Admin Login
+                </a>
+              </div>
             </form>
           </div>
         </div>

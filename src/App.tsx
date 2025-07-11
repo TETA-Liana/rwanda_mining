@@ -31,6 +31,8 @@ import MiningServiceProviders from "./pages/attend/why-attend/MiningServiceProvi
 import Governments from "./pages/attend/why-attend/Governments";
 import MiningIndabaForInvestors from "./pages/attend/why-attend/Investors";
 import MiningIndabaForDownstreamBuyers from "./pages/attend/why-attend/Dowstream";
+import Login from "./pages/Admin/AdminLogin"
+import Dashboard from "./pages/Admin/Dashboard";
 
 function App() {
   return (
@@ -44,6 +46,10 @@ function App() {
             path="/exhibit-sponsor/why"
             element={<ExhibitOrSponsorWhy />}
           />
+          <Route
+            path="/adminLogin"
+            element={<Login/>}
+            />
           <Route
             path="/exhibit-sponsor/why/2026-exhibitor-brochure"
             element={<ExhibitorBrochure2026 />}
@@ -117,6 +123,11 @@ function App() {
           <Route
             path="/attend/why-attend/downstream-buyers"
             element={<MiningIndabaForDownstreamBuyers />}
+          />
+          {/* Admin routes */}
+          <Route
+            path="/admin/dashboard"
+            element={<Dashboard />}
           />
         </Routes>
       </Layout>
