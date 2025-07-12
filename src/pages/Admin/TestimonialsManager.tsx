@@ -17,6 +17,7 @@ interface BackendTestimonial {
   role: string;
   company: string;
   message: string;
+  youtubeLink?: string;
   // createdAt, updatedAt can be added if needed
 }
 
@@ -42,7 +43,7 @@ const TestimonialsManager = () => {
     witnessName: t.name,
     witnessTitle: t.role,
     witnessCompany: t.company,
-    youtubeLink: '', // Not in backend yet
+    youtubeLink: t.youtubeLink || '',
   });
 
   // Map frontend testimonial to backend
@@ -51,6 +52,7 @@ const TestimonialsManager = () => {
     role: t.witnessTitle,
     company: t.witnessCompany,
     message: t.testimony,
+    youtubeLink: t.youtubeLink || null,
   });
 
   // Load testimonials from backend
@@ -84,7 +86,6 @@ const TestimonialsManager = () => {
         const res = await fetch(`${API_URL}/${editingId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
           body: JSON.stringify(mapToBackend(form)),
         });
         if (!res.ok) throw new Error('Failed to update testimonial');
@@ -96,7 +97,6 @@ const TestimonialsManager = () => {
         const res = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          credentials: 'include',
           body: JSON.stringify(mapToBackend(form)),
         });
         if (!res.ok) throw new Error('Failed to create testimonial');
@@ -123,10 +123,9 @@ const TestimonialsManager = () => {
     setError('');
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/${id}`, {
-        method: 'DELETE',
-        credentials: 'include',
-      });
+              const res = await fetch(`${API_URL}/${id}`, {
+          method: 'DELETE',
+        });
       if (!res.ok) throw new Error('Failed to delete testimonial');
       setTestimonials((prev) => prev.filter(t => t.id !== id));
       if (editingId === id) {
