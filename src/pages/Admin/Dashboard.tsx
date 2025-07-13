@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import AdminLayout from './AdminLayout';
 
 const Dashboard = () => {
@@ -68,6 +68,9 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
+      </div>
+      <div className="mt-4">
+        <Link to="/admin/profile" className="text-blue-700 underline">Go to Profile</Link>
       </div>
     </AdminLayout>
   );

@@ -35,8 +35,12 @@ const AdminLogin = () => {
         setLoading(false);
         return;
       }
-      // Optionally store admin info in localStorage/sessionStorage
-      navigate('/admin/dashboard');
+      const data = await res.json();
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('adminEmail', data.email || 'admin@example.com');
+        navigate('/admin/dashboard');
+      }
     } catch (err) {
       setError('Network error. Please try again.');
     } finally {

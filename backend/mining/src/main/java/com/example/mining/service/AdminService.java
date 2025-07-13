@@ -10,10 +10,13 @@ import java.util.Optional;
 
 @Service
 public class AdminService {
-    @Autowired
-    private AdminRepository adminRepository;
-
+    private final AdminRepository adminRepository;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    @Autowired
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+    }
 
     public Optional<Admin> authenticate(String emailOrUsername, String password) {
         Optional<Admin> adminOpt = adminRepository.findByEmail(emailOrUsername);
@@ -27,5 +30,21 @@ public class AdminService {
             }
         }
         return Optional.empty();
+    }
+
+    public Admin findByUsernameOrEmail(String usernameOrEmail) {
+        Admin admin = adminRepository.findByEmail(usernameOrEmail).orElse(null);
+        if (admin == null) {
+            admin = adminRepository.findByUsername(usernameOrEmail).orElse(null);
+        }
+        return admin;
+    }
+
+    public String encodePassword(String rawPassword) {
+        return passwordEncoder.encode(rawPassword);
+    }
+
+    public Admin save(Admin admin) {
+        return adminRepository.save(admin);
     }
 } 
