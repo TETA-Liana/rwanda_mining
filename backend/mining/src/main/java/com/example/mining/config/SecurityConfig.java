@@ -23,7 +23,8 @@ public class SecurityConfig {
                     "/api/admin/login",
                     "/api/testimonials/**",
                     "/api/updates/**",
-                    "/api/articles/**"
+                    "/api/articles/**",
+                    "/api/highlights/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
