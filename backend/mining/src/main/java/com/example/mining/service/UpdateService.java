@@ -11,10 +11,12 @@ import java.util.Optional;
 @Service
 public class UpdateService {
     private final UpdateRepository updateRepository;
+    private final FileStorageService fileStorageService;
 
     @Autowired
-    public UpdateService(UpdateRepository updateRepository) {
+    public UpdateService(UpdateRepository updateRepository, FileStorageService fileStorageService) {
         this.updateRepository = updateRepository;
+        this.fileStorageService = fileStorageService;
     }
 
     public List<Update> getAllUpdates() {
@@ -32,6 +34,18 @@ public class UpdateService {
     public Optional<Update> updateUpdate(Long id, Update updateDetails) {
         return updateRepository.findById(id)
                 .map(existingUpdate -> {
+                    // Delete old files if they're being replaced
+                    if (updateDetails.getImagePath() != null && !updateDetails.getImagePath().equals(existingUpdate.getImagePath())) {
+                        if (existingUpdate.getImagePath() != null) {
+                            fileStorageService.deleteFile(existingUpdate.getImagePath());
+                        }
+                    }
+                    if (updateDetails.getReportPath() != null && !updateDetails.getReportPath().equals(existingUpdate.getReportPath())) {
+                        if (existingUpdate.getReportPath() != null) {
+                            fileStorageService.deleteFile(existingUpdate.getReportPath());
+                        }
+                    }
+                    
                     existingUpdate.setTitle(updateDetails.getTitle());
                     existingUpdate.setDescription(updateDetails.getDescription());
                     if (updateDetails.getImagePath() != null) {
@@ -45,6 +59,16 @@ public class UpdateService {
     }
 
     public void deleteUpdate(Long id) {
-        updateRepository.deleteById(id);
+        updateRepository.findById(id).ifPresent(update -> {
+            // Delete associated files
+            if (update.getImagePath() != null) {
+                fileStorageService.deleteFile(update.getImagePath());
+            }
+            if (update.getReportPath() != null) {
+                fileStorageService.deleteFile(update.getReportPath());
+            }
+            // Delete the database record
+            updateRepository.deleteById(id);
+        });
     }
 } 

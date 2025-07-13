@@ -81,7 +81,7 @@ const TestimonialsManager = () => {
     if (!form.testimony || !form.witnessName || !form.witnessTitle || !form.witnessCompany) return;
     setLoading(true);
     try {
-      if (editingId !== null) {
+    if (editingId !== null) {
         // Update
         const res = await fetch(`${API_URL}/${editingId}`, {
           method: 'PUT',
@@ -91,8 +91,8 @@ const TestimonialsManager = () => {
         if (!res.ok) throw new Error('Failed to update testimonial');
         const updated = mapFromBackend(await res.json());
         setTestimonials((prev) => prev.map(t => t.id === editingId ? updated : t));
-        setEditingId(null);
-      } else {
+      setEditingId(null);
+    } else {
         // Create
         const res = await fetch(API_URL, {
           method: 'POST',
@@ -102,8 +102,8 @@ const TestimonialsManager = () => {
         if (!res.ok) throw new Error('Failed to create testimonial');
         const created = mapFromBackend(await res.json());
         setTestimonials((prev) => [...prev, created]);
-      }
-      setForm({ youtubeLink: '', testimony: '', witnessName: '', witnessTitle: '', witnessCompany: '' });
+    }
+    setForm({ youtubeLink: '', testimony: '', witnessName: '', witnessTitle: '', witnessCompany: '' });
     } catch (err: any) {
       setError(err.message || 'Error saving testimonial');
     } finally {
@@ -127,10 +127,10 @@ const TestimonialsManager = () => {
           method: 'DELETE',
         });
       if (!res.ok) throw new Error('Failed to delete testimonial');
-      setTestimonials((prev) => prev.filter(t => t.id !== id));
-      if (editingId === id) {
-        setForm({ youtubeLink: '', testimony: '', witnessName: '', witnessTitle: '', witnessCompany: '' });
-        setEditingId(null);
+    setTestimonials((prev) => prev.filter(t => t.id !== id));
+    if (editingId === id) {
+      setForm({ youtubeLink: '', testimony: '', witnessName: '', witnessTitle: '', witnessCompany: '' });
+      setEditingId(null);
       }
     } catch (err: any) {
       setError(err.message || 'Error deleting testimonial');
@@ -148,30 +148,30 @@ const TestimonialsManager = () => {
             <div className="md:col-span-2">
               <label className="block font-semibold text-base mb-2">YouTube Link</label>
               <input type="url" name="youtubeLink" value={form.youtubeLink} onChange={handleInputChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
+          </div>
             <div className="md:col-span-2">
               <label className="block font-semibold text-base mb-2">Testimony<span className="text-red-500">*</span></label>
               <textarea name="testimony" value={form.testimony} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-semibold text-base mb-2">Witness Name<span className="text-red-500">*</span></label>
               <input type="text" name="witnessName" value={form.witnessName} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-semibold text-base mb-2">Witness Title<span className="text-red-500">*</span></label>
               <input type="text" name="witnessTitle" value={form.witnessTitle} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div>
+          </div>
+          <div>
               <label className="block font-semibold text-base mb-2">Witness Company<span className="text-red-500">*</span></label>
               <input type="text" name="witnessCompany" value={form.witnessCompany} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
+          </div>
             <div className="md:col-span-2 flex justify-end">
               <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
-                {editingId !== null ? 'Update Testimonial' : 'Add Testimonial'}
-              </button>
+            {editingId !== null ? 'Update Testimonial' : 'Add Testimonial'}
+          </button>
             </div>
             {error && <div className="md:col-span-2 text-red-600 text-sm font-semibold mt-2">{error}</div>}
-          </form>
+        </form>
         </div>
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-xl font-semibold mb-4 text-blue-900">Existing Testimonials</h3>
@@ -192,13 +192,13 @@ const TestimonialsManager = () => {
                   {testimonials.length === 0 && (
                     <tr><td colSpan={4} className="text-center text-gray-500 py-4">No testimonials yet.</td></tr>
                   )}
-                  {testimonials.map(t => (
+          {testimonials.map(t => (
                     <tr key={t.id} className="border-b">
                       <td className="py-2 px-4">{t.id}</td>
                       <td className="py-2 px-4">
                         <div className="font-bold text-blue-900">{t.witnessName}</div>
                         <div className="text-xs text-gray-500">{t.witnessTitle} at {t.witnessCompany}</div>
-                        {t.youtubeLink && <a href={t.youtubeLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline text-xs">YouTube</a>}
+                {t.youtubeLink && <a href={t.youtubeLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline text-xs">YouTube</a>}
                       </td>
                       <td className="py-2 px-4">{t.testimony}</td>
                       <td className="py-2 px-4">

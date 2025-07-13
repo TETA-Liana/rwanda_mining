@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminLayout from './AdminLayout';
 
 interface Highlight {
   id: number;
   day: string;
-  highlightImage?: File | null;
-  title?: string;
-  description?: string;
-  galleryImages?: File[];
+  mainImagePath: string;
+  title: string;
+  description: string;
+  galleryImagePaths: string[];
 }
+
+interface BackendHighlight {
+  id: number;
+  title: string;
+  description: string;
+  mainImagePath?: string;
+  galleryImagePaths?: string; // comma-separated
+  day: string;
+}
+
+const API_URL = 'http://localhost:8080/api/highlights';
 
 const daysOfWeek = [
   'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
@@ -17,8 +28,36 @@ const daysOfWeek = [
 const HighlightsManager = () => {
   const [highlights, setHighlights] = useState<Highlight[]>([]);
   const [form, setForm] = useState<Partial<Highlight>>({ day: '' });
+  const [mainImageFile, setMainImageFile] = useState<File | null>(null);
   const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  // Map backend highlight to frontend
+  const mapFromBackend = (h: BackendHighlight): Highlight => ({
+    id: h.id,
+    day: h.day,
+    mainImagePath: h.mainImagePath || '',
+    title: h.title,
+    description: h.description,
+    galleryImagePaths: h.galleryImagePaths ? h.galleryImagePaths.split(',').filter(Boolean) : [],
+  });
+
+  // Load highlights from backend
+  useEffect(() => {
+    setLoading(true);
+    fetch(API_URL)
+      .then(res => res.json())
+      .then((data: BackendHighlight[]) => {
+        setHighlights(data.map(mapFromBackend));
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load highlights');
+        setLoading(false);
+      });
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -27,45 +66,127 @@ const HighlightsManager = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.name === 'highlightImage') {
-      setForm((prev) => ({ ...prev, highlightImage: e.target.files![0] }));
+      setMainImageFile(e.target.files[0]);
     }
     if (e.target.files && e.target.name === 'galleryImages') {
       setGalleryFiles(Array.from(e.target.files));
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const uploadMainImage = async (file: File): Promise<string> => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await fetch(`${API_URL}/upload-image`, {
+      method: 'POST',
+      body: formData,
+    });
+    if (!response.ok) throw new Error('Failed to upload main image');
+    return await response.text();
+  };
+
+  const uploadGalleryImages = async (files: File[]): Promise<string[]> => {
+    const formData = new FormData();
+    files.forEach(file => formData.append('files', file));
+    const response = await fetch(`${API_URL}/upload-gallery`, {
+      method: 'POST',
+      body: formData,
+    });
+    if (!response.ok) throw new Error('Failed to upload gallery images');
+    return await response.json();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     if (!form.day) return;
-    if (editingId !== null) {
-      setHighlights((prev) => prev.map(h => h.id === editingId ? { ...h, ...form, galleryImages: galleryFiles } : h));
-      setEditingId(null);
-    } else {
-      setHighlights((prev) => [
-        ...prev,
-        { ...form, id: Date.now(), galleryImages: galleryFiles } as Highlight
-      ]);
+    setLoading(true);
+    try {
+      let mainImagePath = form.mainImagePath || '';
+      let galleryImagePaths: string[] = form.galleryImagePaths || [];
+      if (mainImageFile) {
+        mainImagePath = await uploadMainImage(mainImageFile);
+      } else if (editingId !== null) {
+        const existing = highlights.find(h => h.id === editingId);
+        mainImagePath = existing?.mainImagePath || '';
+      }
+      if (galleryFiles.length > 0) {
+        galleryImagePaths = await uploadGalleryImages(galleryFiles);
+      } else if (editingId !== null) {
+        const existing = highlights.find(h => h.id === editingId);
+        galleryImagePaths = existing?.galleryImagePaths || [];
+      }
+      const highlightData = {
+        ...form,
+        mainImagePath,
+        galleryImagePaths: galleryImagePaths.join(','),
+      };
+      if (editingId !== null) {
+        // Update
+        const res = await fetch(`${API_URL}/${editingId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(highlightData),
+        });
+        if (!res.ok) throw new Error('Failed to update');
+        const updated = mapFromBackend(await res.json());
+        setHighlights((prev) => prev.map(h => h.id === editingId ? updated : h));
+        setEditingId(null);
+      } else {
+        // Create
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(highlightData),
+        });
+        if (!res.ok) throw new Error('Failed to create highlight');
+        const created = mapFromBackend(await res.json());
+        setHighlights((prev) => [...prev, created]);
+      }
+      setForm({ day: '' });
+      setMainImageFile(null);
+      setGalleryFiles([]);
+    } catch (err: any) {
+      setError(err.message || 'Error saving highlight');
+    } finally {
+      setLoading(false);
     }
-    setForm({ day: '' });
-    setGalleryFiles([]);
   };
 
   const handleEdit = (id: number) => {
     const highlight = highlights.find(h => h.id === id);
     if (highlight) {
       setForm({ ...highlight });
-      setGalleryFiles(highlight.galleryImages || []);
+      setMainImageFile(null);
+      setGalleryFiles([]);
       setEditingId(id);
     }
   };
 
-  const handleDelete = (id: number) => {
-    setHighlights((prev) => prev.filter(h => h.id !== id));
-    if (editingId === id) {
-      setForm({ day: '' });
-      setGalleryFiles([]);
-      setEditingId(null);
+  const handleDelete = async (id: number) => {
+    setError('');
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE',
+      });
+      if (!res.ok) throw new Error('Failed to delete highlight');
+      setHighlights((prev) => prev.filter(h => h.id !== id));
+      if (editingId === id) {
+        setForm({ day: '' });
+        setMainImageFile(null);
+        setGalleryFiles([]);
+        setEditingId(null);
+      }
+    } catch (err: any) {
+      setError(err.message || 'Error deleting highlight');
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const getImageUrl = (filename: string) => {
+    if (!filename) return '';
+    return `${API_URL}/image/${encodeURIComponent(filename)}`;
   };
 
   return (
@@ -84,6 +205,10 @@ const HighlightsManager = () => {
             <div>
               <label className="block font-semibold text-base mb-2">Highlight Image</label>
               <input type="file" name="highlightImage" accept="image/*" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+              {mainImageFile && <div className="text-sm text-gray-600 mt-1">Selected: {mainImageFile.name}</div>}
+              {form.mainImagePath && !mainImageFile && (
+                <img src={getImageUrl(form.mainImagePath)} alt="Highlight" className="w-24 h-24 object-contain mt-2 rounded" />
+              )}
             </div>
             <div className="md:col-span-2">
               <label className="block font-semibold text-base mb-2">Highlight Title</label>
@@ -96,12 +221,29 @@ const HighlightsManager = () => {
             <div className="md:col-span-2">
               <label className="block font-semibold text-base mb-2">Gallery Images (multiple)</label>
               <input type="file" name="galleryImages" accept="image/*" multiple onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+              {galleryFiles.length > 0 && (
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {galleryFiles.map((file, idx) => (
+                    <div key={idx} className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center">
+                      <span className="text-xs text-gray-500 text-center">{file.name}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {form.galleryImagePaths && !galleryFiles.length && (
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {Array.isArray(form.galleryImagePaths) && form.galleryImagePaths.map((img, idx) => (
+                    <img key={idx} src={getImageUrl(img)} alt="Gallery" className="w-16 h-16 object-contain rounded" />
+                  ))}
+                </div>
+              )}
             </div>
             <div className="md:col-span-2 flex justify-end">
-              <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300">
+              <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
                 {editingId !== null ? 'Update Highlight' : 'Add Highlight'}
               </button>
             </div>
+            {error && <div className="md:col-span-2 text-red-600 text-sm font-semibold mt-2">{error}</div>}
           </form>
         </div>
         <div className="bg-white rounded-lg shadow p-6">
@@ -114,12 +256,14 @@ const HighlightsManager = () => {
                   <th className="py-2 px-4 font-semibold">Day</th>
                   <th className="py-2 px-4 font-semibold">Title</th>
                   <th className="py-2 px-4 font-semibold">Description</th>
+                  <th className="py-2 px-4 font-semibold">Main Image</th>
+                  <th className="py-2 px-4 font-semibold">Gallery</th>
                   <th className="py-2 px-4 font-semibold">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {highlights.length === 0 && (
-                  <tr><td colSpan={5} className="text-center text-gray-500 py-4">No highlights yet.</td></tr>
+                  <tr><td colSpan={7} className="text-center text-gray-500 py-4">No highlights yet.</td></tr>
                 )}
                 {highlights.map(h => (
                   <tr key={h.id} className="border-b">
@@ -127,6 +271,18 @@ const HighlightsManager = () => {
                     <td className="py-2 px-4">{h.day}</td>
                     <td className="py-2 px-4">{h.title}</td>
                     <td className="py-2 px-4">{h.description}</td>
+                    <td className="py-2 px-4">
+                      {h.mainImagePath && (
+                        <img src={getImageUrl(h.mainImagePath)} alt="Main" className="w-16 h-16 object-contain rounded" />
+                      )}
+                    </td>
+                    <td className="py-2 px-4">
+                      <div className="flex flex-wrap gap-1">
+                        {h.galleryImagePaths.map((img, idx) => (
+                          <img key={idx} src={getImageUrl(img)} alt="Gallery" className="w-10 h-10 object-contain rounded" />
+                        ))}
+                      </div>
+                    </td>
                     <td className="py-2 px-4">
                       <button onClick={() => handleEdit(h.id)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2">Edit</button>
                       <button onClick={() => handleDelete(h.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>

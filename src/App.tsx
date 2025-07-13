@@ -42,7 +42,6 @@ function App() {
     <Router>
       <Routes>
         {/* Admin routes: do NOT render TopBar, Navbar, or Layout */}
-        <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/highlights" element={<HighlightsManager />} />
         <Route path="/admin/articles" element={<ArticlesManager />} />
@@ -86,6 +85,7 @@ function App() {
                   <Route path="/attend/why-attend/governments" element={<Governments />} />
                   <Route path="/attend/why-attend/investors" element={<MiningIndabaForInvestors />} />
                   <Route path="/attend/why-attend/downstream-buyers" element={<MiningIndabaForDownstreamBuyers />} />
+                  <Route path="/adminlogin" element={<AdminLogin />} />
                 </Routes>
               </Layout>
             </>

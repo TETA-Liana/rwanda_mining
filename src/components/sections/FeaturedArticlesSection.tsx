@@ -3,113 +3,76 @@ import { ArrowRightIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 interface ArticleItem {
   id: number;
-  image: string;
+  imagePath: string;
   date: string;
   category: string;
   title: string;
   description: string;
-  buttonLabel: string;
+  link: string;
 }
 
-const articlesData: ArticleItem[] = [
-  {
-    id: 1,
-    image: '/articles-1.png',
-    date: '29 May 2025',
-    category: 'Market News',
-    title: 'Valterra Platinum makes its debut on the JSE',
-    description: 'Valterra Platinum, formerly known as Anglo American Platinum, commenced trading on the Johannesburg Stock Exchange (JSE)...',
-    buttonLabel: 'Read More',
-  },
-  {
-    id: 2,
-    image: '/articles-2.png',
-    date: '27 May 2025',
-    category: 'Market News',
-    title: 'Power Players in Mining',
-    description: 'Paulo Castellari: Eramet has announced the formal appointment of Paulo Castellari as its new CEO.',
-    buttonLabel: 'Read More',
-  },
-  {
-    id: 3,
-    image: '/articles-3.png',
-    date: '23 May 2025',
-    category: 'Market News',
-    title: 'In conversation with Minister of Petroleum, Mines and Geology, Chad',
-    description: 'Chad\'s mining minister on investment, critical minerals, and sustainable development shaping the sector\'s role in national growth...',
-    buttonLabel: 'Read More',
-  },
-  {
-    id: 4,
-    image: '/articles-4.png',
-    date: '21 May 2025',
-    category: 'Market News',
-    title: 'DMPR releases Critical Minerals Strategy, and amended MPRDA',
-    description: 'The Department of Mineral and Petroleum Resources (DMPR) has welcomed Cabinet\'s approval of South Africa\'s Critical Minerals and...',
-    buttonLabel: 'Read More',
-  },
-  {
-    id: 5,
-    image: '/articles-5.png',
-    date: '[Date 5]',
-    category: '[Category 5]',
-    title: '[Article 5 Title]',
-    description: '[Article 5 Description]',
-    buttonLabel: 'Read More',
-  },
-   {
-    id: 6,
-    image: '/articles-6.png',
-    date: '[Date 6]',
-    category: '[Category 6]',
-    title: 'Power Players in Mining',
-    description: '[Article 6 Description]',
-    buttonLabel: 'Read More',
-  },
-   {
-    id: 7,
-    image: '/articles-7.png',
-    date: '[Date 7]',
-    category: '[Category 7]',
-    title: '[Article 7 Title]',
-    description: '[Article 7 Description]',
-    buttonLabel: 'Read More',
-  },
-   {
-    id: 8,
-    image: '/articles-8.png',
-    date: '[Date 8]',
-    category: '[Category 8]',
-    title: 'Power Players in Mining',
-    description: '[Article 8 Description]',
-    buttonLabel: 'Read More',
-  },
-];
+interface BackendArticle {
+  id: number;
+  title: string;
+  description: string;
+  releaseDate: string;
+  imagePath?: string;
+  link: string;
+}
+
+const API_URL = 'http://localhost:8080/api/articles';
 
 const FeaturedArticlesSection = () => {
+  const [articles, setArticles] = useState<ArticleItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const itemsPerPage = 3;
-  const totalItems = articlesData.length;
-  const totalSlides = totalItems - itemsPerPage + 1;
+  const itemsPerPage = 2;
+
+  // Map backend article to frontend
+  const mapFromBackend = (a: BackendArticle): ArticleItem => ({
+    id: a.id,
+    imagePath: a.imagePath || '',
+    date: a.releaseDate,
+    category: '', // You can add a category field to the backend if needed
+    title: a.title,
+    description: a.description,
+    link: a.link,
+  });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
-    }, 8000); // Slide every 8 seconds
+    fetch(API_URL)
+      .then(res => res.json())
+      .then((data: BackendArticle[]) => {
+        setArticles(data.map(mapFromBackend));
+      });
+  }, []);
 
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, [totalSlides]); // Depend on totalSlides for useEffect
+  const totalItems = articles.length;
+  const totalSlides = Math.max(1, totalItems - itemsPerPage + 1);
+
+  useEffect(() => {
+    if (totalSlides > 1) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
+      }, 8000);
+      return () => clearInterval(interval);
+    }
+  }, [totalSlides]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
 
   const prevSlide = () => {
-     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
   };
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  const getImageUrl = (imagePath: string) => {
+    if (!imagePath) return '/placeholder-article.png';
+    return `${API_URL}/image/${encodeURIComponent(imagePath)}`;
   };
 
   return (
@@ -127,26 +90,27 @@ const FeaturedArticlesSection = () => {
               className="flex transition-transform duration-500 ease-in-out gap-x-6"
               style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
             >
-              {articlesData.map((item) => (
-                <div key={item.id} className="flex flex-col flex-shrink-0 w-1/3 border rounded-lg shadow-md overflow-hidden mx-3">
-                  <div className="overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-48 object-cover" />
-                  </div>
-                  <div className="bg-[#55952c] h-12 text-white text-md font-semibold uppercase px-3 flex items-center justify-between">
+              {articles.slice(currentIndex, currentIndex + itemsPerPage).map((item) => (
+                <div key={item.id} className="flex flex-col flex-shrink-0 w-1/3 rounded-xl shadow-lg bg-white mx-2 h-full border">
+                  <img src={getImageUrl(item.imagePath)} alt={item.title} className="w-full h-48 object-cover rounded-t-xl" />
+                  <div className="w-full bg-[#5cb030] h-12 text-white text-md font-semibold uppercase px-4 flex items-center justify-between rounded-b-none">
                     <span>{item.date}</span>
                     <span>{item.category}</span>
                   </div>
-                  <div className="flex flex-col p-4 flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2 leading-tight">{item.title}</h3>
-                    <p className="text-gray-700 mb-4 leading-relaxed text-sm flex-grow">{item.description}</p>
+                  <div className="flex flex-col p-6 flex-grow">
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-2 leading-tight">{item.title}</h3>
+                    <p className="text-gray-700 mb-6 leading-relaxed text-base flex-grow">{item.description}</p>
                     <div className="mt-auto">
-                    <button
-  className="bg-[#5cb030] text-white px-6 py-2 font-medium text-base flex items-center gap-2 clip-path-[polygon(10%_0%,_90%_0%,_100%_50%,_90%_100%,_10%_100%,_0%_50%)]"
->
-  <ArrowRightIcon className="h-5 w-5" />
-  Read more
-</button>
-
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-[#5cb030] hover:bg-[#4ca026] text-white px-8 py-3 rounded-xl font-semibold text-lg transition-all duration-200 w-full"
+                        style={{clipPath: 'polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%)'}}
+                      >
+                        <ArrowRightIcon className="h-6 w-6" />
+                        Read more
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -154,10 +118,9 @@ const FeaturedArticlesSection = () => {
             </div>
           </div>
           <button onClick={nextSlide} className="p-2 rounded-full text-brandGreen hover:text-brandGreen-dark focus:outline-none bg-transparent ml-4">
-            <ChevronRightIcon className="h-6 w-6" />
+            <ChevronRightIcon className="w-6 h-6" />
           </button>
         </div>
-
         <div className="flex justify-center items-center gap-2 mt-8">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
@@ -174,7 +137,6 @@ const FeaturedArticlesSection = () => {
             </button>
           ))}
         </div>
-
         <div className="flex justify-center mt-12">
           <button className="bg-[#5cb030] hover:bg-[#55952c] text-white px-8 py-3 rounded-md font-semibold uppercase tracking-wide text-sm">
             VIEW ALL ARTICLES
