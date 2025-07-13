@@ -4,7 +4,7 @@ const Testimonials = () => {
   return (
     <>
       {/* Header with gradient background */}
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-8 text-white text-center">
+      <div className="bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] py-8 text-white text-center">
         <h1 className="text-4xl md:text-5xl font-bold">
           Hear from the Mining Indaba community
         </h1>
@@ -18,8 +18,8 @@ const Testimonials = () => {
         </p>
       </div>
 
-      {/* Green dividing line */}
-      <div className="bg-[#64a63a] h-2 w-full"></div>
+      {/* Blue dividing line */}
+      <div className="bg-[#2563eb] h-2 w-full"></div>
 
       {/* Testimonials Section Title */}
       <div className="container mx-auto px-4 py-8 text-center">
@@ -52,7 +52,7 @@ const Testimonials = () => {
                 Africa. We have everyone under one roof."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Raadiyah Emam</p>
+                <p className="font-semibold text-[#2563eb]">Raadiyah Emam</p>
                 <p className="text-sm text-gray-600">
                   Head of Investor Relations
                 </p>
@@ -83,7 +83,7 @@ const Testimonials = () => {
                 minerals space, in the region."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">
+                <p className="font-semibold text-[#2563eb]">
                   Anastasia Kuskova
                 </p>
                 <p className="text-sm text-gray-600">Sirius</p>
@@ -113,7 +113,7 @@ const Testimonials = () => {
                 pleasant."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Martina Biene</p>
+                <p className="font-semibold text-[#2563eb]">Martina Biene</p>
                 <p className="text-sm text-gray-600">Volkswagen Group Africa</p>
                 <p className="text-sm text-gray-600">Chairperson and MD</p>
               </div>
@@ -145,7 +145,7 @@ const Testimonials = () => {
                 a good contract and talk with investors."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Maryse Sedogo</p>
+                <p className="font-semibold text-[#2563eb]">Maryse Sedogo</p>
                 <p className="text-sm text-gray-600">General Manager</p>
                 <p className="text-sm text-gray-600">Aurora Drilling</p>
               </div>
@@ -177,7 +177,7 @@ const Testimonials = () => {
                 they have projects to get off the ground."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Japie Du Plessis</p>
+                <p className="font-semibold text-[#2563eb]">Japie Du Plessis</p>
                 <p className="text-sm text-gray-600">Managing Director</p>
                 <p className="text-sm text-gray-600">Murray & Roberts</p>
               </div>
@@ -209,7 +209,7 @@ const Testimonials = () => {
                 rewarding."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Kavita Pema</p>
+                <p className="font-semibold text-[#2563eb]">Kavita Pema</p>
                 <p className="text-sm text-gray-600">VP of Sustainability</p>
                 <p className="text-sm text-gray-600">AECI</p>
               </div>
@@ -239,7 +239,7 @@ const Testimonials = () => {
                 compliments to you guys."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">
+                <p className="font-semibold text-[#2563eb]">
                   AnneMarie Viljoen
                 </p>
                 <p className="text-sm text-gray-600">
@@ -274,7 +274,7 @@ const Testimonials = () => {
                 exciting."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Louis De Preez</p>
+                <p className="font-semibold text-[#2563eb]">Louis De Preez</p>
                 <p className="text-sm text-gray-600">
                   Business Development Manager
                 </p>
@@ -307,7 +307,7 @@ const Testimonials = () => {
                 to come with a preconceived idea."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Mpangwe Mutwale</p>
+                <p className="font-semibold text-[#2563eb]">Mpangwe Mutwale</p>
                 <p className="text-sm text-gray-600">
                   Senior Relationship Manager
                 </p>
@@ -337,7 +337,7 @@ const Testimonials = () => {
                 everything going on."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Adrian O'Brien</p>
+                <p className="font-semibold text-[#2563eb]">Adrian O'Brien</p>
                 <p className="text-sm text-gray-600">
                   VP - Business Development & Communications
                 </p>
@@ -368,7 +368,7 @@ const Testimonials = () => {
                 Africa could take that and grow for itself."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Catherine Raw</p>
+                <p className="font-semibold text-[#2563eb]">Catherine Raw</p>
                 <p className="text-sm text-gray-600">
                   Chief Development Officer
                 </p>
@@ -400,7 +400,7 @@ const Testimonials = () => {
                 really needed to be able to move the mining industry forward."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">
+                <p className="font-semibold text-[#2563eb]">
                   J.J. Messner de Latour
                 </p>
                 <p className="text-sm text-gray-600">
@@ -432,7 +432,7 @@ const Testimonials = () => {
                 everything going on."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Adrian O'Brien</p>
+                <p className="font-semibold text-[#2563eb]">Adrian O'Brien</p>
                 <p className="text-sm text-gray-600">
                   VP - Business Development & Communications
                 </p>
@@ -463,7 +463,7 @@ const Testimonials = () => {
                 Africa could take that and grow for itself."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">Catherine Raw</p>
+                <p className="font-semibold text-[#2563eb]">Catherine Raw</p>
                 <p className="text-sm text-gray-600">
                   Chief Development Officer
                 </p>
@@ -495,7 +495,7 @@ const Testimonials = () => {
                 really needed to be able to move the mining industry forward."
               </p>
               <div>
-                <p className="font-semibold text-[#64a63a]">
+                <p className="font-semibold text-[#2563eb]">
                   J.J. Messner de Latour
                 </p>
                 <p className="text-sm text-gray-600">
@@ -509,7 +509,7 @@ const Testimonials = () => {
       </div>
 
       {/* Join Us section */}
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-16 text-white text-center">
+      <div className="bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] py-16 text-white text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Join Us at Mining Indaba 2026
@@ -555,7 +555,7 @@ const Testimonials = () => {
               business across Africa."
             </p>
             <div>
-              <p className="font-semibold text-[#64a63a]">Raj Khatri</p>
+              <p className="font-semibold text-[#2563eb]">Raj Khatri</p>
               <p className="text-sm text-gray-600">
                 Head of Metals & Mining, EMEA | Investment Banking,
               </p>
@@ -572,7 +572,7 @@ const Testimonials = () => {
         </h2>
         <div className="flex flex-col md:flex-row items-stretch gap-8">
           {/* Text Content */}
-          <div className="md:w-1/2 bg-[#5da033] p-8 text-white">
+          <div className="md:w-1/2 bg-[#2563eb] p-8 text-white">
             <h2 className=" text-2xl md:text-3xl font-bold mb-4">
               Solarcentury Africa and the Industrial Development Corporation of
               Zambia to develop a 67 MWp solar project
@@ -582,7 +582,7 @@ const Testimonials = () => {
               signing of an agreement with the Industrial Development
               Corporation (IDC) to develop a 60 MW solar plant in Zambia.
             </p>
-            <button className="bg-white border border-[#64a63a] text-[#64a63a] font-bold px-6 py-2 rounded text-base hover:bg-[#64a63a] hover:text-white transition-colors duration-300">
+            <button className="bg-white border border-[#2563eb] text-[#2563eb] font-bold px-6 py-2 rounded text-base hover:bg-[#2563eb] hover:text-white transition-colors duration-300">
               READ MORE
             </button>
           </div>
@@ -609,7 +609,7 @@ const Testimonials = () => {
             />
           </div>
           {/* Text Content */}
-          <div className="md:w-1/2 bg-[#5da033] p-8 text-white">
+          <div className="md:w-1/2 bg-[#2563eb] p-8 text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Strategic partnership agreement between Total Energies and Mota
               Engil
@@ -620,7 +620,7 @@ const Testimonials = () => {
               MS of Total Energies met Manuel Mota, President of Mota-Engil, to
               sign a strategic partnership agreement between the two companies.
             </p>
-            <button className="bg-white border border-white text-[#64a63a] font-bold px-6 py-2 rounded text-base hover:bg-gray-100 transition-colors duration-300">
+            <button className="bg-white border border-white text-[#2563eb] font-bold px-6 py-2 rounded text-base hover:bg-gray-100 transition-colors duration-300">
               LEARN MORE
             </button>
           </div>
@@ -631,7 +631,7 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
           {/* Text Content */}
-          <div className="md:w-1/2 bg-[#5da033] p-8 text-white">
+          <div className="md:w-1/2 bg-[#2563eb] p-8 text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Joint Development Agreement (JDA) among Anglo American South
               Africa, Sasol and De Beers Group
@@ -642,7 +642,7 @@ const Testimonials = () => {
               Group makes a significant step towards developing a local
               renewable diesel value chain in South Africa.
             </p>
-            <button className="bg-white border border-white text-[#64a63a] font-bold px-6 py-2 rounded text-base hover:bg-gray-100 transition-colors duration-300">
+            <button className="bg-white border border-white text-[#2563eb] font-bold px-6 py-2 rounded text-base hover:bg-gray-100 transition-colors duration-300">
               LEARN MORE
             </button>
           </div>

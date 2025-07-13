@@ -5,7 +5,7 @@ const ClientZone = () => {
   return (
     <>
       {/* Header with gradient background */}
-      <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#64a63a] to-[#b8f337]">
+      <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff]">
         <h1 className="text-4xl md:text-5xl font-bold">Client Zone</h1>
       </div>
 
@@ -51,7 +51,7 @@ const ClientZone = () => {
           />
         </div>
       </div>
-      <FooterSection/>
+      <FooterSection />
     </>
   );
 };

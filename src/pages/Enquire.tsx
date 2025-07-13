@@ -4,7 +4,7 @@ const Enquire = () => {
   return (
     <>
       {/* Header with gradient background */}
-      <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#64a63a] to-[#b8f337]">
+      <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff]">
         <h1 className="text-4xl md:text-5xl font-bold">Enquire for 2026</h1>
       </div>
       {/* Descriptive text */}
@@ -446,7 +446,7 @@ const Enquire = () => {
             <p>
               Hyve Group takes your privacy seriously – you can read more about
               this in our{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 Privacy Notice
               </a>
               . We use your personal information to provide the services you
@@ -456,11 +456,11 @@ const Enquire = () => {
               information and publications which we think would be of interest
               to you. You have the right to object to this processing and, if
               you wish to do so, you can{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 update your preferences here
               </a>
               .{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 View a list of the events organised by Hyve Group here
               </a>
               .
@@ -470,7 +470,7 @@ const Enquire = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#64a63a] hover:bg-[#5da033] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#64a63a]"
+              className="w-auto inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#2563eb] hover:bg-[#1e40af] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2563eb]"
             >
               SUBMIT
             </button>
