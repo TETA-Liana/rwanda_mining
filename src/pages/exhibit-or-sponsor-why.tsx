@@ -90,6 +90,13 @@ const ExhibitOrSponsorWhy = () => {
         }
       `}</style>
 
+      {/* Blue gradient bar at the top */}
+      <div className="w-full py-6 bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] text-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white">
+          Download our 2026 Exhibitor Brochure
+        </h2>
+      </div>
+
       {/* Main Content Section */}
       <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row items-start gap-12">
         {/* Left Column: Text Content and Button */}
@@ -110,7 +117,7 @@ const ExhibitOrSponsorWhy = () => {
             build partnerships, expand your reach, and shape the future of
             mining.
           </p>
-          <button className="bg-[#64a63a] hover:bg-[#55952c] text-white font-bold px-4 py-2 rounded text-lg shadow-md uppercase tracking-wide">
+          <button className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-4 py-2 rounded text-lg shadow-md uppercase tracking-wide">
             EXHIBIT OR SPONSOR
           </button>
         </div>
@@ -128,14 +135,14 @@ const ExhibitOrSponsorWhy = () => {
       </div>
 
       {/* Green line above stats */}
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] h-2 w-full"></div>
+      <div className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] h-2 w-full"></div>
 
       {/* Stats Section */}
       <div className="bg-gray-50 py-16">
         <div className="container mx-auto px-4 relative flex items-center justify-center">
           {/* Left Arrow */}
           <button
-            className="absolute left-0 z-10 p-2 rounded-full bg-[#64a63a] shadow-md hidden lg:flex items-center justify-center cursor-pointer"
+            className="absolute left-0 z-10 p-2 rounded-full bg-[#2563eb] shadow-md hidden lg:flex items-center justify-center cursor-pointer"
             onClick={handlePrev}
           >
             <ChevronLeftIcon className="w-6 h-6 text-white" />
@@ -151,11 +158,11 @@ const ExhibitOrSponsorWhy = () => {
                 key={index}
                 className="flex flex-col items-center gap-3 min-w-[25%] snap-start stat-item"
               >
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#64a63a] to-[#a2cd48] flex items-center justify-center">
+                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#2563eb] to-[#3b82f6] flex items-center justify-center">
                   {/* Use the imported icon component */}
                   {stat.icon && <stat.icon className="text-white w-12 h-12" />}
                 </div>
-                <div className="text-3xl font-bold text-[#64a63a]">
+                <div className="text-3xl font-bold text-[#2563eb]">
                   {stat.value}
                 </div>
                 <div className="text-sm text-gray-700">{stat.label}</div>
@@ -165,7 +172,7 @@ const ExhibitOrSponsorWhy = () => {
 
           {/* Right Arrow */}
           <button
-            className="absolute right-0 z-10 p-2 rounded-full bg-[#64a63a] shadow-md hidden lg:flex items-center justify-center cursor-pointer"
+            className="absolute right-0 z-10 p-2 rounded-full bg-[#2563eb] shadow-md hidden lg:flex items-center justify-center cursor-pointer"
             onClick={handleNext}
           >
             <ChevronRightIcon className="w-6 h-6 text-white" />
@@ -174,7 +181,7 @@ const ExhibitOrSponsorWhy = () => {
       </div>
 
       {/* Green line below stats */}
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] h-2 w-full"></div>
+      <div className="bg-gradient-to-r from-[#2563eb] to-[#60a5fa] h-2 w-full"></div>
 
       {/* Who We Are Section */}
       <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row items-center gap-12">
@@ -189,7 +196,7 @@ const ExhibitOrSponsorWhy = () => {
         </div>
 
         {/* Right Column: Who We Are Text Block */}
-        <div className="flex-1 bg-[#64a63a] text-white p-8 rounded-lg shadow-lg">
+        <div className="flex-1 bg-[#2563eb] text-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold mb-4">Who We Are</h2>
           {/* Please replace this with the full descriptive text from the website */}
           <p className="text-lg leading-relaxed">
@@ -207,7 +214,7 @@ const ExhibitOrSponsorWhy = () => {
       {/* Our Mission Section */}
       <div className="container mx-auto px-4 py-12 flex flex-col md:flex-row items-start gap-12">
         {/* Left Column (on desktop): Our Mission Text Block */}
-        <div className="flex-1 bg-[#64a63a] text-white p-8 rounded-lg shadow-lg">
+        <div className="flex-1 bg-[#2563eb] text-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
           {/* Please replace this with the full descriptive text from the website */}
           <p className="text-lg leading-relaxed">
@@ -234,7 +241,7 @@ const ExhibitOrSponsorWhy = () => {
 
       {/* Button between sections */}
       <div className="container mx-auto px-4 py-8 text-center">
-        <button className="bg-[#64a63a] hover:bg-[#55952c] text-white font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide">
+        <button className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide">
           EXHIBIT OR SPONSOR
         </button>
       </div>
@@ -343,7 +350,7 @@ const ExhibitOrSponsorWhy = () => {
         </div>
 
         {/* Right Column: Sponsor Text Block */}
-        <div className="flex-1 bg-[#64a63a] text-white p-8 rounded-lg shadow-lg">
+        <div className="flex-1 bg-[#2563eb] text-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold mb-4">
             Sponsor Mining Indaba 2026
           </h2>
@@ -362,7 +369,7 @@ const ExhibitOrSponsorWhy = () => {
             sales team, and we'll tailor the perfect sponsorship opportunity to
             elevate your presence at Mining Indaba 2026.
           </p>
-          <button className="bg-white hover:bg-gray-200 text-[#64a63a] font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide">
+          <button className="bg-white hover:bg-gray-200 text-[#2563eb] font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide">
             ENQUIRE TODAY
           </button>
         </div>

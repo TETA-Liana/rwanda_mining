@@ -4,7 +4,7 @@ const ExhibitorBrochure2026 = () => {
   return (
     <>
       {/* Header Bar */}
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-8 text-white text-center">
+      <div className="bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] py-8 text-white text-center">
         <h1 className="text-3xl md:text-4xl font-bold">
           Download our 2026 Exhibitor Brochure
         </h1>
@@ -48,7 +48,7 @@ const ExhibitorBrochure2026 = () => {
               opportunities, simply click &quot;Enquire&quot; below, and a
               member of our team will get in touch with you.
             </p>
-            <button className="bg-[#64a63a] hover:bg-[#55952c] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide">
+            <button className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide">
               ENQUIRE
             </button>
           </div>
@@ -518,7 +518,7 @@ const ExhibitorBrochure2026 = () => {
             <p className="mt-4 text-sm text-gray-600">
               Hyve Group takes your privacy seriously - you can read more about
               this in our{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 Privacy Notice
               </a>
               . We use your personal information to provide the services you
@@ -528,11 +528,11 @@ const ExhibitorBrochure2026 = () => {
               information and publications which we think would be of interest
               to you. You have the right to object to this processing and, if
               you wish to do so, you can{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 update your preferences here
               </a>
               . View a list of the events organised by{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 Hyve Group here
               </a>
               .
@@ -542,7 +542,7 @@ const ExhibitorBrochure2026 = () => {
             <div className="text-center mt-6">
               <button
                 type="submit"
-                className="bg-[#64a63a] hover:bg-[#55952c] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide"
+                className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide"
               >
                 SUBMIT
               </button>
