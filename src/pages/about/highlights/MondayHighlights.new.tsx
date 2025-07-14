@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
+=======
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import Gallery1 from "../../../../public/gallery-1.jpg";
 import Gallery2 from "../../../../public/gallery-2.jpg";
@@ -9,12 +13,15 @@ import Gallery5 from "../../../../public/gallery-5.jpg";
 import Gallery6 from "../../../../public/gallery-6.jpg";
 import Gallery7 from "../../../../public/gallery-7.jpg";
 import Gallery8 from "../../../../public/gallery-8.jpg";
+<<<<<<< HEAD
 import Cont1 from "../../../../public/mon-content-1.jpg";
 import Cont2 from "../../../../public/mon-content-2.jpg";
 import InteraImage1 from "../../../../public/mon-intera-1.jpg";
 import InteraImage2 from "../../../../public/mon-intera-2.jpg";
 import CelebImage from "../../../../public/mon-celeb.jpg";
 import Footer from "../../../components/sections/FooterSection";
+=======
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 
 const MondayHighlights = () => {
   interface GalleryMember {
@@ -100,6 +107,7 @@ const MondayHighlights = () => {
 
       {/* Nested Highlight Navlinks */}
       <div className="flex justify-center space-x-4 py-8 bg-white mb-8">
+<<<<<<< HEAD
         <Link to="/about/highlights/sunday" className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">SUNDAY HIGHLIGHTS</Link>
         <Link to="/about/highlights/monday" className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">MONDAY HIGHLIGHTS</Link>
         <Link to="/about/highlights/tuesday" className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">TUESDAY HIGHLIGHTS</Link>
@@ -229,6 +237,13 @@ const MondayHighlights = () => {
             <img src={InteraImage2} alt="Wednsday Highlights" className="h-[350px] w-[550px] shadow-xl rounded-r-lg" />
           </div>
         </div>
+=======
+        <Link to="/about/highlights/sunday" className="bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">SUNDAY HIGHLIGHTS</Link>
+        <Link to="/about/highlights/monday" className="bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">MONDAY HIGHLIGHTS</Link>
+        <Link to="/about/highlights/tuesday" className="bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">TUESDAY HIGHLIGHTS</Link>
+        <Link to="/about/highlights/wednesday" className="bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">WEDNESDAY HIGHLIGHTS</Link>
+        <Link to="/about/highlights/thursday" className="bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300">THURSDAY HIGHLIGHTS</Link>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       </div>
 
       {/* Gallery Section */}
@@ -271,6 +286,7 @@ const MondayHighlights = () => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
       
       {/* Tomorrow's Content Highlights Section */}
@@ -443,6 +459,8 @@ const MondayHighlights = () => {
       <Footer/>
 
 
+=======
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
     </div>
   );
 };

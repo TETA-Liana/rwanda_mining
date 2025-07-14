@@ -144,16 +144,104 @@ const attendingMedia = [
   "Africa Renewable Energy",
   "Africa Mining Summit",
   "Africa Down Under",
+<<<<<<< HEAD
+=======
+  "Indaba",
+  "Mining Indaba Daily",
+  "Mining Indaba News",
+  "Mining Indaba Magazine",
+  "Mining Indaba Review",
+  "Mining Indaba Journal",
+  "Mining Indaba Report",
+  "Mining Indaba Insights",
+  "Mining Indaba Focus",
+  "Mining Indaba Update",
+  "Mining Indaba Blog",
+  "Mining Indaba Podcast",
+  "Mining Indaba TV",
+  "Mining Indaba Radio",
+  "Mining Indaba Live",
+  "Mining Indaba Online",
+  "Mining Indaba Digital",
+  "Mining Indaba Social",
+  "Mining Indaba Media Hub",
+  "Mining Indaba Press Room",
+  "Mining Indaba Newsroom",
+  "Mining Indaba Coverage",
+  "Mining Indaba Exposure",
+  "Mining Indaba Highlights",
+  "Mining Indaba Gallery",
+  "Mining Indaba Videos",
+  "Mining Indaba Photos",
+  "Mining Indaba Speakers",
+  "Mining Indaba Attendees",
+  "Mining Indaba Exhibitors",
+  "Mining Indaba Sponsors",
+  "Mining Indaba Partners",
+  "Mining Indaba Team",
+  "Mining Indaba About",
+  "Mining Indaba Contact",
+  "Mining Indaba Register",
+  "Mining Indaba Attend",
+  "Mining Indaba Exhibit",
+  "Mining Indaba Sponsor",
+  "Mining Indaba Partner",
+  "Mining Indaba Speak",
+  "Mining Indaba Press",
+  "Mining Indaba Media",
+  "Mining Indaba Newsletters",
+  "Mining Indaba Subscribe",
+  "Mining Indaba Unsubscribe",
+  "Mining Indaba Privacy",
+  "Mining Indaba Terms",
+  "Mining Indaba Disclaimer",
+  "Mining Indaba Copyright",
+  "Mining Indaba Trademark",
+  "Mining Indaba Legal",
+  "Mining Indaba Sitemap",
+  "Mining Indaba FAQ",
+  "Mining Indaba Help",
+  "Mining Indaba Support",
+  "Mining Indaba Contact Us",
+  "Mining Indaba About Us",
+  "Mining Indaba Team Us",
+  "Mining Indaba Partner Us",
+  "Mining Indaba Sponsor Us",
+  "Mining Indaba Exhibit Us",
+  "Mining Indaba Speak Us",
+  "Mining Indaba Press Us",
+  "Mining Indaba Media Us",
+  "Mining Indaba Newsletters Us",
+  "Mining Indaba Subscribe Us",
+  "Mining Indaba Unsubscribe Us",
+  "Mining Indaba Privacy Us",
+  "Mining Indaba Terms Us",
+  "Mining Indaba Disclaimer Us",
+  "Mining Indaba Copyright Us",
+  "Mining Indaba Trademark Us",
+  "Mining Indaba Legal Us",
+  "Mining Indaba Sitemap Us",
+  "Mining Indaba FAQ Us",
+  "Mining Indaba Help Us",
+  "Mining Indaba Support Us",
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 ];
 
 const AttendingMediaSection = () => {
   return (
+<<<<<<< HEAD
     <section className="py-16 bg-white">
       <div className="container px-6 lg:px-8 mx-10">
         <h2 className="text-3xl font-bold text-[#004F76] text-center">
           Rwanda Mining Week Attending Media
         </h2>
         <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[#004F76] text-lg">
+=======
+    <section className="py-16 bg-gray-100">
+      <div className="container px-6 lg:px-8 mx-10">
+        <h2 className="text-3xl font-bold text-[#0f172a] text-center">2025 attending media:</h2>
+        <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[#0f172a] text-lg">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
           {attendingMedia.map((media, index) => (
             <p key={index} className="mb-2 leading-relaxed">
               &bull; {media}
@@ -165,4 +253,8 @@ const AttendingMediaSection = () => {
   );
 };
 
+<<<<<<< HEAD
 export default AttendingMediaSection;
+=======
+export default AttendingMediaSection; 
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd

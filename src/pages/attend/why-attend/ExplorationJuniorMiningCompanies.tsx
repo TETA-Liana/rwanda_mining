@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import Why1 from "../../../../public/why-attend-ext-1.jpg";
 import Why2 from "../../../../public/why-attend-ext-2.jpg";
+<<<<<<< HEAD
+=======
+import Footer from "../../../components/sections/FooterSection"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 import Gallery1 from "../../../../public/investors/inve-1.png";
 import Gallery2 from "../../../../public/investors/inve-2.png";
 import Gallery3 from "../../../../public/investors/inve-3.png";
@@ -19,6 +23,10 @@ import Pie from "../../../../public/pie.png";
 import FooterSection from '../../../components/sections/FooterSection';
 import FeaturedArticlesSection from '../../../components/sections/FeaturedArticlesSection';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 const ExplorationJuniorMiningCompanies = () => {
 
   interface GalleryMember {
@@ -27,6 +35,7 @@ const ExplorationJuniorMiningCompanies = () => {
   }
 
   const images = [
+<<<<<<< HEAD
     'inve-1.png',
     'inve-2.png',
     'inve-3.png',
@@ -39,6 +48,20 @@ const ExplorationJuniorMiningCompanies = () => {
     'inve-10.png',
     'inve-11.png',
     'inve-12.png'
+=======
+    'gallery-1.jpg',
+    'gallery-2.jpg',
+    'gallery-3.jpg',
+    'gallery-4.jpg',
+    'gallery-5.jpg',
+    'gallery-6.jpg',
+    'gallery-7.jpg',
+    'gallery-8.jpg',
+    'gallery-9.jpg',
+    'gallery-10.jpg',
+    'gallery-11.jpg',
+    'gallery-12.jpg'
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
   ];
 
   const galleryImageImports = [
@@ -107,12 +130,18 @@ const ExplorationJuniorMiningCompanies = () => {
   return (
     <div className="bg-white text-gray-800">
       {/* Hero Section */}
+<<<<<<< HEAD
       <div className="relative h-60 bg-gradient-to-r from-[#004F71] to-[#ADD8E6] flex items-center justify-center">
         <h1 className="text-white text-4xl font-bold mt-16">Rwanda Mining Week for Junior Miners</h1>
+=======
+      <div className="relative h-60 bg-gradient-to-r from-[#64a63a] to-[#d4ed31] flex items-center justify-center">
+        <h1 className="text-white text-4xl font-bold mt-16">Mining Indaba for Junior Miners</h1>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       </div>
 
       {/* Connect with Investors Section */}
       <section  className="container text-center border-2 rounded-md mx-auto p-5 my-12 mx-10 max-w-6xl shadow-lg">
+<<<<<<< HEAD
         <h2 className="text-4xl font-bold mb-6">Connect with Investors at Rwanda Mining Week 2026: Opportunities for Junior Mining Companies</h2>
         <p className="text-lg mb-8">
           Rwanda Mining Week is the premier platform for networking, deal-making, and discussing the latest trends and challenges in Rwanda’s mining sector. This event offers unparalleled opportunities for
@@ -121,10 +150,22 @@ const ExplorationJuniorMiningCompanies = () => {
           Interested in attending Rwanda Mining Week 2026?
         </p>
         <button className="bg-[#ADD8E6] hover:bg-[#004F71] text-black font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors">
+=======
+        <h2 className="text-4xl font-bold mb-6">Connect with Investors at Mining Indaba 2026: Opportunities for Junior Mining Companies</h2>
+        <p className="text-lg mb-8">
+          Mining Indaba is the ultimate networking, deal-making, and discussion forum for the industry's current trends and challenges. This event offers unparalleled opportunities for
+          junior mining companies and exploration mining companies to form connections, discuss project progression and explore financing opportunities. Additional value lies in
+          gaining valuable insights into market trends, new technologies, and regulatory changes affecting the mining sector.
+          <br /><br />
+          Interested in attending Mining Indaba 2026?
+        </p>
+        <button className="bg-[#d4ed31] hover:bg-[#cbe02b] text-black font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
           REGISTER INTEREST
         </button>
       </section>
 
+<<<<<<< HEAD
       {/* Why attend Rwanda Mining Week Section */}
       <div className='mx-12'>
         <div className="container mx-auto px-4">
@@ -142,10 +183,30 @@ const ExplorationJuniorMiningCompanies = () => {
                 </div>
                 <div className="px-14 pb-10">
                   <button className="bg-[#ADD8E6] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#004F71] transition duration-300">LEARN MORE</button>
+=======
+      {/* Why attend Mining Indaba Section */}
+      <div className='mx-12'>
+        <div className="container mx-auto px-4">
+          <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Why attend Mining Indaba?</h2>
+          <div className="flex flex-wrap -mx-4">
+            {/* Content Item 1: Lithium and graphite */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <img src={Why1} alt="Lithium and graphite" className="h-78 w-full object-cover rounded-t-lg" />
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Showcase projects to a global audience</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Dedicated space with booths for exploration companies with African assets to exhibit their projects. Taking part in the Explorers Showcase enables exploration companies to raise their profile, increase visibility, and showcase their projects to a global audience, gaining access to Mining Indaba's elite network of dealmakers to raise finance or find the right partner to advance their projects.
+                  </p>
+                </div>
+                <div className="px-14 pb-10">
+                  <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded transition duration-300">LEARN MORE</button>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 </div>
               </div>
             </div>
 
+<<<<<<< HEAD
             {/* Content Item 2: Meet Investors */}
             <div className="w-full md:w-1/2 px-4 mb-8">
               <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
@@ -154,6 +215,16 @@ const ExplorationJuniorMiningCompanies = () => {
                   <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Meet Investors and Financiers</h3>
                   <p className="text-gray-600 leading-relaxed text-sm">
                     Rwanda Mining Week attracts a diverse group of investors, including private equity firms, institutional investors, and high-net-worth individuals focused on mining opportunities. Utilize the Business Matchmaking platform to schedule meetings with financiers to secure investment and fuel your company’s growth.
+=======
+            {/* Content Item 2: The Dealmakers Den */}
+            <div className="w-full md:w-1/2 px-4 mb-8">
+              <div className="bg-[#f8faf7] rounded-lg shadow-md h-full flex flex-col">
+                <img src={Why2} alt="The Dealmakers Den" className="h-78 w-full object-cover rounded-t-lg" />
+                <div className="px-14 py-10">
+                  <h3 className="text-2xl font-semibold text-gray-800 mb-2 pb-6">Meet Investors and Financiers</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                  Mining Indaba is attended by a diverse array of investors, including private equity firms, sovereign wealth fund, institutional investors, automotives and high-net-worth individuals that are mandated to invest funds directly into mining companies. Through the Business Matchmaking platform, attendees can set-up meetings with investors and financiers to attract investment capital and explore financing options to support their growth initiatives.
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                   </p>
                 </div>
               </div>
@@ -165,12 +236,23 @@ const ExplorationJuniorMiningCompanies = () => {
       {/* Investors who attended */}
       <div className="py-12 text-center">
         <div className="container mx-auto px-4">
+<<<<<<< HEAD
           <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Investors Who Attended</h2>
           <div className="flex items-center justify-center gap-8">
             <button onClick={prevSlide} className="p-2 rounded-full text-[#004F71] hover:text-[#ADD8E6] focus:outline-none bg-transparent">
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
             <div className="flex overflow-hidden w-full">
+=======
+          <h2 className="text-center text-4xl font-bold text-gray-800 mb-12">Investors who attended</h2>
+          <div className="flex items-center justify-center gap-8">
+            <button onClick={prevSlide} className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent">
+              <ChevronLeftIcon className="h-6 w-6" />
+            </button>
+            {/* Slideshow container */}
+            <div className="flex overflow-hidden w-full">
+              {/* Inner container holding all cards with horizontal gap */}
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               <div
                 className="flex transition-transform duration-500 ease-in-out gap-x-6"
                 style={{ transform: `translateX(${-currentIndex * slideDistance}px)` }}
@@ -180,7 +262,11 @@ const ExplorationJuniorMiningCompanies = () => {
                 ))}
               </div>
             </div>
+<<<<<<< HEAD
             <button onClick={nextSlide} className="p-2 rounded-full text-[#004F71] hover:text-[#ADD8E6] focus:outline-none bg-transparent">
+=======
+            <button onClick={nextSlide} className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               <ChevronRightIcon className="h-6 w-6" />
             </button>
           </div>
@@ -193,7 +279,11 @@ const ExplorationJuniorMiningCompanies = () => {
                 aria-label={`Go to slide ${index + 1}`}
               >
                 <div
+<<<<<<< HEAD
                   className={`h-3 w-3 rounded-full border-2 border-[#004F71] ${currentIndex === index ? 'bg-[#004F71]' : 'bg-transparent'}`}
+=======
+                  className={`h-3 w-3 rounded-full border-2 border-[#5cb030] ${currentIndex === index ? 'bg-[#5cb030]' : 'bg-transparent'}`}
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 ></div>
               </button>
             ))}
@@ -217,7 +307,11 @@ const ExplorationJuniorMiningCompanies = () => {
                 allowFullScreen
               ></iframe>
             </div>
+<<<<<<< HEAD
             <p className="italic text-gray-700 mb-4">"Rwanda Mining Week is a unique platform for Africa. It brings together key stakeholders under one roof to drive the future of mining."</p>
+=======
+            <p className="italic text-gray-700 mb-4">"Mining Indaba is a very different platform. It's Africa for Africa. We have everyone under one roof."</p>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             <h4 className="font-semibold text-lg">Raadiyah Emam</h4>
             <p className="text-gray-600">Head of Investor Relations</p>
             <p className="text-gray-600">Anith Resources Ltd</p>
@@ -235,7 +329,11 @@ const ExplorationJuniorMiningCompanies = () => {
                 allowFullScreen
               ></iframe>
             </div>
+<<<<<<< HEAD
             <p className="italic text-gray-700 mb-4">"The diversity of projects and opportunities showcased here is truly remarkable."</p>
+=======
+            <p className="italic text-gray-700 mb-4">"It was just incredible to see the depth of projects and everything going on."</p>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             <h4 className="font-semibold text-lg">Adrian O'Brien</h4>
             <p className="text-gray-600">VP - Business Development & Communications</p>
             <p className="text-gray-600">Midnight Sun Mining</p>
@@ -253,7 +351,11 @@ const ExplorationJuniorMiningCompanies = () => {
                 allowFullScreen
               ></iframe>
             </div>
+<<<<<<< HEAD
             <p className="italic text-gray-700 mb-4">"The event offers a broad spectrum of connections, from investors to suppliers, creating valuable new leads for our projects."</p>
+=======
+            <p className="italic text-gray-700 mb-4">"There's a good diversity of people here. It's not just people from one sector - it is quite a broader spectrum. I have met with investors, potential new suppliers, some product suppliers who have been very interesting and certainly some new leads."</p>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             <h4 className="font-semibold text-lg">James Philip</h4>
             <p className="text-gray-600">COO</p>
             <p className="text-gray-600">Thor Explorations</p>
@@ -261,9 +363,15 @@ const ExplorationJuniorMiningCompanies = () => {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Top reasons why Juniors Attend Rwanda Mining Week Section */}
       <section className="container mr-18 px-4 py-16 text-center">
         <h2 className="text-4xl font-bold mb-12">Top Reasons Why Juniors Attend Rwanda Mining Week</h2>
+=======
+      {/* Top reasons why Juniors Attend Mining Indaba Section */}
+      <section className="container mr-18 px-4 py-16 text-center">
+        <h2 className="text-4xl font-bold mb-12">Top reasons why Juniors Attend Mining Indaba</h2>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
         <div className="flex flex-col lg:flex-row items-center justify-center gap-2">
           <div className="flex-shrink-0 w-2/5">
             <img src={Pie} alt="Reasons Pie Chart" />
@@ -271,13 +379,19 @@ const ExplorationJuniorMiningCompanies = () => {
           <div className="text-left max-w-md w-3/5">
             <ul className="space-y-4 text-lg">
               <li className="flex items-center gap-3"><span className="w-5 h-5 bg-black"></span> Network & Make New Contacts (32%)</li>
+<<<<<<< HEAD
               <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#004F71]"></span> Raise Capital (19%)</li>
               <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#ADD8E6]"></span> Attend Content Sessions (18%)</li>
+=======
+              <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#64a63a]"></span> Raise Capital (19%)</li>
+              <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#d4ed31]"></span> Attend Content Sessions (18%)</li>
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               <li className="flex items-center gap-3"><span className="w-5 h-5 bg-[#a0a0a0]"></span> Source Investment Opportunities & Acquisitions (31%)</li>
             </ul>
           </div>
         </div>
         <p className="text-xl mt-12 mb-8 text-start mx-12">
+<<<<<<< HEAD
           <h1 className="font-bold text-3xl">Connect with Capital. Discover Opportunity. Drive Growth.</h1>
           <br />
           Rwanda Mining Week is where junior miners turn opportunities into action. Whether you aim to <span className="font-bold">raise capital</span>, <span className="font-bold">attract new investors</span>, or explore
@@ -310,34 +424,91 @@ const ExplorationJuniorMiningCompanies = () => {
               <p className="mb-6">Explore the list of mining companies registered to attend Rwanda Mining Week 2025.</p>
             </div>
             <button className="bg-[#ADD8E6] text-sm text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
+=======
+          <h1 className="font-bold text-3xl">Connect with capital. Discover opportunity. Drive growth.</h1>
+          <br />
+          Mining Indaba is where junior miners come to get deals moving. Whether you're looking to <span className="font-bold">raise capital</span>, <span className="font-bold">attract new investors</span>, or explore
+          <span className="font-bold">strategic partnerships and acquisitions</span>, the opportunities are real and within reach. With direct access to financiers, industry leaders, and
+        </p>
+      </section>
+
+            {/* Join Us Section */}
+            <div className="py-16 text-white text-center" style={{ background: 'linear-gradient(to bottom, #5cb030, #d4ed31)' }}>
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold mb-4">Join Us at Mining Indaba 2026</h2>
+          <p className="text-sm leading-relaxed mb-8">
+            The premier meeting place for African and global mining leaders. It is all set to be an unmissable experience, shaping the future of African mining.<br/> Register your interest today and stay ahead in this dynamic industry!
+          </p>
+          <button className="bg-[#55952c] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">REGISTER INTEREST</button>
+        </div>
+      </div>
+
+      
+      {/* Featured Articles Section */}
+      <FeaturedArticlesSection />
+
+
+      {/* Discover more Mining Indaba Section */}
+      <section className="container mx-2 py-16">
+        <h2 className="text-4xl font-bold text-center mb-12">Discover more Mining Indaba</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Mining companies attending */}
+          <div className="bg-[#55952c] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Mining companies attending</h3>
+              <p className="mb-6">Discover the list of mining companies that registered to attend Mining Indaba 2025.</p>
+            </div>
+            <button className="bg-[#d4ed31] text-sm text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               BROWSE THE LIST
             </button>
           </div>
 
           {/* Explorers Showcase */}
+<<<<<<< HEAD
           <div className="bg-[#004F71] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-4">Explorers Showcase</h3>
               <p className="mb-6">The Explorers Showcase offers a dedicated space for private or listed exploration companies with Rwandan assets to present their projects to global investors.</p>
             </div>
             <button className="bg-[#ADD8E6] text-sm text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
+=======
+          <div className="bg-[#55952c] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Explorers Showcase</h3>
+              <p className="mb-6">Explorers Showcase is a dedicated space for private/unlisted or listed exploration companies with African assets to showcase their projects at Mining Indaba.</p>
+            </div>
+            <button className="bg-[#d4ed31] text-sm text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               LEARN MORE
             </button>
           </div>
 
           {/* Meet the Advisory Board */}
+<<<<<<< HEAD
           <div className="bg-[#004F71] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
             <div>
               <h3 className="text-2xl font-bold mb-4">Meet the Advisory Board</h3>
               <p className="mb-6">Get to know the distinguished members of our 2026 Advisory Board, guiding the future of Rwanda Mining Week.</p>
             </div>
             <button className="bg-[#ADD8E6] text-sm text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
+=======
+          <div className="bg-[#55952c] text-white p-8 rounded-lg shadow-lg flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Meet the Advisory Board</h3>
+              <p className="mb-6">Alongside the theme, we are honoured to introduce the distinguished members of our 2026 Advisory Board and Committees.</p>
+            </div>
+            <button className="bg-[#d4ed31] text-sm text-black font-bold px-6 py-3 rounded text-lg shadow-md uppercase tracking-wide transition-colors self-start">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               MEET THE BOARD
             </button>
           </div>
         </div>
       </section>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       <FooterSection />
     </div>
   );

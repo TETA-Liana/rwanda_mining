@@ -1,10 +1,18 @@
 import React from "react";
+<<<<<<< HEAD
+=======
+import FooterSection from "../components/sections/FooterSection";
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 
 const ClientZone = () => {
   return (
     <>
       {/* Header with gradient background */}
+<<<<<<< HEAD
       <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#64a63a] to-[#b8f337]">
+=======
+      <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff]">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
         <h1 className="text-4xl md:text-5xl font-bold">Client Zone</h1>
       </div>
 
@@ -50,8 +58,16 @@ const ClientZone = () => {
           />
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      <FooterSection />
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
     </>
   );
 };
 
+<<<<<<< HEAD
 export default ClientZone;
+=======
+export default ClientZone;
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd

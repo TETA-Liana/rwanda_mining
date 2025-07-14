@@ -1,0 +1,454 @@
+.container {
+    margin-left: 0px;
+   padding: 0;
+   font-family: Arial, sans-serif;
+  
+ }
+ 
+ .header {
+   background: linear-gradient(to right, #10b981, #bef264);
+   color: white;
+   text-align: center;
+   padding: 2rem 0;
+   margin-top: 30px;
+   width: 2000px;
+ }
+ 
+ .header h1 {
+   font-size: 2.5rem;
+   font-weight: bold;
+ }
+ 
+ .main-content {
+   
+   margin-left: 180px;
+   margin-top: 40px;
+   padding: 2rem;
+   background: white;
+   box-shadow: 0 2px 4px rgba(0.5, 0.3, 0.5, 0.3);
+   border-radius: 8px;
+   text-align: center;
+ }
+ 
+ .main-content h2 {
+   font-size: 1.75rem;
+   font-weight: bold;
+   margin-bottom: 1rem;
+ }
+ 
+ .main-content p {
+   color: #4a5568;
+   line-height: 1.6;
+   margin-bottom: 1rem;
+ }
+ 
+ .main-content .register-btn {
+   padding: 0.75rem 1.5rem;
+   background: #ebe53e;
+   color: black;
+   border: none;
+   border-radius: 4px;
+   text-transform: capitalize;
+   font-size: 15px;
+   cursor: pointer;
+   font-weight: bold;
+   margin-left: 500px;
+   font-size: small;
+ }
+ 
+ .main-content .register-btn:hover {
+    background: #ebe53e;
+ 
+ }
+ 
+ .stats-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+   display: flex;
+   justify-content: center;
+   gap: 2rem;
+   flex-wrap: wrap;
+   padding: 2rem;
+ }
+ 
+ .stat-item {
+   text-align: center;
+   padding: 1rem;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   min-width: 200px;
+ }
+ 
+ .stat-item p:first-child {
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: #1ba248;
+ }
+ .stat-tem image{
+ 
+ }
+ .stat-item p:last-child {
+   font-size: 0.9rem;
+   color: #4a5568;
+ }
+ 
+ .view-stats-btn {
+   padding: 0.75rem 1.5rem;
+   background: #d4ed31;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   font-weight: bold;
+   margin-top: 1rem;
+ }
+ 
+ .view-stats-btn:hover {
+   background: #059669;
+ }
+ 
+ .why-attend-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+   padding: 2rem;
+   background: white;
+ margin-left: 200px;
+   border-radius: 8px;
+ }
+ 
+ .why-attend-section h2 {
+   font-size: 1.75rem;
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 2rem;
+ }
+ 
+ .why-attend-items {
+   display: flex;
+   gap: 2rem;
+   flex-wrap: wrap;
+ }
+ 
+ .why-attend-item {
+   flex: 1;
+   min-width: 300px;
+   background-color: #fff9f9;
+ }
+ 
+ .why-attend-item .image {
+   height: 200px;
+   background: #e5e7eb;
+  
+   margin-bottom: 1rem;
+ }
+ 
+ .why-attend-item h3 {
+   font-size: 1.25rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+   padding-left: 15px;
+ }
+ 
+ .why-attend-item p {
+   color: #4a5568;
+   font-size: 0.95rem;
+   line-height: 1.5;
+    padding-left: 15px;
+ }
+ 
+ .why-attend-item .view-btn {
+   padding: 0.5rem 1rem;
+   background: #dbf14c;
+   color: black;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+ 
+ .why-attend-item .view-btn:hover {
+   background: #d97706;
+ }
+ 
+ .investment-lounge-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+  color: white;
+   background: #056703;;
+  
+ }
+ 
+ .lounge-content {
+   display: flex;
+   gap: 2rem;
+    color: white;
+   flex-wrap: wrap;
+ }
+ 
+ .lounge-content .image {
+   flex: 1;
+   height: 200px;
+   background: #e5e7eb;
+  
+ }
+ 
+ .lounge-content .lounge-text {
+   flex: 2;
+    color: white;
+ }
+ 
+ .lounge-content h3 {
+   font-size: 1.25rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+ }
+ 
+ .lounge-content ul {
+   list-style-type: disc;
+   padding-left: 2rem;
+    color: white;
+    padding-top: 20px;
+   font-size: 0.95rem;
+ }
+ 
+ .testimonials-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+   padding: 2rem;
+   background: white;
+   
+ }
+ 
+ .testimonials-section h2 {
+   font-size: 1.75rem;
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 2rem;
+ }
+ 
+ .testimonials-items {
+   display: flex;
+   gap: 2rem;
+   
+   flex-wrap: wrap;
+ }
+ 
+ .testimonial-item {
+   flex: 1;
+   background: #fff7f9;
+ 
+   min-width: 500px;
+ }
+ 
+ .testimonial-item .video {
+   position: relative;
+   height: 350px;
+   background: #e5e7eb;
+   
+   margin-bottom: 1rem;
+ }
+ 
+ .testimonial-item .video iframe {
+   width: 100%;
+   height: 100%;
+   border: none;
+   border-radius: 4px;
+ }
+ 
+ .testimonial-item p {
+   color: #4a5568;
+   font-style: italic;
+   margin-bottom: 0.5rem;
+   font-size: 0.95rem;
+   margin-left: 15px;
+ 
+ }
+ 
+ .testimonial-item .author {
+   text-align: left;
+   font-weight: bold;
+   font-size: 0.9rem;
+   color: #2d3748;
+   margin-left: 15px;
+   color:#1ba248
+ }
+ 
+ .join-us-section {
+   background: linear-gradient(to right, #10b981, #bef264);
+   color: white;
+   text-align: center;
+   padding: 2rem 0;
+   margin: 2rem 0;
+ }
+ 
+ .join-us-section h2 {
+   font-size: 1.75rem;
+   font-weight: bold;
+   margin-bottom: 1rem;
+ }
+ 
+ .join-us-section p {
+   margin-bottom: 1.5rem;
+   font-size: 0.95rem;
+   line-height: 1.6;
+ }
+ 
+ .data-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+   padding: 2rem;
+   background: white;
+   border-radius: 8px;
+   display: flex;
+   gap: 2rem;
+   flex-wrap: wrap;
+ }
+ 
+ .data-table {
+   flex: 1;
+   min-width: 300px;
+ }
+ 
+ .data-table h3 {
+   font-size: 1.25rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+ }
+ 
+ .data-table p {
+   color: #4a5568;
+   font-size: 0.95rem;
+   line-height: 1.5;
+   margin-bottom: 1rem;
+ }
+ 
+ .data-table table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+ 
+ .data-table th, .data-table td {
+   border: 1px solid #e5e7eb;
+   padding: 0.5rem;
+   text-align: left;
+ }
+ 
+ .data-table th {
+   background-color:#1ba248;
+   color: white;
+ }
+ .data-table td:hover {
+   background-color:#cbcecc;
+   color: white;
+ }
+ 
+ .chart-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+   padding: 2rem;
+   background: white;
+   border-radius: 8px;
+ }
+ 
+ .chart-section h3 {
+   font-size: 1.25rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+ }
+ 
+ .chart-section p {
+   color: #4a5568;
+   font-size: 0.95rem;
+   line-height: 1.5;
+   margin-bottom: 1rem;
+ }
+ 
+ .chart-placeholder {
+   height: 200px;
+   margin-top: 1rem;
+ }
+ 
+ .faq-section {
+   max-width: 800px;
+   margin: 2rem auto;
+   padding: 2rem;
+   background: white;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+ }
+ 
+ .faq-section h2 {
+   font-size: 1.75rem;
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 2rem;
+ }
+ 
+ .faq-items input {
+   width: 100%;
+   padding: 0.5rem;
+   margin-bottom: 1rem;
+   border: 1px solid #e5e7eb;
+   border-radius: 4px;
+ }
+ 
+ .featured-articles-section {
+   max-width: 1200px;
+   margin: 2rem auto;
+   padding: 2rem;
+   background: white;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+ }
+ 
+ .featured-articles-section h2 {
+   font-size: 1.75rem;
+   font-weight: bold;
+   text-align: center;
+   margin-bottom: 2rem;
+ }
+ 
+ .articles-items {
+   display: flex;
+   gap: 2rem;
+   flex-wrap: wrap;
+ }
+ 
+ .article-item {
+   flex: 1;
+   min-width: 300px;
+   padding: 1rem;
+   background: #f7fafc;
+   border-radius: 4px;
+ }
+ 
+ .article-item p:first-child {
+   color: #d4ed31;
+   font-size: 0.8rem;
+   margin-bottom: 0.5rem;
+ }
+ 
+ .article-item h3 {
+   font-size: 1.1rem;
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+ }
+ 
+ .article-item p:last-child {
+   color: #4a5568;
+   font-size: 0.9rem;
+   margin-bottom: 0.75rem;
+ }
+ 
+ .article-item button {
+   padding: 0.25rem 0.5rem;
+   background:#d4ed31;
+   color: white;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+ }
+ 
+ .article-item button:hover {
+   background: #059669;
+ }

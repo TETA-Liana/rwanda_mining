@@ -19,7 +19,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+<<<<<<< HEAD
     "erasableSyntaxOnly": true,
+=======
+    "isolatedModules": true,
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },

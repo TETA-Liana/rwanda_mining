@@ -1,6 +1,12 @@
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube } from 'react-icons/fa6'
+<<<<<<< HEAD
 const TopBar = () => (
   <div className="bg-[#004F71] text-white text-sm py-2 px-4 sm:px-6 lg:px-16 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
+=======
+
+const TopBar = () => (
+  <div className="bg-[#5cb030] text-white text-sm py-2 px-4 sm:px-6 lg:px-16 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
     <span className="font-medium tracking-wide">
       Driving sustainable investment in African Mining
     </span>
@@ -13,4 +19,8 @@ const TopBar = () => (
     </div>
   </div>
 )
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 export default TopBar 

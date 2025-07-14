@@ -101,7 +101,11 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ member, onClick }) => {
   return (
     <div
       className={`relative rounded-lg shadow-md p-6 text-center cursor-pointer flex flex-col items-center border border-gray-300 w-64 flex-shrink-0 transition-colors duration-300 ${
+<<<<<<< HEAD
         isHovered ? 'bg-[#004F71]' : 'bg-white'
+=======
+        isHovered ? 'bg-[#5cb030]' : 'bg-white'
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -170,7 +174,11 @@ const AdvisoryTeamSection = () => {
       <div className="container">
         <h2 className="text-4xl font-bold mb-8 text-gray text-center">Meet the Minds Shaping Mining Indaba 2026</h2>
         <div className="flex items-center justify-center gap-8">
+<<<<<<< HEAD
           <button onClick={prevSlide} className="p-2 rounded-full text-[#004F71] hover:text-[#004F71] focus:outline-none bg-transparent">
+=======
+          <button onClick={prevSlide} className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             <ChevronLeftIcon className="h-6 w-6" />
           </button>
           {/* Slideshow container */}
@@ -185,7 +193,11 @@ const AdvisoryTeamSection = () => {
               ))}
             </div>
           </div>
+<<<<<<< HEAD
           <button onClick={nextSlide} className="p-2 rounded-full text-[#004F71] hover: text-[#004F71] focus:outline-none bg-transparent">
+=======
+          <button onClick={nextSlide} className="p-2 rounded-full text-[#5cb030] hover: text-[#55952c] focus:outline-none bg-transparent">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             <ChevronRightIcon className="h-6 w-6" />
           </button>
         </div>
@@ -198,8 +210,13 @@ const AdvisoryTeamSection = () => {
               aria-label={`Go to slide ${index + 1}`}
             >
               <div
+<<<<<<< HEAD
                 className={`h-4 w-4 rounded-full border-2 border-[#004F71] ${
                   currentIndex === index ? 'bg-[#004F71]' : 'bg-transparent'
+=======
+                className={`h-4 w-4 rounded-full border-2 border-[#5cb030] ${
+                  currentIndex === index ? 'bg-[#5cb030]' : 'bg-transparent'
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 }`}
               ></div>
             </button>
@@ -208,13 +225,28 @@ const AdvisoryTeamSection = () => {
 
                 {/* Meet the Advisory Board Button */}
                 <div className="flex justify-center mt-8">
+<<<<<<< HEAD
           <button className="bg-[#004F71] hover:bg-[#004F71] bg-[#004F71] hover:bg-[#004F71] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-widetext-white 4 py-2 rounded-md font-semibold uppercase tracking-wide transition-colors">
             MEET THE ADVISORY BOARD
           </button>
         </div>
       </div>
+=======
+          <button className="bg-[#5cb030] hover:bg-[#55952c] bg-[#5cb030] hover:bg-[#55952c] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-widetext-white 4 py-2 rounded-md font-semibold uppercase tracking-wide transition-colors">
+            MEET THE ADVISORY BOARD
+          </button>
+        </div>
+
+      </div>
+
+      {/* Modal will be placed here */}
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       {selectedMember && <TeamMemberModal member={selectedMember} onClose={handleCloseModal} />}
     </section>
   );
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 export default AdvisoryTeamSection;

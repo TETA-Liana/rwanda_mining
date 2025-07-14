@@ -236,7 +236,11 @@ const WhoAttended2025Exhibitors = () => {
   return (
     <>
       {/* Header Bar */}
+<<<<<<< HEAD
       <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-8 text-white text-center">
+=======
+      <div className="bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] py-8 text-white text-center">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
         <h1 className="text-3xl md:text-4xl font-bold">2025 Exhibitor List</h1>
       </div>
 
@@ -246,7 +250,11 @@ const WhoAttended2025Exhibitors = () => {
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-xl font-bold text-gray-900">Filters</h3>
             <button
+<<<<<<< HEAD
               className="text-[#64a63a] text-sm"
+=======
+              className="text-[#2563eb] text-sm"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               onClick={() => {
                 setSelectedSectors([]);
                 setSelectedCountries([]);
@@ -288,7 +296,11 @@ const WhoAttended2025Exhibitors = () => {
               <input
                 type="text"
                 placeholder="Search..."
+<<<<<<< HEAD
                 className="w-full rounded-full border border-gray-300 px-3 py-1 pl-8 text-sm shadow-sm focus:border-[#64a63a] focus:ring-[#64a63a] bg-white"
+=======
+                className="w-full rounded-full border border-gray-300 px-3 py-1 pl-8 text-sm shadow-sm focus:border-[#2563eb] focus:ring-[#2563eb] bg-white"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -315,7 +327,11 @@ const WhoAttended2025Exhibitors = () => {
               <label className="inline-flex items-center">
                 <input
                   type="checkbox"
+<<<<<<< HEAD
                   className="form-checkbox text-[#64a63a]"
+=======
+                  className="form-checkbox text-[#2563eb]"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 />
                 <span className="ml-2 text-gray-700">New Exhibitors</span>
               </label>
@@ -330,7 +346,11 @@ const WhoAttended2025Exhibitors = () => {
                   <label className="inline-flex items-center text-gray-700 text-sm">
                     <input
                       type="checkbox"
+<<<<<<< HEAD
                       className="form-checkbox text-[#64a63a] rounded"
+=======
+                      className="form-checkbox text-[#2563eb] rounded"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                       checked={selectedSectors.includes(sector)}
                       onChange={() => handleSectorChange(sector)}
                     />
@@ -342,7 +362,11 @@ const WhoAttended2025Exhibitors = () => {
 
             {/* Countries Filter */}
             <div>
+<<<<<<< HEAD
               <h4 className="font-semibold text-[#64a63a] mb-2 border-t border-gray-300 pt-4">
+=======
+              <h4 className="font-semibold text-[#2563eb] mb-2 border-t border-gray-300 pt-4">
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 Countries
               </h4>
               {/* Add country checkboxes here */}
@@ -351,7 +375,11 @@ const WhoAttended2025Exhibitors = () => {
                   <label className="inline-flex items-center text-gray-700 text-sm">
                     <input
                       type="checkbox"
+<<<<<<< HEAD
                       className="form-checkbox text-[#64a63a] rounded"
+=======
+                      className="form-checkbox text-[#2563eb] rounded"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                       checked={selectedCountries.includes(country)}
                       onChange={() => handleCountryChange(country)}
                     />
@@ -406,7 +434,11 @@ const WhoAttended2025Exhibitors = () => {
                         onClick={() => paginate(page)}
                         className={`px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ${
                           currentPage === page
+<<<<<<< HEAD
                             ? "text-[#64a63a] bg-gray-200"
+=======
+                            ? "text-[#2563eb] bg-gray-200"
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                             : ""
                         }`}
                       >
@@ -433,4 +465,8 @@ const WhoAttended2025Exhibitors = () => {
   );
 };
 
+<<<<<<< HEAD
 export default WhoAttended2025Exhibitors;
+=======
+export default WhoAttended2025Exhibitors;
+>>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
