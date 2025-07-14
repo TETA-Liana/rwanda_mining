@@ -1,0 +1,47 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.production.local
+.env.staging.local
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.vssscc
+*.vspscc
+*.vcproj
+*.codeswarm
+*.code-workspace
+.history
+
+# vite-specific
+.vite/
+
+# log files
+*.log
+
+# build outputs
+build/
+
+# other
+*.swp
