@@ -51,7 +51,7 @@ const StrongerTogetherSection = () => {
             and secure a resilient, inclusive future for mining. United efforts
             lead to shared success!
           </p>
-          <button className="bg-[#5cb030] hover:bg-[#55952c] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide self-start">
+          <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide self-start">
             WHAT&apos;S NEXT
           </button>
         </div>
@@ -59,7 +59,7 @@ const StrongerTogetherSection = () => {
 
       {/* Chat Icon (positioned absolutely) */}
       <div className="absolute bottom-8 right-16">
-        <div className="bg-[#5cb030] rounded-full p-3 shadow-lg cursor-pointer">
+        <div className="bg-[#2563eb] rounded-full p-3 shadow-lg cursor-pointer">
           <ChatBubbleBottomCenterTextIcon className="h-8 w-8 text-white" />
         </div>
       </div>

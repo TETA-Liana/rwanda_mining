@@ -64,7 +64,7 @@ const MiningIndabaNumbersSection = () => {
         <div className="flex items-center justify-center">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full text-[#5cb030] hover:text-[#4a9b25] focus:outline-none bg-transparent"
+            className="p-2 rounded-full text-[#2563eb] hover:text-[#1e3a8a] focus:outline-none bg-transparent"
           >
             <ChevronLeftIcon className="h-6 w-6" />
           </button>
@@ -81,14 +81,14 @@ const MiningIndabaNumbersSection = () => {
                   key={item.id}
                   className="flex flex-col items-center text-center flex-shrink-0 w-1/4 px-2"
                 >
-                  <div className="w-36 h-36 rounded-full bg-brandGreen flex items-center justify-center mb-4">
+                  <div className="w-36 h-36 rounded-full bg-[#2563eb] flex items-center justify-center mb-4">
                     <img
                       src={item.icon}
                       alt={`Icon for ${item.title}`}
                       className="h-36 w-36 rounded-full"
                     />
                   </div>
-                  <p className="text-3xl font-bold text-[#5cb030] mb-1">
+                  <p className="text-3xl font-bold text-[#2563eb] mb-1">
                     {item.number}
                   </p>
                   <p className="text-gray-800 text-sm">{item.title}</p>
@@ -98,7 +98,7 @@ const MiningIndabaNumbersSection = () => {
           </div>
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full text-[#5cb030] hover:text-[#4a9b25] focus:outline-none bg-transparent ml-4"
+            className="p-2 rounded-full text-[#2563eb] hover:text-[#1e3a8a] focus:outline-none bg-transparent ml-4"
           >
             <ChevronRightIcon className="h-6 w-6" />
           </button>

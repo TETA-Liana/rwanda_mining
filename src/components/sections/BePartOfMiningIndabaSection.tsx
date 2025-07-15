@@ -48,7 +48,7 @@ const BePartOfMiningIndabaSection = () => {
                 </p>
               </div>
               <div className="w-full px-4 mb-4">
-                <button className="bg-[#d4ed31] text-black font-bold px-4 py-2 rounded text-sm shadow-md uppercase tracking-wide hover:bg-[#c0d82c]">
+                <button className="bg-[#60a5fa] text-black font-bold px-4 py-2 rounded text-sm shadow-md uppercase tracking-wide hover:bg-[#2563eb]">
                   {item.buttonLabel}
                 </button>
               </div>

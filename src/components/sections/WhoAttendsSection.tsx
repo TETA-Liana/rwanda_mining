@@ -92,7 +92,7 @@ const WhoAttendsSection = () => {
                 <p className="text-gray-700 mb-6 leading-relaxed">
                   {currentSlideData.description}
                 </p>
-                <button className="bg-[#5cb030] hover:bg-[#55952c] text-white text-sm px-2 py-2 rounded-sm font-semibold uppercase tracking-wide self-center mb-4">
+                <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white text-sm px-2 py-2 rounded-sm font-semibold uppercase tracking-wide self-center mb-4">
                   {currentSlideData.buttonLabel}
                 </button>
               </div>

@@ -65,13 +65,13 @@ const LatestUpdatesSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-[#5cb030] mb-12">
+        <h2 className="text-4xl font-bold text-center text-[#2563eb] mb-12">
           Latest Updates
         </h2>
         <div className="flex items-center justify-center">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full text-[#5cb030] hover:text-[#4ca026] focus:outline-none bg-transparent mr-4"
+            className="p-2 rounded-full text-[#2563eb] hover:text-[#1e3a8a] focus:outline-none bg-transparent mr-4"
             aria-label="Previous Slide"
           >
             <ChevronLeftIcon className="h-6 w-6" />
@@ -101,14 +101,14 @@ const LatestUpdatesSection = () => {
                       />
                     </div>
                     <div className="flex flex-col h-full">
-                      <h3 className="text-xl font-semibold text-[#5cb030] mb-2 leading-tight">
+                      <h3 className="text-xl font-semibold text-[#2563eb] mb-2 leading-tight">
                         {item.title}
                       </h3>
                       <p className="text-gray-700 mb-4 leading-relaxed text-sm flex-grow">
                         {item.description}
                       </p>
                       <div className="mt-auto">
-                        <button className="bg-[#d4ed31] hover:bg-[#c0d82c] text-black px-4 py-2 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
+                        <button className="bg-[#60a5fa] hover:bg-[#2563eb] text-black px-4 py-2 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
                           {item.buttonLabel}
                         </button>
                       </div>
@@ -120,7 +120,7 @@ const LatestUpdatesSection = () => {
 
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full text-[#5cb030] hover:text-[#4ca026] focus:outline-none bg-transparent ml-4"
+            className="p-2 rounded-full text-[#2563eb] hover:text-[#1e3a8a] focus:outline-none bg-transparent ml-4"
             aria-label="Next Slide"
           >
             <ChevronRightIcon className="h-6 w-6" />
@@ -136,8 +136,8 @@ const LatestUpdatesSection = () => {
               aria-label={`Go to slide ${index + 1}`}
             >
               <div
-                className={`h-3 w-3 rounded-full border-2 border-[#5cb030] ${
-                  currentIndex === index ? "bg-[#5cb030]" : "bg-transparent"
+                className={`h-3 w-3 rounded-full border-2 border-[#2563eb] ${
+                  currentIndex === index ? "bg-[#2563eb]" : "bg-transparent"
                 }`}
               ></div>
             </button>

@@ -123,13 +123,13 @@ const FeaturedArticlesSection = () => {
   return (
     <section className="py-16 bg-white mx-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-[#5cb030] mb-12">
+        <h2 className="text-4xl font-bold text-center text-[#2563eb] mb-12">
           Featured Articles
         </h2>
         <div className="flex items-center justify-center">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full text-[#5cb030] hover:text-[#4ca026] focus:outline-none bg-transparent mr-4"
+            className="p-2 rounded-full text-[#2563eb] hover:text-[#1e3a8a] focus:outline-none bg-transparent mr-4"
             aria-label="Previous Slide"
           >
             <svg
@@ -170,7 +170,7 @@ const FeaturedArticlesSection = () => {
                         className="w-full h-48 object-cover"
                       />
                     </div>
-                    <div className="bg-[#5cb030] h-12 text-white text-md font-semibold uppercase px-3 flex items-center justify-between">
+                    <div className="bg-[#2563eb] h-12 text-white text-md font-semibold uppercase px-3 flex items-center justify-between">
                       <span>{item.date}</span>
                       <span>{item.category}</span>
                     </div>
@@ -182,7 +182,7 @@ const FeaturedArticlesSection = () => {
                         {item.description}
                       </p>
                       <div className="mt-auto">
-                        <button className="bg-[#5cb030] hover:bg-[#4ca026] text-white px-6 py-2 font-medium text-base flex items-center gap-2 transition-colors duration-300">
+                        <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white px-6 py-2 font-medium text-base flex items-center gap-2 transition-colors duration-300">
                           <ArrowRightIcon className="h-5 w-5" />
                           {item.buttonLabel}
                         </button>
@@ -194,7 +194,7 @@ const FeaturedArticlesSection = () => {
           </div>
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full text-[#5cb030] hover:text-[#4ca026] focus:outline-none bg-transparent ml-4"
+            className="p-2 rounded-full text-[#2563eb] hover:text-[#1e3a8a] focus:outline-none bg-transparent ml-4"
             aria-label="Next Slide"
           >
             <ChevronRightIcon className="h-6 w-6" />
@@ -209,15 +209,15 @@ const FeaturedArticlesSection = () => {
               aria-label={`Go to slide ${index + 1}`}
             >
               <div
-                className={`h-2.5 w-2.5 rounded-full border-2 border-[#5cb030] ${
-                  currentIndex === index ? "bg-[#5cb030]" : "bg-transparent"
+                className={`h-2.5 w-2.5 rounded-full border-2 border-[#2563eb] ${
+                  currentIndex === index ? "bg-[#2563eb]" : "bg-transparent"
                 }`}
               ></div>
             </button>
           ))}
         </div>
         <div className="flex justify-center mt-12">
-          <button className="bg-[#5cb030] hover:bg-[#55952c] text-white px-8 py-3 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
+          <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white px-8 py-3 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
             VIEW ALL ARTICLES
           </button>
         </div>
