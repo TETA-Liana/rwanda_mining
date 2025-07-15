@@ -69,7 +69,7 @@ const RegisterInterest = () => {
     setSuccess("");
     setError("");
     if (form.interestedIn === "Sponsoring") {
-      // Don't submit here, let sponsor form handle it
+      // Only show sponsor form, do not submit or validate main form
       setLoading(false);
       return;
     }
@@ -79,10 +79,23 @@ const RegisterInterest = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:8080/api/register-interest", {
+      // Exhibitor request
+      const res = await fetch("/api/requests/exhibitor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          country: form.country,
+          email: form.email,
+          phoneCode: form.phoneCode,
+          phoneNumber: form.phoneNumber,
+          companyName: form.companyName,
+          jobTitle: form.jobTitle,
+          jobFunction: form.jobFunction,
+          event: form.event,
+          exhibitingDetails: form.exhibitingDetails,
+        }),
       });
       if (!res.ok) throw new Error("Failed to register interest");
       setSuccess("Thank you for registering your interest!");
@@ -118,9 +131,9 @@ const RegisterInterest = () => {
     if (
       !sponsorForm.sponsorName ||
       !sponsorForm.sponsorCompany ||
-      !sponsorForm.sponsorType ||
       !sponsorForm.sponsorBudget ||
       !sponsorForm.sponsorEmail ||
+      !sponsorForm.sponsorPhoneCode ||
       !sponsorForm.sponsorPhone ||
       !sponsorForm.event
     ) {
@@ -129,10 +142,19 @@ const RegisterInterest = () => {
       return;
     }
     try {
-      const res = await fetch("http://localhost:8080/api/register-sponsor", {
+      const res = await fetch("/api/requests/sponsor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(sponsorForm),
+        body: JSON.stringify({
+          sponsorName: sponsorForm.sponsorName,
+          sponsorCompany: sponsorForm.sponsorCompany,
+          sponsorBudget: sponsorForm.sponsorBudget,
+          sponsorEmail: sponsorForm.sponsorEmail,
+          sponsorPhoneCode: sponsorForm.sponsorPhoneCode,
+          sponsorPhone: sponsorForm.sponsorPhone,
+          sponsorNotes: sponsorForm.sponsorNotes,
+          event: sponsorForm.event,
+        }),
       });
       if (!res.ok) throw new Error("Failed to register sponsor");
       setSuccess(
@@ -141,7 +163,6 @@ const RegisterInterest = () => {
       setSponsorForm({
         sponsorName: "",
         sponsorCompany: "",
-        sponsorType: "",
         sponsorBudget: "",
         sponsorEmail: "",
         sponsorPhoneCode: "",
@@ -150,20 +171,7 @@ const RegisterInterest = () => {
         event:"",
       });
       setShowSponsorForm(false);
-      setForm({
-        firstName: "",
-        lastName: "",
-        country: "",
-        email: "",
-        phoneCode: "",
-        phoneNumber: "",
-        companyName: "",
-        jobTitle: "",
-        jobFunction: "",
-        event:"",
-        interestedIn: "",
-        exhibitingDetails: "",
-      });
+      // Do not reset main form fields
     } catch (err) {
       setError(
         "There was an error submitting your sponsorship. Please try again."
@@ -660,9 +668,9 @@ const RegisterInterest = () => {
                   <div className="flex gap-2">
                     <select
                       id="phoneCode"
-                      name="phoneCode"
+                      name="sponsorPhoneCode"
                       value={sponsorForm.sponsorPhoneCode}
-                      onChange={handleChange}
+                      onChange={handleSponsorChange}
                       className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
                       required
                     >
