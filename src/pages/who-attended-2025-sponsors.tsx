@@ -1,10 +1,7 @@
 import React from "react";
 import { useState } from "react";
-<<<<<<< HEAD
-=======
 
 // Define sponsor data by level
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 const sponsorsData = {
   diamond: [
     { logo: "/logos/angola-diamond.png", name: "ANGOLA DIAMOND POTENTIAL" },
@@ -76,11 +73,7 @@ const sponsorsData = {
   ],
   strategicPartner: [
     { logo: "/logos/microsoft.png", name: "MICROSOFT" },
-<<<<<<< HEAD
-    { logo: "/logos/anglo-american.png", name: "ANGLO AMERICAN" }, 
-=======
-    { logo: "/logos/anglo-american.png", name: "ANGLO AMERICAN" }, // Assuming this is the same Anglo American logo
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
+    { logo: "/logos/anglo-american.png", name: "ANGLO AMERICAN" },
   ],
   participatingCompany: [
     { logo: "/logos/ael-mining.png", name: "AEL Mining Services" },
@@ -110,23 +103,14 @@ const sponsorsData = {
       name: "thyssenkrupp Industrial Solutions",
     },
     { logo: "/logos/weir-minerals.png", name: "Weir Minerals" },
-<<<<<<< HEAD
   ],
 };
+
 const WhoAttended2025Sponsors = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 2;
-=======
-    // Placeholder for the last one
-  ],
-};
-
-const WhoAttended2025Sponsors = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 2; // We have two defined pages of sponsors
 
   // Function to render sponsor cards for a given level
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
   const renderSponsors = (level: keyof typeof sponsorsData) => (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
       {sponsorsData[level].map((sponsor, index) => (
@@ -142,44 +126,27 @@ const WhoAttended2025Sponsors = () => {
           <div className="text-gray-900 font-semibold text-xs mb-1">
             {sponsor.name}
           </div>
-<<<<<<< HEAD
           <div className="text-xs text-[#64a63a] uppercase font-bold">
-=======
-          <div className="text-xs text-[#2563eb] uppercase font-bold">
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {level} Sponsor
           </div>
         </div>
       ))}
     </div>
   );
-<<<<<<< HEAD
-  return (
-    <>
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-8 text-white text-center">
-        <h1 className="text-3xl md:text-4xl font-bold">2025 Sponsors</h1>
-      </div>
-=======
 
   return (
     <>
       {/* Header Bar */}
-      <div className="bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] py-8 text-white text-center">
+      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-8 text-white text-center">
         <h1 className="text-3xl md:text-4xl font-bold">2025 Sponsors</h1>
       </div>
-
       {/* Search Bar */}
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       <div className="container mx-auto px-4 py-8 flex justify-center">
         <div className="relative w-full max-w-md">
           <input
             type="text"
             placeholder="Search..."
-<<<<<<< HEAD
             className="w-full rounded-full border border-gray-300 px-4 py-2 pl-10 shadow-sm focus:border-[#64a63a] focus:ring-[#64a63a] bg-white"
-=======
-            className="w-full rounded-full border border-gray-300 px-4 py-2 pl-10 shadow-sm focus:border-[#2563eb] focus:ring-[#2563eb] bg-white"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
           />
           <div className="absolute inset-y-0 left-0 flex items-center pl-3">
             <svg
@@ -199,10 +166,6 @@ const WhoAttended2025Sponsors = () => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
       {/* Sponsor Sections */}
       <div className="container mx-auto px-4 py-8">
         {currentPage === 1 && (
@@ -214,10 +177,6 @@ const WhoAttended2025Sponsors = () => {
               </h2>
               {renderSponsors("diamond")}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {/* Platinum Sponsor Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
@@ -225,10 +184,6 @@ const WhoAttended2025Sponsors = () => {
               </h2>
               {renderSponsors("platinum")}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {/* Host Government Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
@@ -236,10 +191,6 @@ const WhoAttended2025Sponsors = () => {
               </h2>
               {renderSponsors("hostGovernment")}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {/* Gold Sponsor Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
@@ -247,10 +198,6 @@ const WhoAttended2025Sponsors = () => {
               </h2>
               {renderSponsors("gold")}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {/* Silver Sponsor Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
@@ -258,10 +205,6 @@ const WhoAttended2025Sponsors = () => {
               </h2>
               {renderSponsors("silver")}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {/* Bronze Sponsor Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
@@ -269,10 +212,6 @@ const WhoAttended2025Sponsors = () => {
               </h2>
               {renderSponsors("bronze")}
             </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             {/* Associate Sponsor Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
@@ -319,11 +258,7 @@ const WhoAttended2025Sponsors = () => {
             className={`px-4 py-2 rounded ${
               currentPage === 1
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-<<<<<<< HEAD
                 : "bg-[#64a63a] hover:bg-[#55952c] text-white"
-=======
-                : "bg-[#2563eb] hover:bg-[#1e40af] text-white"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             }`}
           >
             Previous Page
@@ -334,11 +269,7 @@ const WhoAttended2025Sponsors = () => {
             className={`px-4 py-2 rounded ${
               currentPage === totalPages
                 ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-<<<<<<< HEAD
                 : "bg-[#64a63a] hover:bg-[#55952c] text-white"
-=======
-                : "bg-[#2563eb] hover:bg-[#1e40af] text-white"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             }`}
           >
             Next Page
@@ -349,8 +280,4 @@ const WhoAttended2025Sponsors = () => {
   );
 };
 
-<<<<<<< HEAD
 export default WhoAttended2025Sponsors;
-=======
-export default WhoAttended2025Sponsors;
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd

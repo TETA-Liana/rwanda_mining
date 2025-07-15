@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-
-const ExhibitorBrochure2026 = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    countryCode: "",
-    phoneNumber: "",
-    country: "",
-    companyName: "",
-    jobTitle: "",
-    jobFunction: "",
-    sector: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Placeholder for form submission logic
-    console.log("Form submitted:", formData);
-    // Add API call or further logic here
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  return (
-    <>
-      <div className="bg-gradient-to-r from-[#004F71] to-[#ADD8E6] py-8 text-white text-center pt-24">
-=======
 import React from "react";
 
 const ExhibitorBrochure2026 = () => {
@@ -38,32 +5,17 @@ const ExhibitorBrochure2026 = () => {
     <>
       {/* Header Bar */}
       <div className="bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff] py-8 text-white text-center">
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
         <h1 className="text-3xl md:text-4xl font-bold">
           Download our 2026 Exhibitor Brochure
         </h1>
       </div>
-<<<<<<< HEAD
-      <div className="container mx-auto px-4 py-8 text-center">
-        <p className="text-lg text-gray-700">
-          Want to maximize your exposure at Rwanda Mining Week 2026? Download our
-          exclusive exhibitor brochure now and discover how you can showcase your
-          brand at Rwanda’s premier mining event!
-        </p>
-      </div>
-      <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-12">
-        <div className="flex-1 flex flex-col items-center md:items-start">
-          <img
-            src="/exhibit-or-sponsor/exhibitor-brochure.png" // Replace with actual image path
-            alt="Rwanda Mining Week 2026 Exhibitor Brochure"
-=======
 
       {/* Introductory Text */}
       <div className="container mx-auto px-4 py-8 text-center">
         <p className="text-lg text-gray-700">
           Want to maximise your exposure at Mining Indaba 2026? Download our
           exclusive exhibitor brochure now and discover how you can showcase
-          your brand of the industry&apos;s premier event!
+          your brand of the industry's premier event!
         </p>
       </div>
 
@@ -72,9 +24,8 @@ const ExhibitorBrochure2026 = () => {
         {/* Left Column: Brochure Image and Enquire Section */}
         <div className="flex-1 flex flex-col items-center md:items-start">
           <img
-            src="/exhibit-or-sponsor/exhibitor-brochure.png" // Placeholder image
+            src="/exhibit-or-sponsor/exhibitor-brochure.png"
             alt="2026 Exhibitor Brochure"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             className="w-full md:w-2/3 lg:w-1/2 rounded-lg shadow-lg"
           />
 
@@ -84,49 +35,28 @@ const ExhibitorBrochure2026 = () => {
             </h3>
             <ul className="list-disc list-inside text-gray-700 mb-6">
               <li>
-<<<<<<< HEAD
-                Details about Rwanda Mining Week, Rwanda’s premier mining event,
-                happening in 2026 in Kigali
-              </li>
-              <li>
-                Exhibitor and sponsorship opportunities at Rwanda Mining Week 2026
-=======
-                Details about Mining Indaba, Africa&apos;s premier mining event,
+                Details about Mining Indaba, Africa's premier mining event,
                 happening from 9-12 February 2026 in Cape Town
               </li>
               <li>
                 Exhibitor and sponsorship opportunities at Mining Indaba 2026
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               </li>
               <li>Insights into our audience types — your potential leads!</li>
             </ul>
             <p className="text-gray-700 mb-6">
-<<<<<<< HEAD
-              To discuss the floorplan and exhibiting or sponsorship opportunities,
-              simply click "Enquire" below, and a member of our team will get in
-              touch with you.
-            </p>
-            <button className="bg-[#004F71] hover:bg-[#003a54] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide">
-=======
               To discuss the floorplan and exhibiting or sponsorship
-              opportunities, simply click &quot;Enquire&quot; below, and a
-              member of our team will get in touch with you.
+              opportunities, simply click "Enquire" below, and a member of our
+              team will get in touch with you.
             </p>
             <button className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide">
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               ENQUIRE
             </button>
           </div>
         </div>
-<<<<<<< HEAD
-        <div className="flex-1 w-full">
-          <form className="space-y-4" onSubmit={handleSubmit}>
-=======
 
         {/* Right Column: Form */}
         <div className="flex-1 w-full">
           <form className="space-y-4">
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
             <div>
               <label
                 htmlFor="firstName"
@@ -138,15 +68,7 @@ const ExhibitorBrochure2026 = () => {
                 type="text"
                 name="firstName"
                 id="firstName"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               />
             </div>
             <div>
@@ -160,15 +82,7 @@ const ExhibitorBrochure2026 = () => {
                 type="text"
                 name="lastName"
                 id="lastName"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.lastName}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               />
             </div>
             <div>
@@ -182,23 +96,11 @@ const ExhibitorBrochure2026 = () => {
                 type="email"
                 name="email"
                 id="email"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.email}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-              />
-              <p className="mt-2 text-sm text-gray-500">
-                Using a business email helps us better understand your interest in
-                sponsoring.
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
               />
               <p className="mt-2 text-sm text-gray-500">
                 Using a business email helps us better understand your interest
                 in sponsoring.
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               </p>
             </div>
             <div>
@@ -212,15 +114,7 @@ const ExhibitorBrochure2026 = () => {
                 <select
                   id="countryCode"
                   name="countryCode"
-<<<<<<< HEAD
-                  required
-                  aria-required="true"
-                  value={formData.countryCode}
-                  onChange={handleChange}
-                  className="rounded-none rounded-l-md border-black focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-=======
                   className="rounded-none rounded-l-md border-gray-300 focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 >
                   <option value="">Select Country Code</option>
                   <option value="+1">United States (+1)</option>
@@ -235,10 +129,7 @@ const ExhibitorBrochure2026 = () => {
                   <option value="+55">Brazil (+55)</option>
                   <option value="+7">Russia (+7)</option>
                   <option value="+81">Japan (+81)</option>
-<<<<<<< HEAD
                   <option value="+250">Rwanda (+250)</option>
-=======
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                   <option value="+260">Zambia (+260)</option>
                   <option value="+263">Zimbabwe (+263)</option>
                   <option value="+258">Mozambique (+258)</option>
@@ -251,27 +142,12 @@ const ExhibitorBrochure2026 = () => {
                   <option value="+234">Nigeria (+234)</option>
                   <option value="+243">DR Congo (+243)</option>
                   <option value="+244">Angola (+244)</option>
-<<<<<<< HEAD
-                  <option value="+251">Ethiopia (+251)</option>
-                  {/* Add more country codes as needed */}
-=======
-                  <option value="+250">Rwanda (+250)</option>
-                  {/* Add more country code options here */}
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 </select>
                 <input
                   type="text"
                   name="phoneNumber"
                   id="phoneNumber"
-<<<<<<< HEAD
-                  required
-                  aria-required="true"
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                  className="block w-full flex-1 rounded-none rounded-r-md border-black focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-=======
                   className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                   placeholder="e.g., 8123 456789"
                 />
               </div>
@@ -286,42 +162,6 @@ const ExhibitorBrochure2026 = () => {
               <select
                 id="country"
                 name="country"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.country}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-              >
-                <option value="">Please Select</option>
-                <option value="RW">Rwanda</option>
-                <option value="ZA">South Africa</option>
-                <option value="KE">Kenya</option>
-                <option value="TZ">Tanzania</option>
-                <option value="UG">Uganda</option>
-                <option value="GH">Ghana</option>
-                <option value="NG">Nigeria</option>
-                <option value="CD">DR Congo</option>
-                <option value="AO">Angola</option>
-                <option value="ET">Ethiopia</option>
-                <option value="ZM">Zambia</option>
-                <option value="ZW">Zimbabwe</option>
-                <option value="MZ">Mozambique</option>
-                <option value="NA">Namibia</option>
-                <option value="BW">Botswana</option>
-                <option value="US">United States</option>
-                <option value="GB">United Kingdom</option>
-                <option value="AU">Australia</option>
-                <option value="CA">Canada</option>
-                <option value="DE">Germany</option>
-                <option value="FR">France</option>
-                <option value="CN">China</option>
-                <option value="IN">India</option>
-                <option value="BR">Brazil</option>
-                <option value="RU">Russia</option>
-                <option value="JP">Japan</option>
-                {/* Add more countries as needed */}
-=======
                 className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
               >
                 <option>Please Select</option>
@@ -569,7 +409,6 @@ const ExhibitorBrochure2026 = () => {
                 <option value="YE">Yemen</option>
                 <option value="ZM">Zambia</option>
                 <option value="ZW">Zimbabwe</option>
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               </select>
             </div>
             <div>
@@ -583,15 +422,7 @@ const ExhibitorBrochure2026 = () => {
                 type="text"
                 name="companyName"
                 id="companyName"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.companyName}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200 border-gray-700"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               />
             </div>
             <div>
@@ -605,15 +436,7 @@ const ExhibitorBrochure2026 = () => {
                 type="text"
                 name="jobTitle"
                 id="jobTitle"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.jobTitle}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               />
             </div>
             <div>
@@ -626,34 +449,6 @@ const ExhibitorBrochure2026 = () => {
               <select
                 id="jobFunction"
                 name="jobFunction"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.jobFunction}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-              >
-                <option value="">Please Select</option>
-                <option value="academic_student">Academic or Student</option>
-                <option value="account_management">Account Management</option>
-                <option value="administration">Administration</option>
-                <option value="administrative_operations">Administrative/Operations</option>
-                <option value="ceo_md">CEO/MD</option>
-                <option value="consultancy_advisory">Consultancy & Advisory</option>
-                <option value="consultant">Consultant</option>
-                <option value="design_engineering_product_design">Design Engineering & Product Design</option>
-                <option value="distribution_management">Distribution Management</option>
-                <option value="editorial_content_journalism">Editorial Content & Journalism</option>
-                <option value="electrical_engineering">Electrical Engineering</option>
-                <option value="engineer">Engineer</option>
-                <option value="event_management">Event Management</option>
-                <option value="finance">Finance</option>
-                <option value="general_corporate_management">General & Corporate Management</option>
-                <option value="general_management">General Management</option>
-                <option value="government">Government</option>
-                <option value="industrial_engineering">Industrial Engineering</option>
-                <option value="manufacturing_engineering">Manufacturing Engineering</option>
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
               >
                 <option>Please Select</option>
@@ -694,7 +489,6 @@ const ExhibitorBrochure2026 = () => {
                 <option value="manufacturing_engineering">
                   Manufacturing Engineering
                 </option>
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               </select>
             </div>
             <div>
@@ -707,19 +501,9 @@ const ExhibitorBrochure2026 = () => {
               <select
                 id="sector"
                 name="sector"
-<<<<<<< HEAD
-                required
-                aria-required="true"
-                value={formData.sector}
-                onChange={handleChange}
-                className="mt-1 block w-full rounded-md border-black shadow-sm focus:bg-gray-200 focus:ring-0 focus:border-black sm:text-sm bg-gray-200"
-              >
-                <option value="">Please Select</option>
-=======
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gray-400 focus:ring-gray-400 sm:text-sm bg-gray-200"
               >
                 <option>Please Select</option>
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 <option value="precious_metals">Precious Metals</option>
                 <option value="base_metals">Base Metals</option>
                 <option value="bulk_minerals">Bulk Minerals</option>
@@ -733,22 +517,6 @@ const ExhibitorBrochure2026 = () => {
             <p className="mt-4 text-sm text-gray-600">
               Hyve Group takes your privacy seriously - you can read more about
               this in our{" "}
-<<<<<<< HEAD
-              <a href="/privacy-policy" className="text-[#004F71] hover:underline">
-                Privacy Notice
-              </a>
-              . We use your personal information to provide the services you have
-              requested from us and for other carefully considered legitimate
-              business purposes. This includes sending you marketing communications
-              and advertising about our events as well as information and
-              publications which we think would be of interest to you. You have the
-              right to object to this processing and, if you wish to do so, you can{" "}
-              <a href="/preferences" className="text-[#004F71] hover:underline">
-                update your preferences here
-              </a>
-              . View a list of the events organized by{" "}
-              <a href="/events" className="text-[#004F71] hover:underline">
-=======
               <a href="#" className="text-[#2563eb] hover:underline">
                 Privacy Notice
               </a>
@@ -764,7 +532,6 @@ const ExhibitorBrochure2026 = () => {
               </a>
               . View a list of the events organised by{" "}
               <a href="#" className="text-[#2563eb] hover:underline">
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
                 Hyve Group here
               </a>
               .
@@ -774,12 +541,7 @@ const ExhibitorBrochure2026 = () => {
             <div className="text-center mt-6">
               <button
                 type="submit"
-<<<<<<< HEAD
-                className="bg-[#004F71] hover:bg-[#003a54] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide"
-                aria-label="Submit exhibitor brochure request form"
-=======
                 className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-8 py-3 rounded text-lg shadow-md uppercase tracking-wide"
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
               >
                 SUBMIT
               </button>
@@ -791,8 +553,4 @@ const ExhibitorBrochure2026 = () => {
   );
 };
 
-<<<<<<< HEAD
 export default ExhibitorBrochure2026;
-=======
-export default ExhibitorBrochure2026;
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd

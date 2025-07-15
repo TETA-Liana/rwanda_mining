@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const attendingMedia = [
   "Africa Intelligence",
@@ -144,8 +144,6 @@ const attendingMedia = [
   "Africa Renewable Energy",
   "Africa Mining Summit",
   "Africa Down Under",
-<<<<<<< HEAD
-=======
   "Indaba",
   "Mining Indaba Daily",
   "Mining Indaba News",
@@ -224,24 +222,16 @@ const attendingMedia = [
   "Mining Indaba FAQ Us",
   "Mining Indaba Help Us",
   "Mining Indaba Support Us",
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
 ];
 
 const AttendingMediaSection = () => {
   return (
-<<<<<<< HEAD
-    <section className="py-16 bg-white">
-      <div className="container px-6 lg:px-8 mx-10">
-        <h2 className="text-3xl font-bold text-[#004F76] text-center">
-          Rwanda Mining Week Attending Media
-        </h2>
-        <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[#004F76] text-lg">
-=======
     <section className="py-16 bg-gray-100">
       <div className="container px-6 lg:px-8 mx-10">
-        <h2 className="text-3xl font-bold text-[#0f172a] text-center">2025 attending media:</h2>
+        <h2 className="text-3xl font-bold text-[#0f172a] text-center">
+          2025 attending media:
+        </h2>
         <div className="mt-8 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[#0f172a] text-lg">
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
           {attendingMedia.map((media, index) => (
             <p key={index} className="mb-2 leading-relaxed">
               &bull; {media}
@@ -253,8 +243,4 @@ const AttendingMediaSection = () => {
   );
 };
 
-<<<<<<< HEAD
 export default AttendingMediaSection;
-=======
-export default AttendingMediaSection; 
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-const RegisterInterest = () => {
-=======
 import React, { useState } from "react";
 
 const RegisterInterest = () => {
@@ -17,21 +12,58 @@ const RegisterInterest = () => {
     jobTitle: "",
     jobFunction: "",
     interestedIn: "",
+    exhibitingDetails: "",
+  });
+  const [showSponsorForm, setShowSponsorForm] = useState(false);
+  const [sponsorForm, setSponsorForm] = useState({
+    sponsorName: "",
+    sponsorCompany: "",
+    sponsorType: "",
+    sponsorBudget: "",
+    sponsorEmail: "",
+    sponsorPhone: "",
+    sponsorNotes: "",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    if (name === "interestedIn" && value === "Sponsoring") {
+      setShowSponsorForm(true);
+    } else if (name === "interestedIn") {
+      setShowSponsorForm(false);
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSponsorChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setSponsorForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setSuccess("");
     setError("");
+    if (form.interestedIn === "Sponsoring") {
+      // Don't submit here, let sponsor form handle it
+      setLoading(false);
+      return;
+    }
+    if (form.interestedIn === "Exhibiting" && !form.exhibitingDetails) {
+      setError("Please specify what you are exhibiting.");
+      setLoading(false);
+      return;
+    }
     try {
       const res = await fetch("http://localhost:8080/api/register-interest", {
         method: "POST",
@@ -51,6 +83,7 @@ const RegisterInterest = () => {
         jobTitle: "",
         jobFunction: "",
         interestedIn: "",
+        exhibitingDetails: "",
       });
     } catch (err) {
       setError(
@@ -61,11 +94,72 @@ const RegisterInterest = () => {
     }
   };
 
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
+  const handleSponsorSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess("");
+    setError("");
+    // Validate sponsor form
+    if (
+      !sponsorForm.sponsorName ||
+      !sponsorForm.sponsorCompany ||
+      !sponsorForm.sponsorType ||
+      !sponsorForm.sponsorBudget ||
+      !sponsorForm.sponsorEmail ||
+      !sponsorForm.sponsorPhone
+    ) {
+      setError("Please fill in all required sponsor fields.");
+      setLoading(false);
+      return;
+    }
+    try {
+      const res = await fetch("http://localhost:8080/api/register-sponsor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(sponsorForm),
+      });
+      if (!res.ok) throw new Error("Failed to register sponsor");
+      setSuccess(
+        "Thank you for your sponsorship interest! Our team will contact you soon."
+      );
+      setSponsorForm({
+        sponsorName: "",
+        sponsorCompany: "",
+        sponsorType: "",
+        sponsorBudget: "",
+        sponsorEmail: "",
+        sponsorPhone: "",
+        sponsorNotes: "",
+      });
+      setShowSponsorForm(false);
+      setForm({
+        firstName: "",
+        lastName: "",
+        country: "",
+        email: "",
+        phoneCode: "",
+        phoneNumber: "",
+        companyName: "",
+        jobTitle: "",
+        jobFunction: "",
+        interestedIn: "",
+        exhibitingDetails: "",
+      });
+    } catch (err) {
+      setError(
+        "There was an error submitting your sponsorship. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
+      {/* Spacer to ensure bar is not covered by navbar or layout */}
+      <div className="h-8 w-full"></div>
       {/* Header with gradient background */}
-      <div className="bg-gradient-to-r from-[#64a63a] to-[#b8f337] py-8 text-white text-center">
+      <div className="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] py-8 text-white text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold">
           Register your Interest for Mining Indaba 2026
         </h1>
@@ -93,37 +187,69 @@ const RegisterInterest = () => {
             </p>
             <ul className="list-none space-y-2 mb-8">
               <li className="flex items-center text-gray-700">
-                <img
-                  src="/check-icon.png"
-                  alt="Checkmark"
-                  className="h-4 w-4 mr-2 text-[#64a63a]"
-                />
+                <svg
+                  className="h-5 w-5 mr-2 text-[#2563eb] flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
                 Gain early access to delegate registration
               </li>
               <li className="flex items-center text-gray-700">
-                <img
-                  src="/check-icon.png"
-                  alt="Checkmark"
-                  className="h-4 w-4 mr-2 text-[#64a63a]"
-                />
+                <svg
+                  className="h-5 w-5 mr-2 text-[#2563eb] flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
                 Receive timely updates on speakers, themes, and the official
                 programme
               </li>
               <li className="flex items-center text-gray-700">
-                <img
-                  src="/check-icon.png"
-                  alt="Checkmark"
-                  className="h-4 w-4 mr-2 text-[#64a63a]"
-                />
+                <svg
+                  className="h-5 w-5 mr-2 text-[#2563eb] flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
                 Stay informed on partnership announcements and networking
                 opportunities
               </li>
               <li className="flex items-center text-gray-700">
-                <img
-                  src="/check-icon.png"
-                  alt="Checkmark"
-                  className="h-4 w-4 mr-2 text-[#64a63a]"
-                />
+                <svg
+                  className="h-5 w-5 mr-2 text-[#2563eb] flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
                 Be part of the community advancing African mining and investment
               </li>
             </ul>
@@ -141,164 +267,413 @@ const RegisterInterest = () => {
 
           {/* Right Column - Form */}
           <div className="md:w-1/2 bg-white p-6 rounded-lg shadow-md">
-<<<<<<< HEAD
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label
-                  htmlFor="firstName"
-                  className="block text-sm font-medium text-gray-700"
+            {!showSponsorForm ? (
+              <form onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label
+                      htmlFor="firstName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      First name*
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      value={form.firstName}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="lastName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Last name*
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      value={form.lastName}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="country"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Country*
+                  </label>
+                  <select
+                    id="country"
+                    name="country"
+                    value={form.country}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  >
+                    <option value="">Please Select</option>
+                    <option value="Rwanda">Rwanda</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email*
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="phoneNumber"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Phone number*
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      id="phoneCode"
+                      name="phoneCode"
+                      value={form.phoneCode}
+                      onChange={handleChange}
+                      className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                      required
+                    >
+                      <option value="">Select</option>
+                      <option value="+250">Rwanda (+250)</option>
+                      <option value="+27">South Africa (+27)</option>
+                      <option value="+233">Ghana (+233)</option>
+                      <option value="+234">Nigeria (+234)</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      value={form.phoneNumber}
+                      onChange={handleChange}
+                      placeholder="e.g. 123456789"
+                      className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="companyName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Company name*
+                  </label>
+                  <input
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    value={form.companyName}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="jobTitle"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Job title*
+                  </label>
+                  <input
+                    type="text"
+                    id="jobTitle"
+                    name="jobTitle"
+                    value={form.jobTitle}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="jobFunction"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Job function*
+                  </label>
+                  <select
+                    id="jobFunction"
+                    name="jobFunction"
+                    value={form.jobFunction}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  >
+                    <option value="">Please Select</option>
+                    <option value="Management">Management</option>
+                    <option value="Operations">Operations</option>
+                    <option value="Technical">Technical</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div className="mb-6">
+                  <label
+                    htmlFor="interestedIn"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    I am interested in*
+                  </label>
+                  <select
+                    id="interestedIn"
+                    name="interestedIn"
+                    value={form.interestedIn}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  >
+                    <option value="">Please Select</option>
+                    <option value="Attending">Attending</option>
+                    <option value="Exhibiting">Exhibiting</option>
+                    <option value="Sponsoring">Sponsoring</option>
+                    <option value="Speaking">Speaking</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                {/* Show extra field if Exhibiting is selected */}
+                {form.interestedIn === "Exhibiting" && (
+                  <div className="mb-4">
+                    <label
+                      htmlFor="exhibitingDetails"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      What are you exhibiting?*
+                    </label>
+                    <input
+                      type="text"
+                      id="exhibitingDetails"
+                      name="exhibitingDetails"
+                      value={form.exhibitingDetails}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                      required
+                    />
+                  </div>
+                )}
+
+                {success && (
+                  <div className="mb-4 text-blue-600 font-semibold">
+                    {success}
+                  </div>
+                )}
+                {error && (
+                  <div className="mb-4 text-red-600 font-semibold">{error}</div>
+                )}
+
+                <button
+                  type="submit"
+                  className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-8 py-3 rounded text-base shadow-md uppercase tracking-wide float-right"
+                  disabled={loading}
                 >
-                  First name*
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="lastName"
-                  className="block text-sm font-medium text-gray-700"
+                  {loading ? "Submitting..." : "SUBMIT"}
+                </button>
+                {/* Admin Login Button */}
+                <div className="mt-4 flex justify-end">
+                  <a
+                    href="/adminlogin"
+                    className="text-sm text-blue-600 hover:underline border border-blue-600 rounded px-3 py-1 ml-2"
+                  >
+                    Admin Login
+                  </a>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={handleSponsorSubmit}>
+                <h3 className="text-2xl font-bold mb-4 text-center text-[#2563eb]">
+                  Sponsorship Registration
+                </h3>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorName"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Full Name*
+                  </label>
+                  <input
+                    type="text"
+                    id="sponsorName"
+                    name="sponsorName"
+                    value={sponsorForm.sponsorName}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorCompany"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Company Name*
+                  </label>
+                  <input
+                    type="text"
+                    id="sponsorCompany"
+                    name="sponsorCompany"
+                    value={sponsorForm.sponsorCompany}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorType"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Sponsorship Type*
+                  </label>
+                  <select
+                    id="sponsorType"
+                    name="sponsorType"
+                    value={sponsorForm.sponsorType}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  >
+                    <option value="">Please Select</option>
+                    <option value="Platinum">Platinum</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Bronze">Bronze</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorBudget"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Estimated Budget (USD)*
+                  </label>
+                  <input
+                    type="number"
+                    id="sponsorBudget"
+                    name="sponsorBudget"
+                    value={sponsorForm.sponsorBudget}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorEmail"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email*
+                  </label>
+                  <input
+                    type="email"
+                    id="sponsorEmail"
+                    name="sponsorEmail"
+                    value={sponsorForm.sponsorEmail}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorPhone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Phone Number*
+                  </label>
+                  <input
+                    type="text"
+                    id="sponsorPhone"
+                    name="sponsorPhone"
+                    value={sponsorForm.sponsorPhone}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorNotes"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Additional Notes
+                  </label>
+                  <textarea
+                    id="sponsorNotes"
+                    name="sponsorNotes"
+                    value={sponsorForm.sponsorNotes}
+                    onChange={handleSponsorChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    rows={3}
+                  />
+                </div>
+                {success && (
+                  <div className="mb-4 text-blue-600 font-semibold">
+                    {success}
+                  </div>
+                )}
+                {error && (
+                  <div className="mb-4 text-red-600 font-semibold">{error}</div>
+                )}
+                <button
+                  type="submit"
+                  className="bg-[#2563eb] hover:bg-[#1e40af] text-white font-bold px-8 py-3 rounded text-base shadow-md uppercase tracking-wide float-right"
+                  disabled={loading}
                 >
-                  Last name*
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                />
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="country"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Country*
-              </label>
-              <select
-                id="country"
-                name="country"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              >
-                <option>Please Select</option>
-                {/* Add country options here */}
-              </select>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email*
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="phoneNumber"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Phone number*
-              </label>
-              <div className="flex gap-2">
-                <select
-                  id="phoneCode"
-                  name="phoneCode"
-                  className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                >
-                  <option>Rwanda</option>
-                  {/* Add other country codes */}
-                </select>
-                <input
-                  type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
-                  placeholder="+250"
-                  className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                />
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="companyName"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Company name*
-              </label>
-              <input
-                type="text"
-                id="companyName"
-                name="companyName"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="jobTitle"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Job title*
-              </label>
-              <input
-                type="text"
-                id="jobTitle"
-                name="jobTitle"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              />
-            </div>
-
-            <div className="mb-4">
-              <label
-                htmlFor="jobFunction"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Job function*
-              </label>
-              <select
-                id="jobFunction"
-                name="jobFunction"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              >
-                <option>Please Select</option>
-                {/* Add job function options here */}
-              </select>
-            </div>
-
-            <div className="mb-6">
-              <label
-                htmlFor="interestedIn"
-                className="block text-sm font-medium text-gray-700"
-              >
-                I am interested in*
-              </label>
-              <select
-                id="interestedIn"
-                name="interestedIn"
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-              >
-                <option>Please Select</option>
-                {/* Add interested in options here */}
-              </select>
-            </div>
-
-            <p className="text-xs text-gray-600 mb-6">
+                  {loading ? "Submitting..." : "SUBMIT SPONSOR FORM"}
+                </button>
+                <div className="mt-4 flex justify-end">
+                  <button
+                    type="button"
+                    onClick={() => setShowSponsorForm(false)}
+                    className="text-sm text-blue-600 hover:underline border border-blue-600 rounded px-3 py-1 ml-2"
+                  >
+                    Back to Main Form
+                  </button>
+                </div>
+              </form>
+            )}
+            <p className="text-xs text-gray-600 mt-6">
               Hyve Group takes your privacy seriously – you can read more about
               this in our{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 Privacy Notice
               </a>
               . We use your personal information to provide the services you
@@ -308,247 +683,15 @@ const RegisterInterest = () => {
               information and publications which we think would be of interest
               to you. You have the right to object to this processing and, if
               you wish to do so, you can{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 update your preferences here
               </a>
               .{" "}
-              <a href="#" className="text-[#64a63a] hover:underline">
+              <a href="#" className="text-[#2563eb] hover:underline">
                 View a list of the events organised by Hyve Group here
               </a>
               .
             </p>
-
-            <button className="bg-[#64a63a] hover:bg-[#5cb030] text-white font-bold px-8 py-3 rounded text-base shadow-md uppercase tracking-wide float-right">
-              SUBMIT
-            </button>
-=======
-            <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    First name*
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={form.firstName}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Last name*
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={form.lastName}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Country*
-                </label>
-                <select
-                  id="country"
-                  name="country"
-                  value={form.country}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                  required
-                >
-                  <option value="">Please Select</option>
-                  <option value="Rwanda">Rwanda</option>
-                  <option value="South Africa">South Africa</option>
-                  <option value="Ghana">Ghana</option>
-                  <option value="Nigeria">Nigeria</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email*
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                  required
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="phoneNumber"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Phone number*
-                </label>
-                <div className="flex gap-2">
-                  <select
-                    id="phoneCode"
-                    name="phoneCode"
-                    value={form.phoneCode}
-                    onChange={handleChange}
-                    className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                    required
-                  >
-                    <option value="">Select</option>
-                    <option value="+250">Rwanda (+250)</option>
-                    <option value="+27">South Africa (+27)</option>
-                    <option value="+233">Ghana (+233)</option>
-                    <option value="+234">Nigeria (+234)</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <input
-                    type="text"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    value={form.phoneNumber}
-                    onChange={handleChange}
-                    placeholder="e.g. 123456789"
-                    className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="companyName"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Company name*
-                </label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  value={form.companyName}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                  required
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="jobTitle"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Job title*
-                </label>
-                <input
-                  type="text"
-                  id="jobTitle"
-                  name="jobTitle"
-                  value={form.jobTitle}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                  required
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="jobFunction"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Job function*
-                </label>
-                <select
-                  id="jobFunction"
-                  name="jobFunction"
-                  value={form.jobFunction}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                  required
-                >
-                  <option value="">Please Select</option>
-                  <option value="Management">Management</option>
-                  <option value="Operations">Operations</option>
-                  <option value="Technical">Technical</option>
-                  <option value="Finance">Finance</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="interestedIn"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  I am interested in*
-                </label>
-                <select
-                  id="interestedIn"
-                  name="interestedIn"
-                  value={form.interestedIn}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
-                  required
-                >
-                  <option value="">Please Select</option>
-                  <option value="Attending">Attending</option>
-                  <option value="Exhibiting">Exhibiting</option>
-                  <option value="Sponsoring">Sponsoring</option>
-                  <option value="Speaking">Speaking</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              {success && (
-                <div className="mb-4 text-green-600 font-semibold">
-                  {success}
-                </div>
-              )}
-              {error && (
-                <div className="mb-4 text-red-600 font-semibold">{error}</div>
-              )}
-
-              <button
-                type="submit"
-                className="bg-[#64a63a] hover:bg-[#5cb030] text-white font-bold px-8 py-3 rounded text-base shadow-md uppercase tracking-wide float-right"
-                disabled={loading}
-              >
-                {loading ? "Submitting..." : "SUBMIT"}
-              </button>
-              {/* Admin Login Button */}
-              <div className="mt-4 flex justify-end">
-                <a
-                  href="/adminlogin"
-                  className="text-sm text-blue-600 hover:underline border border-blue-600 rounded px-3 py-1 ml-2"
-                >
-                  Admin Login
-                </a>
-              </div>
-            </form>
->>>>>>> c7593b0773fdf9c1ec2f23aecd9991d801ee29dd
           </div>
         </div>
       </div>
