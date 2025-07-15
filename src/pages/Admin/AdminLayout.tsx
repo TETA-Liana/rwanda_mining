@@ -1,9 +1,12 @@
 import React from 'react';
-import { NavLink, useNavigate, Routes, Route } from 'react-router-dom';
-import Profile from './Profile';
+import { NavLink, useNavigate, Outlet } from 'react-router-dom';
 
 const navItems = [
   { name: 'Dashboard', path: '/admin/dashboard', icon: '🏠' },
+  { name: 'Events', path: '/admin/events', icon: '📅' },
+  { name: 'Sponsors', path: '/admin/sponsors', icon: '🤝' },
+  { name: 'Exhibitors', path: '/admin/exhibitors', icon: '🏢' },
+  { name: 'Requests', path: '/admin/requests', icon: '📨' },
   { name: 'Highlights', path: '/admin/highlights', icon: '✨' },
   { name: 'Articles', path: '/admin/articles', icon: '📰' },
   { name: 'Updates', path: '/admin/updates', icon: '🔔' },
@@ -11,7 +14,7 @@ const navItems = [
   { name: 'Settings', path: '/admin/settings', icon: '⚙️' },
 ];
 
-const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const AdminLayout: React.FC = () => {
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const email = localStorage.getItem('adminEmail') || sessionStorage.getItem('adminEmail') || 'admin@example.com';
@@ -78,11 +81,7 @@ const AdminLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </header>
         <main className="flex-1 p-8 bg-gray-100">
-          <Routes>
-            <Route path="/profile" element={<Profile />} />
-            {/* Render children for other routes */}
-            <Route path="*" element={children} />
-          </Routes>
+          <Outlet />
         </main>
       </div>
     </div>

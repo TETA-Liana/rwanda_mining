@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AdminLayout from './AdminLayout';
 
 interface Article {
   id: number;
@@ -169,85 +168,83 @@ const ArticlesManager = () => {
   };
 
   return (
-    <AdminLayout>
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 text-blue-900">Add / Edit Article</h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block font-semibold text-base mb-2">Article Image<span className="text-red-500">*</span></label>
-              <input type="file" name="image" accept="image/*" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-              {imageFile && <div className="text-sm text-gray-600 mt-1">Selected: {imageFile.name}</div>}
-            </div>
-            <div>
-              <label className="block font-semibold text-base mb-2">Title<span className="text-red-500">*</span></label>
-              <input type="text" name="title" value={form.title} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block font-semibold text-base mb-2">Description<span className="text-red-500">*</span></label>
-              <textarea name="description" value={form.description} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div>
-              <label className="block font-semibold text-base mb-2">Release Date<span className="text-red-500">*</span></label>
-              <input type="date" name="releaseDate" value={form.releaseDate} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div>
-              <label className="block font-semibold text-base mb-2">Link to Full Article<span className="text-red-500">*</span></label>
-              <input type="url" name="link" value={form.link} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div className="md:col-span-2 flex justify-end">
-              <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
-                {editingId !== null ? 'Update Article' : 'Add Article'}
-              </button>
-            </div>
-            {error && <div className="md:col-span-2 text-red-600 text-sm font-semibold mt-2">{error}</div>}
-          </form>
-        </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-xl font-semibold mb-4 text-blue-900">Existing Articles</h3>
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-left">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="py-2 px-4 font-semibold">ID</th>
-                  <th className="py-2 px-4 font-semibold">Image</th>
-                  <th className="py-2 px-4 font-semibold">Title</th>
-                  <th className="py-2 px-4 font-semibold">Description</th>
-                  <th className="py-2 px-4 font-semibold">Release Date</th>
-                  <th className="py-2 px-4 font-semibold">Link</th>
-                  <th className="py-2 px-4 font-semibold">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {articles.length === 0 && (
-                  <tr><td colSpan={7} className="text-center text-gray-500 py-4">No articles yet.</td></tr>
-                )}
-                {articles.map(a => (
-                  <tr key={a.id} className="border-b">
-                    <td className="py-2 px-4">{a.id}</td>
-                    <td className="py-2 px-4">
-                      {a.imagePath && (
-                        <img src={`${API_URL}/image/${encodeURIComponent(a.imagePath)}`} alt={a.title} className="w-16 h-16 object-contain bg-white rounded" />
-                      )}
-                    </td>
-                    <td className="py-2 px-4">{a.title}</td>
-                    <td className="py-2 px-4">{a.description}</td>
-                    <td className="py-2 px-4">{a.releaseDate}</td>
-                    <td className="py-2 px-4">
-                      <a href={a.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">View</a>
-                    </td>
-                    <td className="py-2 px-4">
-                      <button onClick={() => handleEdit(a.id)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2">Edit</button>
-                      <button onClick={() => handleDelete(a.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 className="text-xl font-bold mb-4 text-blue-900">Add / Edit Article</h2>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-semibold text-base mb-2">Article Image<span className="text-red-500">*</span></label>
+            <input type="file" name="image" accept="image/*" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+            {imageFile && <div className="text-sm text-gray-600 mt-1">Selected: {imageFile.name}</div>}
           </div>
+          <div>
+            <label className="block font-semibold text-base mb-2">Title<span className="text-red-500">*</span></label>
+            <input type="text" name="title" value={form.title} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block font-semibold text-base mb-2">Description<span className="text-red-500">*</span></label>
+            <textarea name="description" value={form.description} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+          </div>
+          <div>
+            <label className="block font-semibold text-base mb-2">Release Date<span className="text-red-500">*</span></label>
+            <input type="date" name="releaseDate" value={form.releaseDate} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+          </div>
+          <div>
+            <label className="block font-semibold text-base mb-2">Link to Full Article<span className="text-red-500">*</span></label>
+            <input type="url" name="link" value={form.link} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+          </div>
+          <div className="md:col-span-2 flex justify-end">
+            <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
+              {editingId !== null ? 'Update Article' : 'Add Article'}
+            </button>
+          </div>
+          {error && <div className="md:col-span-2 text-red-600 text-sm font-semibold mt-2">{error}</div>}
+        </form>
+      </div>
+      <div className="bg-white rounded-lg shadow p-6">
+        <h3 className="text-xl font-semibold mb-4 text-blue-900">Existing Articles</h3>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="py-2 px-4 font-semibold">ID</th>
+                <th className="py-2 px-4 font-semibold">Image</th>
+                <th className="py-2 px-4 font-semibold">Title</th>
+                <th className="py-2 px-4 font-semibold">Description</th>
+                <th className="py-2 px-4 font-semibold">Release Date</th>
+                <th className="py-2 px-4 font-semibold">Link</th>
+                <th className="py-2 px-4 font-semibold">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {articles.length === 0 && (
+                <tr><td colSpan={7} className="text-center text-gray-500 py-4">No articles yet.</td></tr>
+              )}
+              {articles.map(a => (
+                <tr key={a.id} className="border-b">
+                  <td className="py-2 px-4">{a.id}</td>
+                  <td className="py-2 px-4">
+                    {a.imagePath && (
+                      <img src={`${API_URL}/image/${encodeURIComponent(a.imagePath)}`} alt={a.title} className="w-16 h-16 object-contain bg-white rounded" />
+                    )}
+                  </td>
+                  <td className="py-2 px-4">{a.title}</td>
+                  <td className="py-2 px-4">{a.description}</td>
+                  <td className="py-2 px-4">{a.releaseDate}</td>
+                  <td className="py-2 px-4">
+                    <a href={a.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">View</a>
+                  </td>
+                  <td className="py-2 px-4">
+                    <button onClick={() => handleEdit(a.id)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2">Edit</button>
+                    <button onClick={() => handleDelete(a.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </AdminLayout>
+    </div>
   );
 };
 

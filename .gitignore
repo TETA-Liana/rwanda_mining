@@ -45,3 +45,6 @@ build/
 
 # other
 *.swp
+
+  uploads/
+  backend/mining/uploads/

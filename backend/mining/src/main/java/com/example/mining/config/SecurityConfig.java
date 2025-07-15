@@ -24,7 +24,11 @@ public class SecurityConfig {
                     "/api/testimonials/**",
                     "/api/updates/**",
                     "/api/articles/**",
-                    "/api/highlights/**"
+                    "/api/highlights/**",
+                    "/api/events/**",
+                    "/api/sponsors/**",
+                    "/api/sponsors",
+                    "/api/**" // TEMP: permit all /api for debugging
                 ).permitAll()
                 .anyRequest().authenticated()
             )

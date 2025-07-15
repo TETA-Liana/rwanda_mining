@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AdminLayout from './AdminLayout';
 
 interface Update {
   id: number;
@@ -221,108 +220,106 @@ const UpdatesManager = () => {
   };
 
   return (
-    <AdminLayout>
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-bold mb-4 text-blue-900">Add / Edit Update</h2>
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block font-semibold text-base mb-2">Update Image</label>
-              <input type="file" name="image" accept="image/*" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-              {form.imagePath && (
-                <div className="text-sm text-gray-600 mt-1">
-                  {imageFile ? `New file: ${imageFile.name}` : `Current: ${form.imagePath}`}
-                </div>
-              )}
-            </div>
-            <div>
-              <label className="block font-semibold text-base mb-2">Title<span className="text-red-500">*</span></label>
-              <input type="text" name="title" value={form.title} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block font-semibold text-base mb-2">Description<span className="text-red-500">*</span></label>
-              <textarea name="description" value={form.description} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            </div>
-            <div className="md:col-span-2">
-              <label className="block font-semibold text-base mb-2">Update Report (If any)</label>
-              <input type="file" name="report" accept="application/pdf" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-              {form.reportPath && (
-                <div className="text-sm text-gray-600 mt-1">
-                  {reportFile ? `New file: ${reportFile.name}` : `Current: ${form.reportPath}`}
-                </div>
-              )}
-            </div>
-            <div className="md:col-span-2 flex justify-end">
-              <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
-                {editingId !== null ? 'Update' : 'Add Update'}
-              </button>
-            </div>
-            {error && <div className="md:col-span-2 text-red-600 text-sm font-semibold mt-2">{error}</div>}
-          </form>
-        </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-xl font-semibold mb-4 text-blue-900">Existing Updates</h3>
-          {loading ? (
-            <div className="text-center text-gray-500 py-4">Loading...</div>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full text-left">
-                <thead>
-                  <tr className="bg-gray-100">
-                    <th className="py-2 px-4 font-semibold">ID</th>
-                    <th className="py-2 px-4 font-semibold">Image</th>
-                    <th className="py-2 px-4 font-semibold">Title</th>
-                    <th className="py-2 px-4 font-semibold">Description</th>
-                    <th className="py-2 px-4 font-semibold">Report</th>
-                    <th className="py-2 px-4 font-semibold">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {updates.length === 0 && (
-                    <tr><td colSpan={6} className="text-center text-gray-500 py-4">No updates yet.</td></tr>
-                  )}
-                  {updates.map(u => (
-                    <tr key={u.id} className="border-b">
-                      <td className="py-2 px-4">{u.id}</td>
-                      <td className="py-2 px-4">
-                        {u.imagePath && getImageUrl(u.imagePath) && (
-                          <img 
-                            src={getImageUrl(u.imagePath)!} 
-                            alt={u.title}
-                            className="w-16 h-16 object-contain bg-white rounded"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                        )}
-                      </td>
-                      <td className="py-2 px-4 font-bold text-blue-900">{u.title}</td>
-                      <td className="py-2 px-4 max-w-xs truncate">{u.description}</td>
-                      <td className="py-2 px-4">
-                        {u.reportPath && getReportUrl(u.reportPath) && (
-                          <a 
-                            href={getReportUrl(u.reportPath)} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 underline"
-                          >
-                            📄 Download PDF
-                          </a>
-                        )}
-                      </td>
-                      <td className="py-2 px-4">
-                        <button onClick={() => handleEdit(u.id)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2">Edit</button>
-                        <button onClick={() => handleDelete(u.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <h2 className="text-xl font-bold mb-4 text-blue-900">Add / Edit Update</h2>
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-semibold text-base mb-2">Update Image</label>
+            <input type="file" name="image" accept="image/*" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+            {form.imagePath && (
+              <div className="text-sm text-gray-600 mt-1">
+                {imageFile ? `New file: ${imageFile.name}` : `Current: ${form.imagePath}`}
+              </div>
+            )}
+          </div>
+          <div>
+            <label className="block font-semibold text-base mb-2">Title<span className="text-red-500">*</span></label>
+            <input type="text" name="title" value={form.title} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block font-semibold text-base mb-2">Description<span className="text-red-500">*</span></label>
+            <textarea name="description" value={form.description} onChange={handleInputChange} required className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block font-semibold text-base mb-2">Update Report (If any)</label>
+            <input type="file" name="report" accept="application/pdf" onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
+            {form.reportPath && (
+              <div className="text-sm text-gray-600 mt-1">
+                {reportFile ? `New file: ${reportFile.name}` : `Current: ${form.reportPath}`}
+              </div>
+            )}
+          </div>
+          <div className="md:col-span-2 flex justify-end">
+            <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
+              {editingId !== null ? 'Update' : 'Add Update'}
+            </button>
+          </div>
+          {error && <div className="md:col-span-2 text-red-600 text-sm font-semibold mt-2">{error}</div>}
+        </form>
       </div>
-    </AdminLayout>
+      <div className="bg-white rounded-lg shadow p-6">
+        <h3 className="text-xl font-semibold mb-4 text-blue-900">Existing Updates</h3>
+        {loading ? (
+          <div className="text-center text-gray-500 py-4">Loading...</div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-left">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="py-2 px-4 font-semibold">ID</th>
+                  <th className="py-2 px-4 font-semibold">Image</th>
+                  <th className="py-2 px-4 font-semibold">Title</th>
+                  <th className="py-2 px-4 font-semibold">Description</th>
+                  <th className="py-2 px-4 font-semibold">Report</th>
+                  <th className="py-2 px-4 font-semibold">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {updates.length === 0 && (
+                  <tr><td colSpan={6} className="text-center text-gray-500 py-4">No updates yet.</td></tr>
+                )}
+                {updates.map(u => (
+                  <tr key={u.id} className="border-b">
+                    <td className="py-2 px-4">{u.id}</td>
+                    <td className="py-2 px-4">
+                      {u.imagePath && getImageUrl(u.imagePath) && (
+                        <img 
+                          src={getImageUrl(u.imagePath)!} 
+                          alt={u.title}
+                          className="w-16 h-16 object-contain bg-white rounded"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      )}
+                    </td>
+                    <td className="py-2 px-4 font-bold text-blue-900">{u.title}</td>
+                    <td className="py-2 px-4 max-w-xs truncate">{u.description}</td>
+                    <td className="py-2 px-4">
+                      {u.reportPath && getReportUrl(u.reportPath) && (
+                        <a 
+                          href={getReportUrl(u.reportPath)} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:text-blue-800 underline"
+                        >
+                          📄 Download PDF
+                        </a>
+                      )}
+                    </td>
+                    <td className="py-2 px-4">
+                      <button onClick={() => handleEdit(u.id)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2">Edit</button>
+                      <button onClick={() => handleDelete(u.id)} className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded">Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

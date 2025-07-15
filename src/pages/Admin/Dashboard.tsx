@@ -1,11 +1,28 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import AdminLayout from './AdminLayout';
 
 const Dashboard = () => {
   const navigate = useNavigate();
   return (
-    <AdminLayout>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/events')}>
+          <div className="text-2xl text-blue-700 mb-2">📅</div>
+          <div className="font-bold text-lg">Events</div>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/sponsors')}>
+          <div className="text-2xl text-blue-700 mb-2">🤝</div>
+          <div className="font-bold text-lg">Sponsors</div>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/exhibitors')}>
+          <div className="text-2xl text-blue-700 mb-2">🏢</div>
+          <div className="font-bold text-lg">Exhibitors</div>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/requests')}>
+          <div className="text-2xl text-blue-700 mb-2">📨</div>
+          <div className="font-bold text-lg">Requests</div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
           <div className="text-2xl text-yellow-600 mb-2">⏰</div>
@@ -72,7 +89,7 @@ const Dashboard = () => {
       <div className="mt-4">
         <Link to="/admin/profile" className="text-blue-700 underline">Go to Profile</Link>
       </div>
-    </AdminLayout>
+    </>
   );
 };
 

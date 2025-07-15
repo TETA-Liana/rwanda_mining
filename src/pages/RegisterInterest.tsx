@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const RegisterInterest = () => {
   const [form, setForm] = useState({
@@ -11,6 +11,7 @@ const RegisterInterest = () => {
     companyName: "",
     jobTitle: "",
     jobFunction: "",
+    event:"",
     interestedIn: "",
     exhibitingDetails: "",
   });
@@ -21,12 +22,25 @@ const RegisterInterest = () => {
     sponsorType: "",
     sponsorBudget: "",
     sponsorEmail: "",
+    sponsorPhoneCode: "",
     sponsorPhone: "",
     sponsorNotes: "",
+    event:"",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [events, setEvents] = useState<{ id: number; title: string; date: string }[]>([]);
+
+  useEffect(() => {
+    fetch("/api/events")
+      .then((res) => res.json())
+      .then((data) => {
+        // Only keep id, title, date
+        setEvents(data.map((e: any) => ({ id: e.id, title: e.title, date: e.date })));
+      })
+      .catch(() => setEvents([]));
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -82,6 +96,7 @@ const RegisterInterest = () => {
         companyName: "",
         jobTitle: "",
         jobFunction: "",
+        event:"",
         interestedIn: "",
         exhibitingDetails: "",
       });
@@ -106,7 +121,8 @@ const RegisterInterest = () => {
       !sponsorForm.sponsorType ||
       !sponsorForm.sponsorBudget ||
       !sponsorForm.sponsorEmail ||
-      !sponsorForm.sponsorPhone
+      !sponsorForm.sponsorPhone ||
+      !sponsorForm.event
     ) {
       setError("Please fill in all required sponsor fields.");
       setLoading(false);
@@ -128,8 +144,10 @@ const RegisterInterest = () => {
         sponsorType: "",
         sponsorBudget: "",
         sponsorEmail: "",
+        sponsorPhoneCode: "",
         sponsorPhone: "",
         sponsorNotes: "",
+        event:"",
       });
       setShowSponsorForm(false);
       setForm({
@@ -142,6 +160,7 @@ const RegisterInterest = () => {
         companyName: "",
         jobTitle: "",
         jobFunction: "",
+        event:"",
         interestedIn: "",
         exhibitingDetails: "",
       });
@@ -444,6 +463,29 @@ const RegisterInterest = () => {
                   </select>
                 </div>
 
+                
+                <div className="mb-4">
+                  <label
+                    htmlFor="sponsorType"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Event*
+                  </label>
+                  <select
+                    id="event"
+                    name="event"
+                    value={form.event}
+                    onChange={handleChange}
+                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    required
+                  >
+                    <option value="">Please Select</option>
+                    {events.map((ev) => (
+                      <option key={ev.id} value={ev.title}>{`${ev.title} (${ev.date})`}</option>
+                    ))}
+                  </select>
+                </div>
+
                 <div className="mb-6">
                   <label
                     htmlFor="interestedIn"
@@ -463,8 +505,7 @@ const RegisterInterest = () => {
                     <option value="Attending">Attending</option>
                     <option value="Exhibiting">Exhibiting</option>
                     <option value="Sponsoring">Sponsoring</option>
-                    <option value="Speaking">Speaking</option>
-                    <option value="Other">Other</option>
+                    
                   </select>
                 </div>
 
@@ -559,22 +600,20 @@ const RegisterInterest = () => {
                     htmlFor="sponsorType"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Sponsorship Type*
+                    Event*
                   </label>
                   <select
-                    id="sponsorType"
-                    name="sponsorType"
-                    value={sponsorForm.sponsorType}
+                    id="event"
+                    name="event"
+                    value={sponsorForm.event}
                     onChange={handleSponsorChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
                     required
                   >
                     <option value="">Please Select</option>
-                    <option value="Platinum">Platinum</option>
-                    <option value="Gold">Gold</option>
-                    <option value="Silver">Silver</option>
-                    <option value="Bronze">Bronze</option>
-                    <option value="Other">Other</option>
+                    {events.map((ev) => (
+                      <option key={ev.id} value={ev.title}>{`${ev.title} (${ev.date})`}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="mb-4">
@@ -618,15 +657,33 @@ const RegisterInterest = () => {
                   >
                     Phone Number*
                   </label>
-                  <input
+                  <div className="flex gap-2">
+                    <select
+                      id="phoneCode"
+                      name="phoneCode"
+                      value={sponsorForm.sponsorPhoneCode}
+                      onChange={handleChange}
+                      className="mt-1 block w-1/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                      required
+                    >
+                      <option value="">Select</option>
+                      <option value="+250">Rwanda (+250)</option>
+                      <option value="+27">South Africa (+27)</option>
+                      <option value="+233">Ghana (+233)</option>
+                      <option value="+234">Nigeria (+234)</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <input
                     type="text"
                     id="sponsorPhone"
                     name="sponsorPhone"
                     value={sponsorForm.sponsorPhone}
                     onChange={handleSponsorChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
+                    className="mt-1 block w-2/3 border border-gray-300 rounded-md shadow-sm p-2 bg-gray-200"
                     required
                   />
+                  </div>
+                  
                 </div>
                 <div className="mb-4">
                   <label
