@@ -89,7 +89,7 @@ const SundayHighlights = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <div className="h-40 flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-r from-[#64a63a] to-[#d4ed31]">
+      <div className="h-40 flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-r from-[#2563eb] to-[#93c5fd]">
         Sunday Highlights
       </div>
 
@@ -97,31 +97,31 @@ const SundayHighlights = () => {
       <div className="flex justify-center space-x-4 py-8 bg-white mb-8">
         <Link
           to="/about/highlights/sunday"
-          className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold py-2 px-4 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           SUNDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/monday"
-          className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold py-2 px-4 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           MONDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/tuesday"
-          className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold py-2 px-4 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           TUESDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/wednesday"
-          className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold py-2 px-4 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           WEDNESDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/thursday"
-          className="text-sm bg-[#d4ed31] text-black font-bold py-2 px-4 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold py-2 px-4 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           THURSDAY HIGHLIGHTS
         </Link>
@@ -131,7 +131,7 @@ const SundayHighlights = () => {
       <div className="text-white pb-12 mx-10 rounded-lg">
         <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
           {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px]">
+          <div className="w-full md:w-1/2 mb-8 bg-[#2563eb] rounded-l-lg p-5 h-[350px]">
             <h2 className="text-3xl font-bold mb-4 mt-12">Sunday Highlights</h2>
             <p className="text-md leading-relaxed mb-8">
               The Ministerial Symposium began with a strong foundation of
@@ -139,7 +139,7 @@ const SundayHighlights = () => {
               in joining us from tomorrow? It's not too late! Register now and
               secure your seat.
             </p>
-            <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">
+            <button className="bg-[#93c5fd] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#93c5fd] transition duration-300">
               REGISTER INTEREST FOR 2026
             </button>
           </div>
@@ -326,7 +326,7 @@ const SundayHighlights = () => {
           <div className="flex items-center justify-center gap-8">
             <button
               onClick={prevSlide}
-              className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent"
+              className="p-2 rounded-full text-[#2563eb] hover:text-[#3b82f6] focus:outline-none bg-transparent"
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
@@ -346,7 +346,7 @@ const SundayHighlights = () => {
             </div>
             <button
               onClick={nextSlide}
-              className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent"
+              className="p-2 rounded-full text-[#2563eb] hover:text-[#3b82f6] focus:outline-none bg-transparent"
             >
               <ChevronRightIcon className="h-6 w-6" />
             </button>
@@ -360,8 +360,8 @@ const SundayHighlights = () => {
                 aria-label={`Go to slide ${index + 1}`}
               >
                 <div
-                  className={`h-3 w-3 rounded-full border-2 border-[#5cb030] ${
-                    currentIndex === index ? "bg-[#5cb030]" : "bg-transparent"
+                  className={`h-3 w-3 rounded-full border-2 border-[#2563eb] ${
+                    currentIndex === index ? "bg-[#2563eb]" : "bg-transparent"
                   }`}
                 ></div>
               </button>
@@ -500,32 +500,10 @@ const SundayHighlights = () => {
             </div>
           </div>
           <div className="text-center mt-12">
-            <button className="bg-[#64a63a] text-white font-bold py-3 px-8 rounded hover:bg-[#55952c] transition duration-300">
+            <button className="bg-[#3b82f6] text-white font-bold py-3 px-8 rounded transition duration-300">
               VIEW AGENDA
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* Join Us Section */}
-      <div
-        className="py-16 text-white text-center"
-        style={{ background: "linear-gradient(to bottom, #5cb030, #d4ed31)" }}
-      >
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">
-            Join Us at Mining Indaba 2026
-          </h2>
-          <p className="text-sm leading-relaxed mb-8">
-            The premier meeting place for African and global mining leaders. It
-            is all set to be an unmissable experience, shaping the future of
-            African mining.
-            <br /> Register your interest today and stay ahead in this dynamic
-            industry!
-          </p>
-          <button className="bg-[#55952c] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">
-            REGISTER INTEREST
-          </button>
         </div>
       </div>
 

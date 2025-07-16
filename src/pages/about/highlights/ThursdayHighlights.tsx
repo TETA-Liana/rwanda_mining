@@ -87,7 +87,7 @@ const ThursdayHighlights = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <div className="h-40 flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-r from-[#64a63a] to-[#d4ed31]">
+      <div className="h-40 flex items-center justify-center text-white text-4xl font-bold bg-gradient-to-r from-[#2563eb] to-[#93c5fd]">
         Thursday Highlights
       </div>
 
@@ -95,31 +95,31 @@ const ThursdayHighlights = () => {
       <div className="flex justify-center space-x-4 bt-8 bg-white my-8">
         <Link
           to="/about/highlights/sunday"
-          className="text-sm bg-[#d4ed31] text-black font-bold p-2 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold p-2 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           SUNDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/monday"
-          className="text-sm bg-[#d4ed31] text-black font-bold p-2 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold p-2 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           MONDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/tuesday"
-          className="text-sm bg-[#d4ed31] text-black font-bold p-2 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold p-2 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           TUESDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/wednesday"
-          className="text-sm bg-[#d4ed31] text-black font-bold p-2 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold p-2 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           WEDNESDAY HIGHLIGHTS
         </Link>
         <Link
           to="/about/highlights/thursday"
-          className="text-sm bg-[#d4ed31] text-black font-bold p-2 rounded hover:bg-[#d4ed31] hover:text-black transition duration-300"
+          className="text-sm bg-[#93c5fd] text-black font-bold p-2 rounded hover:bg-[#93c5fd] hover:text-black transition duration-300"
         >
           THURSDAY HIGHLIGHTS
         </Link>
@@ -129,7 +129,7 @@ const ThursdayHighlights = () => {
       <div className="text-white py-12 mx-5 rounded-lg">
         <div className="container mx-auto gap-0 flex flex-wrap items-center -mx-4">
           {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px]">
+          <div className="w-full md:w-1/2 mb-8 bg-[#2563eb] rounded-l-lg p-5 h-[350px]">
             <h2 className="text-2xl font-bold mb-4">
               Highlights & Takeaways from Thursday at Mining Indaba 2025
             </h2>
@@ -144,7 +144,7 @@ const ThursdayHighlights = () => {
               forward-thinking note, emphasising talent development and
               sustainable growth in African mining.
             </p>
-            <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">
+            <button className="bg-[#93c5fd] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#93c5fd] transition duration-300">
               REGISTER INTEREST FOR 2026
             </button>
           </div>
@@ -268,7 +268,7 @@ const ThursdayHighlights = () => {
           <div className="flex items-center justify-center gap-8">
             <button
               onClick={prevSlide}
-              className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent"
+              className="p-2 rounded-full text-[#2563eb] hover:text-[#3b82f6] focus:outline-none bg-transparent"
             >
               <ChevronLeftIcon className="h-6 w-6" />
             </button>
@@ -288,7 +288,7 @@ const ThursdayHighlights = () => {
             </div>
             <button
               onClick={nextSlide}
-              className="p-2 rounded-full text-[#5cb030] hover:text-[#55952c] focus:outline-none bg-transparent"
+              className="p-2 rounded-full text-[#2563eb] hover:text-[#3b82f6] focus:outline-none bg-transparent"
             >
               <ChevronRightIcon className="h-6 w-6" />
             </button>
@@ -302,8 +302,8 @@ const ThursdayHighlights = () => {
                 aria-label={`Go to slide ${index + 1}`}
               >
                 <div
-                  className={`h-3 w-3 rounded-full border-2 border-[#5cb030] ${
-                    currentIndex === index ? "bg-[#5cb030]" : "bg-transparent"
+                  className={`h-3 w-3 rounded-full border-2 border-[#2563eb] ${
+                    currentIndex === index ? "bg-[#2563eb]" : "bg-transparent"
                   }`}
                 ></div>
               </button>
@@ -315,7 +315,7 @@ const ThursdayHighlights = () => {
       <div className="text-white py-12 mx-5 rounded-lg">
         <div className="container mx-auto px-4 flex flex-wrap items-center -mx-4">
           {/* Left Column: Text and Button */}
-          <div className="w-full md:w-1/2 mb-8 bg-[#64a63a] rounded-l-lg p-5 h-[350px] py-18">
+          <div className="w-full md:w-1/2 mb-8 bg-[#2563eb] rounded-l-lg p-5 h-[350px] py-18">
             <h2 className="text-2xl font-bold mb-4">
               Celebrating Our Incredible Sponsors and Exhibitors
             </h2>
@@ -325,10 +325,10 @@ const ThursdayHighlights = () => {
               Click below to discover the line-up.
             </p>
             <div className="flex space-x-4">
-              <button className="bg-white text-[#55952c] font-bold p-2 text-xs rounded transition duration-300">
+              <button className="bg-white text-[#3b82f6] font-bold p-2 text-xs rounded transition duration-300">
                 VIEW EXHIBITORS
               </button>
-              <button className="bg-[#d4ed31] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#d4ed31] transition duration-300">
+              <button className="bg-[#93c5fd] text-gray-800 font-bold p-2 text-xs rounded hover:bg-[#93c5fd] transition duration-300">
                 VIEW SPONSORS
               </button>
             </div>
@@ -341,28 +341,6 @@ const ThursdayHighlights = () => {
               className="h-[350px] w-[550px] shadow-xl rounded-r-lg"
             />
           </div>
-        </div>
-      </div>
-
-      {/* Join Us Section */}
-      <div
-        className="py-16 text-white text-center"
-        style={{ background: "linear-gradient(to bottom, #5cb030, #d4ed31)" }}
-      >
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">
-            Join Us at Mining Indaba 2026
-          </h2>
-          <p className="text-sm leading-relaxed mb-8">
-            The premier meeting place for African and global mining leaders. It
-            is all set to be an unmissable experience, shaping the future of
-            African mining.
-            <br /> Register your interest today and stay ahead in this dynamic
-            industry!
-          </p>
-          <button className="bg-[#55952c] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">
-            REGISTER INTEREST
-          </button>
         </div>
       </div>
 
