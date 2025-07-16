@@ -39,6 +39,7 @@ import SponsorsManager from "./pages/Admin/SponsorsManager";
 import AdminLayout from "./pages/Admin/AdminLayout";
 import AttendeesListPage from "./pages/Admin/AttendeesListPage";
 import AttendeesManager from "./pages/Admin/AttendeesManager";
+import Events from "./pages/Events";
 
 function App() {
   return (
@@ -152,6 +153,7 @@ function App() {
                   element={<RegisterInterest />}
                 />
                 <Route path="/client-zone" element={<ClientZone />} />
+                <Route path="/events" element={<Events />} />
               </Routes>
               {/* Fixed Chat Icon Placeholder */}
               <div className="fixed bottom-6 right-6 bg-[#64a63a] text-white rounded-full p-3 shadow-lg cursor-pointer">

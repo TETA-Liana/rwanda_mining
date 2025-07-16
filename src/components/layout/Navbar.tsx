@@ -6,18 +6,8 @@ const navigation = [
   {
     label: "About",
     children: [
-      { label: "About Mining Indaba", to: "/about/mining-indaba" },
-      {
-        label: "Highlights",
-        to: "/about/highlights",
-        children: [
-          { label: "Thursday Highlights", to: "/about/highlights/thursday" },
-          { label: "Wednesday Highlights", to: "/about/highlights/wednesday" },
-          { label: "Tuesday Highlights", to: "/about/highlights/tuesday" },
-          { label: "Monday Highlights", to: "/about/highlights/monday" },
-          { label: "Sunday Highlights", to: "/about/highlights/sunday" },
-        ],
-      },
+      { label: "About Rwanda Mining Weekt", to: "/about/mining-indaba" },
+      { label: "Highlights", to: "/about/highlights" },
     ],
   },
   { label: "Testimonials", to: "/testimonials" },
@@ -28,7 +18,7 @@ const navigation = [
       { label: "Client Zone", to: "/client-zone" },
     ],
   },
-  { label: "Content Hub", to: "/content-hub" },
+  { label: "Events", to: "/events" },
 ];
 
 const Navbar = () => {
@@ -43,11 +33,7 @@ const Navbar = () => {
       <div className="container flex flex-col md:flex-row md:items-center md:justify-between py-4 shadow-lg">
         {/* Left: Logo & Event Info */}
         <div className="flex items-center justify-between w-full md:w-auto px-4">
-          <img
-            className="h-20 w-auto"
-            src="/master.png"
-            alt="Mining Indaba"
-          />
+          <img className="h-20 w-auto" src="/master.png" alt="Mining Indaba" />
           {/* Mobile Menu Toggle */}
           <button
             className="md:hidden focus:outline-none"
