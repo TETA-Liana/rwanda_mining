@@ -330,28 +330,6 @@ const WednesdayHighlights = () => {
         </div>
       </div>
 
-      {/* Join Us Section */}
-      <div
-        className="py-16 text-white text-center"
-        style={{ background: "linear-gradient(to bottom, #2563eb, #60a5fa)" }}
-      >
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-4">
-            Join Us at Mining Indaba 2026
-          </h2>
-          <p className="text-sm leading-relaxed mb-8">
-            The premier meeting place for African and global mining leaders. It
-            is all set to be an unmissable experience, shaping the future of
-            African mining.
-            <br /> Register your interest today and stay ahead in this dynamic
-            industry!
-          </p>
-          <button className="bg-[#2563eb] text-white text-sm font-bold py-2 px-4 rounded transition duration-300">
-            REGISTER INTEREST
-          </button>
-        </div>
-      </div>
-
       <Footer />
     </div>
   );
