@@ -228,13 +228,13 @@ const EventsManager: React.FC = () => {
                     <td className="border px-2 py-1">{event.timezone}</td>
                     <td className="border px-2 py-1">{event.venue}</td>
                     <td className="border px-2 py-1">
-                      <button className="text-blue-600 hover:underline mr-2" onClick={() => handleEdit(event)}>Edit</button>
-                      <button className="text-red-600 hover:underline" onClick={() => handleDelete(event.id)}>Delete</button>
+                      <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2" onClick={() => handleEdit(event)}>Edit</button>
+                      <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded" onClick={() => handleDelete(event.id)}>Delete</button>
                     </td>
                     <td className="border px-2 py-1">
-                      <button className="text-blue-600 hover:underline mr-2" onClick={() => handleShowList(event.id, 'attendees')}>Show Attendees</button>
-                      <button className="text-blue-600 hover:underline mr-2" onClick={() => handleShowList(event.id, 'sponsors')}>Show Sponsors</button>
-                      <button className="text-blue-600 hover:underline" onClick={() => handleShowList(event.id, 'exhibitors')}>Show Exhibitors</button>
+                      <button className="bg-white text-blue-600 hover:underline mr-2" onClick={() => handleShowList(event.id, 'attendees')}>Show Attendees</button>
+                      <button className="bg-white text-blue-600 hover:underline mr-2" onClick={() => handleShowList(event.id, 'sponsors')}>Show Sponsors</button>
+                      <button className="bg-white text-blue-600 hover:underline" onClick={() => handleShowList(event.id, 'exhibitors')}>Show Exhibitors</button>
                     </td>
                   </tr>
                   {openList && openList.eventId === event.id && (

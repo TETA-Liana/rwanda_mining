@@ -17,23 +17,7 @@ public class SecurityConfig {
         http
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/api/register-interest",
-                    "/api/admin/login",
-                    "/api/testimonials/**",
-                    "/api/updates/**",
-                    "/api/articles/**",
-                    "/api/highlights/**",
-                    "/api/events/**",
-                    "/api/sponsors/**",
-                    "/api/sponsors",
-                    "/api/**" // TEMP: permit all /api for debugging
-                ).permitAll()
-                .anyRequest().authenticated()
-            )
-            .httpBasic(basic -> basic.disable())
-            .formLogin(form -> form.disable());
+            .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
         return http.build();
     }
 
