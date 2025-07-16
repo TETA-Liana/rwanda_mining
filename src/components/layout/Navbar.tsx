@@ -6,7 +6,7 @@ const navigation = [
   {
     label: "About",
     children: [
-      { label: "About Rwanda Mining Weekt", to: "/about/mining-indaba" },
+      { label: "About Rwanda Mining Week", to: "/about/mining-indaba" },
       { label: "Highlights", to: "/about/highlights" },
     ],
   },
