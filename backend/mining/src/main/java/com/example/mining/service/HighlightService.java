@@ -37,9 +37,6 @@ public class HighlightService {
                     if (highlightDetails.getMainImagePath() != null) {
                         existing.setMainImagePath(highlightDetails.getMainImagePath());
                     }
-                    if (highlightDetails.getGalleryImagePaths() != null) {
-                        existing.setGalleryImagePaths(highlightDetails.getGalleryImagePaths());
-                    }
                     return highlightRepository.save(existing);
                 });
     }

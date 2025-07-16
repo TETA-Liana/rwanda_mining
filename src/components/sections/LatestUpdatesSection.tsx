@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 interface UpdateItem {
@@ -7,48 +7,43 @@ interface UpdateItem {
   title: string;
   description: string;
   buttonLabel: string;
+  reportUrl?: string;
 }
 
-const updateData: UpdateItem[] = [
-  {
-    id: 1,
-    image: "rwanda/mining2.png",
-    title: "Rwanda Mining Week Country Showcases",
-    description:
-      "Experience dedicated platforms showcasing Rwanda’s mining progress and investment opportunities, attracting global industry leaders and investors.",
-    buttonLabel: "LEARN MORE",
-  },
-  {
-    id: 2,
-    image: "rwanda/mining3.png",
-    title: "Download the 2024 Exhibitor Brochure",
-    description:
-      "Explore how to present your brand and innovations at Rwanda Mining Week — the region’s leading mining investment event.",
-    buttonLabel: "DOWNLOAD THE BROCHURE",
-  },
-  {
-    id: 3,
-    image: "rwanda/mining5.png",
-    title: "Post Event Report 2023",
-    description:
-      "Review key insights and outcomes from Rwanda Mining Week 2023, featuring industry highlights and future growth strategies.",
-    buttonLabel: "DOWNLOAD THE REPORT",
-  },
-  {
-    id: 4,
-    image: "rwanda/mining6.png",
-    title: "Participating Companies",
-    description:
-      "Discover the leading companies driving innovation and investment at Rwanda Mining Week 2024.",
-    buttonLabel: "DOWNLOAD NOW",
-  },
-];
-
 const LatestUpdatesSection = () => {
+  const [updates, setUpdates] = useState<UpdateItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const itemsPerPage = 3;
-  const totalItems = updateData.length;
-  const totalSlides = totalItems - itemsPerPage + 1;
+
+  useEffect(() => {
+    setLoading(true);
+    fetch('/api/updates')
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Failed to fetch updates');
+        const data = await res.json();
+        // Map backend updates to UpdateItem[]
+        const mapped: UpdateItem[] = (data as any[]).slice(0, 8).map((u) => ({
+          id: u.id,
+          image: u.imagePath ? `/api/updates/image/${encodeURIComponent(u.imagePath)}` : '/articles-1.png',
+          title: u.title,
+          description: u.description,
+          buttonLabel: u.reportPath ? 'Download Report' : 'Learn More',
+          reportUrl: u.reportPath ? `/api/updates/report/${encodeURIComponent(u.reportPath.split('/').pop() || u.reportPath)}` : undefined,
+        }));
+        setUpdates(mapped);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message || 'Error fetching updates');
+        setUpdates([]);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const totalItems = updates.length;
+  const totalSlides = Math.max(totalItems - itemsPerPage + 1, 1);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
@@ -68,6 +63,13 @@ const LatestUpdatesSection = () => {
         <h2 className="text-4xl font-bold text-center text-[#2563eb] mb-12">
           Latest Updates
         </h2>
+        {loading ? (
+          <div className="text-center text-blue-700 py-10 text-lg">Loading updates...</div>
+        ) : error ? (
+          <div className="text-center text-red-600 py-10 text-lg">{error}</div>
+        ) : updates.length === 0 ? (
+          <div className="text-center text-gray-500 py-10 text-lg">No updates found.</div>
+        ) : (
         <div className="flex items-center justify-center">
           <button
             onClick={prevSlide}
@@ -81,12 +83,10 @@ const LatestUpdatesSection = () => {
             <div
               className="flex transition-transform duration-500 ease-in-out gap-x-6"
               style={{
-                transform: `translateX(-${
-                  currentIndex * (100 / itemsPerPage)
-                }%)`,
+                transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
               }}
             >
-              {updateData
+              {updates
                 .slice(currentIndex, currentIndex + itemsPerPage)
                 .map((item) => (
                   <div
@@ -98,6 +98,7 @@ const LatestUpdatesSection = () => {
                         src={item.image}
                         alt={item.title}
                         className="w-full h-48 object-cover"
+                        onError={e => (e.currentTarget.src = '/articles-1.png')}
                       />
                     </div>
                     <div className="flex flex-col h-full">
@@ -108,9 +109,17 @@ const LatestUpdatesSection = () => {
                         {item.description}
                       </p>
                       <div className="mt-auto">
-                        <button className="bg-[#60a5fa] hover:bg-[#2563eb] text-black px-4 py-2 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
-                          {item.buttonLabel}
-                        </button>
+                        {item.reportUrl ? (
+                          <a href={item.reportUrl} download target="_blank" rel="noopener noreferrer">
+                            <button className="bg-[#60a5fa] hover:bg-[#2563eb] text-black px-4 py-2 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
+                              {item.buttonLabel}
+                            </button>
+                          </a>
+                        ) : (
+                          <button className="bg-[#60a5fa] hover:bg-[#2563eb] text-black px-4 py-2 rounded-md font-semibold uppercase tracking-wide text-sm transition-colors duration-300">
+                            {item.buttonLabel}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -126,7 +135,7 @@ const LatestUpdatesSection = () => {
             <ChevronRightIcon className="h-6 w-6" />
           </button>
         </div>
-
+        )}
         <div className="flex justify-center items-center gap-2 mt-8">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button

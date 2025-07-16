@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+interface Testimonial {
+  id: number;
+  name: string;
+  role?: string;
+  company?: string;
+  message: string;
+  youtubeLink?: string;
+}
 
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch('/api/testimonials')
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Failed to fetch testimonials');
+        const data = await res.json();
+        setTestimonials(data);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message || 'Error fetching testimonials');
+        setTestimonials([]);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <>
       {/* Spacer to ensure bar is not covered by navbar */}
@@ -32,69 +61,40 @@ const Testimonials = () => {
 
       {/* Rwanda Mining Week Testimonials */}
       <div className="container mx-auto px-4 py-8">
+        {loading ? (
+          <div className="text-center text-blue-700 py-10 text-lg">Loading testimonials...</div>
+        ) : error ? (
+          <div className="text-center text-red-600 py-10 text-lg">{error}</div>
+        ) : testimonials.length === 0 ? (
+          <div className="text-center text-gray-500 py-10 text-lg">No testimonials found.</div>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Testimonial 1 */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-            <div
-              className="relative w-full"
-              style={{ paddingBottom: "56.25%" }}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/rEoO5DLQ0ZY"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute top-0 left-0 w-full h-full"
-                title="Rwanda Mining Week Testimonial 1"
-              ></iframe>
-            </div>
-            <div className="p-6 flex-grow flex flex-col justify-between">
-              <p className="text-gray-700 italic mb-4">
-                "Rwanda Mining Week provided an incredible platform to connect
-                with industry leaders and discover new opportunities in the
-                Rwandan mining sector. The event was well-organized and truly
-                inspiring."
-              </p>
-              <div>
-                <p className="font-semibold text-[#2563eb]">Jean Bosco</p>
-                <p className="text-sm text-gray-600">Managing Director</p>
-                <p className="text-sm text-gray-600">
-                  Rwanda Mining Association
-                </p>
+          {testimonials.map((t, idx) => (
+            <div key={t.id} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+              {t.youtubeLink ? (
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    src={t.youtubeLink}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute top-0 left-0 w-full h-full"
+                    title={`Rwanda Mining Week Testimonial ${idx + 1}`}
+                  ></iframe>
+                </div>
+              ) : null}
+              <div className="p-6 flex-grow flex flex-col justify-between">
+                <p className="text-gray-700 italic mb-4">{`"${t.message}"`}</p>
+                <div>
+                  <p className="font-semibold text-[#2563eb]">{t.name}</p>
+                  {t.role && <p className="text-sm text-gray-600">{t.role}</p>}
+                  {t.company && <p className="text-sm text-gray-600">{t.company}</p>}
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Testimonial 2 */}
-          <div className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
-            <div
-              className="relative w-full"
-              style={{ paddingBottom: "56.25%" }}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/rEoO5DLQ0ZY"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute top-0 left-0 w-full h-full"
-                title="Rwanda Mining Week Testimonial 2"
-              ></iframe>
-            </div>
-            <div className="p-6 flex-grow flex flex-col justify-between">
-              <p className="text-gray-700 italic mb-4">
-                "Attending Rwanda Mining Week opened doors to valuable
-                partnerships and gave us insight into the latest innovations in
-                sustainable mining. I highly recommend it to anyone in the
-                industry."
-              </p>
-              <div>
-                <p className="font-semibold text-[#2563eb]">Aline Uwimana</p>
-                <p className="text-sm text-gray-600">Project Coordinator</p>
-                <p className="text-sm text-gray-600">Kigali Gold Refinery</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
+        )}
       </div>
 
       {/* Join Us section */}

@@ -14,6 +14,12 @@ interface Event {
   imagePath?: string;
 }
 
+interface Attendee { id: number; name: string; email?: string; }
+interface Sponsor { id: number; name: string; company?: string; }
+interface Exhibitor { id: number; name: string; company?: string; }
+
+type ListType = 'attendees' | 'sponsors' | 'exhibitors';
+
 const EventsManager: React.FC = () => {
   // Form state
   const [image, setImage] = useState<File | null>(null);
@@ -27,6 +33,10 @@ const EventsManager: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [editId, setEditId] = useState<number | null>(null);
+  const [openList, setOpenList] = useState<{ eventId: number; type: ListType } | null>(null);
+  const [listData, setListData] = useState<any[]>([]);
+  const [listLoading, setListLoading] = useState(false);
+  const [listError, setListError] = useState('');
 
   // Fetch events
   useEffect(() => {
@@ -119,6 +129,27 @@ const EventsManager: React.FC = () => {
     }
   };
 
+  const handleShowList = async (eventId: number, type: ListType) => {
+    setOpenList({ eventId, type });
+    setListLoading(true);
+    setListError('');
+    setListData([]);
+    let url = `/api/events/${eventId}/`;
+    if (type === 'attendees') url += 'attendees';
+    if (type === 'sponsors') url += 'sponsors';
+    if (type === 'exhibitors') url += 'exhibitors';
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Failed to fetch list');
+      const data = await res.json();
+      setListData(data);
+    } catch (err: any) {
+      setListError(err.message || 'Failed to fetch list');
+    } finally {
+      setListLoading(false);
+    }
+  };
+
   const getImageUrl = (imagePath?: string) => {
     if (!imagePath) return undefined;
     // Always extract the filename for robustness
@@ -187,24 +218,53 @@ const EventsManager: React.FC = () => {
               {events.length === 0 ? (
                 <tr><td colSpan={9} className="text-center py-4">No events yet.</td></tr>
               ) : events.map(event => (
-                <tr key={event.id}>
-                  <td className="border px-2 py-1">{event.id}</td>
-                  <td className="border px-2 py-1">{event.imagePath ? <img src={getImageUrl(event.imagePath)} alt="event" className="w-12 h-12 object-cover rounded" /> : '-'}</td>
-                  <td className="border px-2 py-1">{event.title}</td>
-                  <td className="border px-2 py-1">{event.date}</td>
-                  <td className="border px-2 py-1">{event.time}</td>
-                  <td className="border px-2 py-1">{event.timezone}</td>
-                  <td className="border px-2 py-1">{event.venue}</td>
-                  <td className="border px-2 py-1">
-                    <button className="text-blue-600 hover:underline mr-2" onClick={() => handleEdit(event)}>Edit</button>
-                    <button className="text-red-600 hover:underline" onClick={() => handleDelete(event.id)}>Delete</button>
-                  </td>
-                  <td className="border px-2 py-1">
-                    <a href="#" className="text-blue-600 hover:underline mr-2">Show Attendees</a>
-                    <a href="#" className="text-blue-600 hover:underline mr-2">Show Sponsors</a>
-                    <a href="#" className="text-blue-600 hover:underline">Show Exhibitors</a>
-                  </td>
-                </tr>
+                <React.Fragment key={event.id}>
+                  <tr>
+                    <td className="border px-2 py-1">{event.id}</td>
+                    <td className="border px-2 py-1">{event.imagePath ? <img src={getImageUrl(event.imagePath)} alt="event" className="w-12 h-12 object-cover rounded" /> : '-'}</td>
+                    <td className="border px-2 py-1">{event.title}</td>
+                    <td className="border px-2 py-1">{event.date}</td>
+                    <td className="border px-2 py-1">{event.time}</td>
+                    <td className="border px-2 py-1">{event.timezone}</td>
+                    <td className="border px-2 py-1">{event.venue}</td>
+                    <td className="border px-2 py-1">
+                      <button className="text-blue-600 hover:underline mr-2" onClick={() => handleEdit(event)}>Edit</button>
+                      <button className="text-red-600 hover:underline" onClick={() => handleDelete(event.id)}>Delete</button>
+                    </td>
+                    <td className="border px-2 py-1">
+                      <button className="text-blue-600 hover:underline mr-2" onClick={() => handleShowList(event.id, 'attendees')}>Show Attendees</button>
+                      <button className="text-blue-600 hover:underline mr-2" onClick={() => handleShowList(event.id, 'sponsors')}>Show Sponsors</button>
+                      <button className="text-blue-600 hover:underline" onClick={() => handleShowList(event.id, 'exhibitors')}>Show Exhibitors</button>
+                    </td>
+                  </tr>
+                  {openList && openList.eventId === event.id && (
+                    <tr>
+                      <td colSpan={9} className="bg-gray-50 border-t px-4 py-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="font-semibold text-blue-900">
+                            {openList.type.charAt(0).toUpperCase() + openList.type.slice(1)}
+                            {listLoading ? ' (Loading...)' : ` (${listData.length})`}
+                          </span>
+                          <button className="text-gray-500 hover:text-gray-700 text-sm" onClick={() => setOpenList(null)}>Close</button>
+                        </div>
+                        {listError && <div className="text-red-600 mb-2">{listError}</div>}
+                        {!listLoading && !listError && (
+                          <ul className="list-disc pl-6">
+                            {listData.length === 0 ? (
+                              <li className="text-gray-500">No {openList.type} found for this event.</li>
+                            ) : listData.map((item: any) => (
+                              <li key={item.id} className="mb-1">
+                                {item.name}
+                                {item.company ? ` (${item.company})` : ''}
+                                {item.email ? ` - ${item.email}` : ''}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>

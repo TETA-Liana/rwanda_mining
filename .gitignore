@@ -1,5 +1,7 @@
 # dependencies
 /node_modules
+/uploads/
+/backend/mining/uploads/
 /.pnp
 .pnp.js
 
@@ -45,6 +47,3 @@ build/
 
 # other
 *.swp
-
-  uploads/
-  backend/mining/uploads/

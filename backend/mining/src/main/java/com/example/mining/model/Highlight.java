@@ -17,17 +17,13 @@ public class Highlight {
     @Column(length = 500)
     private String mainImagePath;
 
-    @Column(length = 2000)
-    private String galleryImagePaths; // Comma-separated filenames
-
     public Highlight() {}
 
-    public Highlight(Long id, String title, String description, String mainImagePath, String galleryImagePaths) {
+    public Highlight(Long id, String title, String description, String mainImagePath) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.mainImagePath = mainImagePath;
-        this.galleryImagePaths = galleryImagePaths;
     }
 
     public Long getId() { return id; }
@@ -38,6 +34,4 @@ public class Highlight {
     public void setDescription(String description) { this.description = description; }
     public String getMainImagePath() { return mainImagePath; }
     public void setMainImagePath(String mainImagePath) { this.mainImagePath = mainImagePath; }
-    public String getGalleryImagePaths() { return galleryImagePaths; }
-    public void setGalleryImagePaths(String galleryImagePaths) { this.galleryImagePaths = galleryImagePaths; }
 } 

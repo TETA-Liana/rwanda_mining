@@ -9,104 +9,63 @@ interface ArticleItem {
   title: string;
   description: string;
   buttonLabel: string;
+  link?: string;
 }
 
-const articlesData: ArticleItem[] = [
-  {
-    id: 1,
-    image: "/rwanda/mining2.png",
-    date: "4 Dec 2024",
-    category: "Event News",
-    title: "Rwanda Mining Week Opens with Keynote Addresses",
-    description:
-      "Rwanda Mining Week 2024 kicked off with inspiring speeches from government leaders and industry pioneers focusing on sustainable mining development.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 2,
-    image: "/rwanda/mining7.png",
-    date: "5 Dec 2024",
-    category: "Investment",
-    title: "Investment Opportunities at Rwanda Mining Week",
-    description:
-      "Explore new investment projects and partnerships unveiled at Rwanda Mining Week, highlighting critical mineral supply chains in the region.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 3,
-    image: "/rwanda/mining8.png",
-    date: "6 Dec 2024",
-    category: "Innovation",
-    title: "Technology Advances Spotlighted at Rwanda Mining Week",
-    description:
-      "Discover the latest innovations and technologies enhancing safety and efficiency in Rwanda’s mining sector showcased during the event.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 4,
-    image: "/rwanda/mining9.png",
-    date: "6 Dec 2024",
-    category: "Community",
-    title: "Sustainable Mining and Community Development",
-    description:
-      "Sessions focused on the integration of community development goals with mining operations to ensure inclusive economic growth in Rwanda.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 5,
-    image: "/articles-5.png",
-    date: "Upcoming",
-    category: "Announcements",
-    title: "Rwanda Mining Week 2025 Dates Announced",
-    description:
-      "Mark your calendars for Rwanda Mining Week 2025, promising expanded forums and new opportunities for stakeholders across the industry.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 6,
-    image: "/articles-6.png",
-    date: "Upcoming",
-    category: "Policy",
-    title: "Rwanda Mining Regulatory Updates",
-    description:
-      "Stay informed on the latest regulatory changes impacting mining operations and investments shared at Rwanda Mining Week.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 7,
-    image: "/articles-7.png",
-    date: "Upcoming",
-    category: "Partnerships",
-    title: "New Public-Private Partnerships Formed",
-    description:
-      "Rwanda Mining Week 2024 facilitated important partnerships between government, investors, and communities to boost the sector.",
-    buttonLabel: "Read More",
-  },
-  {
-    id: 8,
-    image: "/articles-8.png",
-    date: "Upcoming",
-    category: "Education",
-    title: "Training and Capacity Building Initiatives",
-    description:
-      "Highlighting programs launched during Rwanda Mining Week aimed at enhancing skills and knowledge in the mining workforce.",
-    buttonLabel: "Read More",
-  },
-];
+function formatDate(dateStr: string) {
+  if (!dateStr) return "";
+  const d = new Date(dateStr);
+  if (!isNaN(d.getTime())) {
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+  // fallback: just return the string
+  return dateStr;
+}
 
 const FeaturedArticlesSection = () => {
+  const [articles, setArticles] = useState<ArticleItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const itemsPerPage = 3;
-  const totalItems = articlesData.length;
-  const totalSlides = totalItems - itemsPerPage + 1;
 
   useEffect(() => {
+    setLoading(true);
+    fetch('/api/articles')
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Failed to fetch articles');
+        const data = await res.json();
+        // Map backend articles to ArticleItem[]
+        const mapped: ArticleItem[] = (data as any[]).slice(0, 8).map((a) => ({
+          id: a.id,
+          image: a.imagePath ? `/api/articles/image/${encodeURIComponent(a.imagePath)}` : '/articles-1.png',
+          date: formatDate(a.releaseDate),
+          category: 'General', // No category in model, fallback
+          title: a.title,
+          description: a.description,
+          buttonLabel: 'Read More',
+          link: a.link,
+        }));
+        setArticles(mapped);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message || 'Error fetching articles');
+        setArticles([]);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const totalItems = articles.length;
+  const totalSlides = Math.max(totalItems - itemsPerPage + 1, 1);
+
+  useEffect(() => {
+    if (totalItems === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
-    }, 8000); // Slide every 8 seconds
-
+    }, 8000);
     return () => clearInterval(interval);
-  }, [totalSlides]);
+  }, [totalSlides, totalItems]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
@@ -126,6 +85,13 @@ const FeaturedArticlesSection = () => {
         <h2 className="text-4xl font-bold text-center text-[#2563eb] mb-12">
           Featured Articles
         </h2>
+        {loading ? (
+          <div className="text-center text-blue-700 py-10 text-lg">Loading articles...</div>
+        ) : error ? (
+          <div className="text-center text-red-600 py-10 text-lg">{error}</div>
+        ) : articles.length === 0 ? (
+          <div className="text-center text-gray-500 py-10 text-lg">No articles found.</div>
+        ) : (
         <div className="flex items-center justify-center">
           <button
             onClick={prevSlide}
@@ -151,12 +117,10 @@ const FeaturedArticlesSection = () => {
             <div
               className="flex transition-transform duration-500 ease-in-out gap-x-6"
               style={{
-                transform: `translateX(-${
-                  currentIndex * (100 / itemsPerPage)
-                }%)`,
+                transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
               }}
             >
-              {articlesData
+              {articles
                 .slice(currentIndex, currentIndex + itemsPerPage)
                 .map((item) => (
                   <div
@@ -168,6 +132,7 @@ const FeaturedArticlesSection = () => {
                         src={item.image}
                         alt={item.title}
                         className="w-full h-48 object-cover"
+                        onError={e => (e.currentTarget.src = '/articles-1.png')}
                       />
                     </div>
                     <div className="bg-[#2563eb] h-12 text-white text-md font-semibold uppercase px-3 flex items-center justify-between">
@@ -182,10 +147,19 @@ const FeaturedArticlesSection = () => {
                         {item.description}
                       </p>
                       <div className="mt-auto">
-                        <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white px-6 py-2 font-medium text-base flex items-center gap-2 transition-colors duration-300">
-                          <ArrowRightIcon className="h-5 w-5" />
-                          {item.buttonLabel}
-                        </button>
+                        {item.link ? (
+                          <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white px-6 py-2 font-medium text-base flex items-center gap-2 transition-colors duration-300">
+                              <ArrowRightIcon className="h-5 w-5" />
+                              {item.buttonLabel}
+                            </button>
+                          </a>
+                        ) : (
+                          <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white px-6 py-2 font-medium text-base flex items-center gap-2 transition-colors duration-300">
+                            <ArrowRightIcon className="h-5 w-5" />
+                            {item.buttonLabel}
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -200,6 +174,7 @@ const FeaturedArticlesSection = () => {
             <ChevronRightIcon className="h-6 w-6" />
           </button>
         </div>
+        )}
         <div className="flex justify-center items-center gap-2 mt-8">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button

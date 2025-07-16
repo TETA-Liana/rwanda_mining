@@ -116,8 +116,8 @@ const RegisterInterest = () => {
       } else {
         // Exhibitor request
         const res = await fetch("/api/requests/exhibitor", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             firstName: form.firstName,
             lastName: form.lastName,
@@ -131,23 +131,23 @@ const RegisterInterest = () => {
             event: form.event,
             exhibitingDetails: form.exhibitingDetails,
           }),
-        });
-        if (!res.ok) throw new Error("Failed to register interest");
-        setSuccess("Thank you for registering your interest!");
-        setForm({
-          firstName: "",
-          lastName: "",
-          country: "",
-          email: "",
-          phoneCode: "",
-          phoneNumber: "",
-          companyName: "",
-          jobTitle: "",
-          jobFunction: "",
-          event:"",
-          interestedIn: "",
-          exhibitingDetails: "",
-        });
+      });
+      if (!res.ok) throw new Error("Failed to register interest");
+      setSuccess("Thank you for registering your interest!");
+      setForm({
+        firstName: "",
+        lastName: "",
+        country: "",
+        email: "",
+        phoneCode: "",
+        phoneNumber: "",
+        companyName: "",
+        jobTitle: "",
+        jobFunction: "",
+        event:"",
+        interestedIn: "",
+        exhibitingDetails: "",
+      });
       }
     } catch (err) {
       setError(
@@ -718,7 +718,7 @@ const RegisterInterest = () => {
                       <option value="+234">Nigeria (+234)</option>
                       <option value="other">Other</option>
                     </select>
-                    <input
+                  <input
                     type="text"
                     id="sponsorPhone"
                     name="sponsorPhone"

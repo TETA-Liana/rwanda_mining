@@ -6,7 +6,6 @@ interface Highlight {
   mainImagePath: string;
   title: string;
   description: string;
-  galleryImagePaths: string[];
 }
 
 interface BackendHighlight {
@@ -14,7 +13,6 @@ interface BackendHighlight {
   title: string;
   description: string;
   mainImagePath?: string;
-  galleryImagePaths?: string; // comma-separated
   day: string;
 }
 
@@ -28,7 +26,6 @@ const HighlightsManager = () => {
   const [highlights, setHighlights] = useState<Highlight[]>([]);
   const [form, setForm] = useState<Partial<Highlight>>({ day: '' });
   const [mainImageFile, setMainImageFile] = useState<File | null>(null);
-  const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -40,7 +37,6 @@ const HighlightsManager = () => {
     mainImagePath: h.mainImagePath || '',
     title: h.title,
     description: h.description,
-    galleryImagePaths: h.galleryImagePaths ? h.galleryImagePaths.split(',').filter(Boolean) : [],
   });
 
   // Load highlights from backend
@@ -67,9 +63,6 @@ const HighlightsManager = () => {
     if (e.target.files && e.target.name === 'highlightImage') {
       setMainImageFile(e.target.files[0]);
     }
-    if (e.target.files && e.target.name === 'galleryImages') {
-      setGalleryFiles(Array.from(e.target.files));
-    }
   };
 
   const uploadMainImage = async (file: File): Promise<string> => {
@@ -83,17 +76,6 @@ const HighlightsManager = () => {
     return await response.text();
   };
 
-  const uploadGalleryImages = async (files: File[]): Promise<string[]> => {
-    const formData = new FormData();
-    files.forEach(file => formData.append('files', file));
-    const response = await fetch(`${API_URL}/upload-gallery`, {
-      method: 'POST',
-      body: formData,
-    });
-    if (!response.ok) throw new Error('Failed to upload gallery images');
-    return await response.json();
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -101,23 +83,15 @@ const HighlightsManager = () => {
     setLoading(true);
     try {
       let mainImagePath = form.mainImagePath || '';
-      let galleryImagePaths: string[] = form.galleryImagePaths || [];
       if (mainImageFile) {
         mainImagePath = await uploadMainImage(mainImageFile);
       } else if (editingId !== null) {
         const existing = highlights.find(h => h.id === editingId);
         mainImagePath = existing?.mainImagePath || '';
       }
-      if (galleryFiles.length > 0) {
-        galleryImagePaths = await uploadGalleryImages(galleryFiles);
-      } else if (editingId !== null) {
-        const existing = highlights.find(h => h.id === editingId);
-        galleryImagePaths = existing?.galleryImagePaths || [];
-      }
       const highlightData = {
         ...form,
         mainImagePath,
-        galleryImagePaths: galleryImagePaths.join(','),
       };
       if (editingId !== null) {
         // Update
@@ -143,7 +117,6 @@ const HighlightsManager = () => {
       }
       setForm({ day: '' });
       setMainImageFile(null);
-      setGalleryFiles([]);
     } catch (err: any) {
       setError(err.message || 'Error saving highlight');
     } finally {
@@ -156,7 +129,6 @@ const HighlightsManager = () => {
     if (highlight) {
       setForm({ ...highlight });
       setMainImageFile(null);
-      setGalleryFiles([]);
       setEditingId(id);
     }
   };
@@ -173,7 +145,6 @@ const HighlightsManager = () => {
       if (editingId === id) {
         setForm({ day: '' });
         setMainImageFile(null);
-        setGalleryFiles([]);
         setEditingId(null);
       }
     } catch (err: any) {
@@ -216,26 +187,6 @@ const HighlightsManager = () => {
             <label className="block font-semibold text-base mb-2">Highlight Description</label>
             <textarea name="description" value={form.description || ''} onChange={handleInputChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
           </div>
-          <div className="md:col-span-2">
-            <label className="block font-semibold text-base mb-2">Gallery Images (multiple)</label>
-            <input type="file" name="galleryImages" accept="image/*" multiple onChange={handleFileChange} className="w-full py-3 px-4 border border-gray-200 rounded-lg bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition" />
-            {galleryFiles.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-2">
-                {galleryFiles.map((file, idx) => (
-                  <div key={idx} className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center">
-                    <span className="text-xs text-gray-500 text-center">{file.name}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-            {form.galleryImagePaths && !galleryFiles.length && (
-              <div className="flex flex-wrap gap-2 mt-2">
-                {Array.isArray(form.galleryImagePaths) && form.galleryImagePaths.map((img, idx) => (
-                  <img key={idx} src={getImageUrl(img)} alt="Gallery" className="w-16 h-16 object-contain rounded" />
-                ))}
-              </div>
-            )}
-          </div>
           <div className="md:col-span-2 flex justify-end">
             <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded transition duration-300" disabled={loading}>
               {editingId !== null ? 'Update Highlight' : 'Add Highlight'}
@@ -255,13 +206,12 @@ const HighlightsManager = () => {
                 <th className="py-2 px-4 font-semibold">Title</th>
                 <th className="py-2 px-4 font-semibold">Description</th>
                 <th className="py-2 px-4 font-semibold">Main Image</th>
-                <th className="py-2 px-4 font-semibold">Gallery</th>
                 <th className="py-2 px-4 font-semibold">Actions</th>
               </tr>
             </thead>
             <tbody>
               {highlights.length === 0 && (
-                <tr><td colSpan={7} className="text-center text-gray-500 py-4">No highlights yet.</td></tr>
+                <tr><td colSpan={6} className="text-center text-gray-500 py-4">No highlights yet.</td></tr>
               )}
               {highlights.map(h => (
                 <tr key={h.id} className="border-b">
@@ -273,13 +223,6 @@ const HighlightsManager = () => {
                     {h.mainImagePath && (
                       <img src={getImageUrl(h.mainImagePath)} alt="Main" className="w-16 h-16 object-contain rounded" />
                     )}
-                  </td>
-                  <td className="py-2 px-4">
-                    <div className="flex flex-wrap gap-1">
-                      {h.galleryImagePaths.map((img, idx) => (
-                        <img key={idx} src={getImageUrl(img)} alt="Gallery" className="w-10 h-10 object-contain rounded" />
-                      ))}
-                    </div>
                   </td>
                   <td className="py-2 px-4">
                     <button onClick={() => handleEdit(h.id)} className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded mr-2">Edit</button>
