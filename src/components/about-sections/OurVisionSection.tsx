@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const OurVisionSection = () => {
   return (
@@ -6,11 +6,15 @@ const OurVisionSection = () => {
       <div className="bg-white p-8 rounded-lg shadow-xl text-center max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
         <p className="text-gray-700">
-          Investing in African Mining Indaba is committed to shape the trajectory and position the African mining sector as Africa's foremost sector, driving sustainable investment and fostering economic growth. With the goal of creating a platform in the mining industry to increase foreign investment and evolve into a global forum for disruptive discussions that address the challenges and opportunities that the mining sector faces head on. This vision includes promoting responsible mining practices, fostering partnerships with local communities, and ensuring transparency and accountability in the industry. By bringing together key stakeholders from around the world, Mining Indaba aims to drive innovation, promote transparency and collaborate to create a more resilient and prosperous future for the African mining sector.
+          The vision for Rwanda Mining Week is to transform the mining sector
+          into a key pillar of economic growth by showcasing innovation,
+          promoting responsible mining practices, and fostering collaboration
+          among stakeholders. It aims to attract investment, enhance value
+          chains, and ensure sustainable development of the sector.
         </p>
       </div>
     </div>
   );
 };
 
-export default OurVisionSection; 
+export default OurVisionSection;

@@ -6,16 +6,9 @@ const navigation = [
   {
     label: "About",
     children: [
+      { label: "About Mining Indaba", to: "/about/mining-indaba" },
       {
-        label: "About Mining Indaba",
-        to: "/about/mining-indaba",
-        children: [{ label: "Meet the Team", to: "/about/mining-indaba/team" }],
-      },
-      { label: "Strategic & Media Partners", to: "/about/partners" },
-      { label: "PR & Media", to: "/about/media" },
-      { label: "Sustainability Initiatives", to: "/about/sustainability" },
-      {
-        label: "2025 Highlights",
+        label: "Highlights",
         to: "/about/highlights",
         children: [
           { label: "Thursday Highlights", to: "/about/highlights/thursday" },
@@ -25,63 +18,14 @@ const navigation = [
           { label: "Sunday Highlights", to: "/about/highlights/sunday" },
         ],
       },
-      { label: "Contact Us", to: "/about/contact" },
     ],
   },
+  { label: "Testimonials", to: "/testimonials" },
   {
-    label: "Attend",
-    to: "/attend",
-    children: [
-      {
-        label: "Why Attend",
-        to: "/attend/why-attend",
-        children: [
-          {
-            label: "Exploration & Junior Mining Companies",
-            to: "/attend/why-attend/exploration-junior",
-          },
-          {
-            label: "Majors & Mid-tiers",
-            to: "/attend/why-attend/majors-mid-tiers",
-          },
-          {
-            label: "Mining Service Providers",
-            to: "/attend/why-attend/mining-service-providers",
-          },
-        ],
-      },
-      { label: "Testimonials", to: "/exhibit-sponsor/testimonials" },
-      { label: "2025 Post Event Report", to: "/2025-post-event-report" },
-      { label: "Register Interest", to: "/register-interest" },
-    ],
-  },
-  {
-    label: "Exhibit or Sponsor",
+    label: "Exhibitor or Sponsor",
     children: [
       { label: "Why Exhibit or Sponsor", to: "/exhibit-sponsor/why" },
-      {
-        label: "Exhibitor Brochure",
-        to: "/exhibit-sponsor/why/2026-exhibitor-brochure",
-      },
-      {
-        label: "Who Attended in 2025",
-        children: [
-          {
-            label: "2025 Sponsors",
-            to: "/exhibit-sponsor/who-attended-in-2025/sponsors",
-          },
-          {
-            label: "2025 Exhibitors",
-            to: "/exhibit-sponsor/who-attended-in-2025/exhibitors",
-          },
-        ],
-      },
-      { label: "Testimonials", to: "/exhibit-sponsor/testimonials" },
-      {
-        label: "Enquire to Exhibit or Sponsor",
-        to: "/exhibit-sponsor/enquire",
-      },
-      { label: "Client Zone", to: "/exhibit-sponsor/client-zone" },
+      { label: "Client Zone", to: "/client-zone" },
     ],
   },
   { label: "Content Hub", to: "/content-hub" },
@@ -101,7 +45,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between w-full md:w-auto px-4">
           <img
             className="h-20 w-auto"
-            src="/mining_indaba_logo_1.png"
+            src="/master.png"
             alt="Mining Indaba"
           />
           {/* Mobile Menu Toggle */}

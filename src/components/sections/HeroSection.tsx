@@ -1,59 +1,55 @@
 import { useState, useEffect } from "react";
 import { FaCircle } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const slides = [
   {
-    backgroundImage: "/hero-section-slide-1.gif",
-    heading: "Register Your Interest for Mining Indaba 2026",
+    backgroundImage: "/hero-section-1.jpg",
+    heading: "Register Your Interest for Rwanda Mining Week",
     paragraph:
-      "Mining Indaba 2026 will take place from 9–12 February in Cape Town. Sign up now to receive early updates, exclusive insights, and be the first to know about registration and event news.",
+      "The seventh edition of Rwanda Mining Week comes this December from 04 to 06 bringing together mining industry leaders, public officials, civil society organizations, academia and community members..",
     buttons: [
       {
         label: "REGISTER INTEREST",
         bgColor: "bg-[#2563eb]",
         textColor: "text-white",
       },
-      {
-        label: "LEARN MORE",
-        bgColor: "bg-[#60a5fa]",
-        textColor: "text-black",
-      },
     ],
   },
   {
-    backgroundImage: "/hero-section-slide-2.png",
-    heading: "Be part of Mining Indaba 2026",
+    backgroundImage: "/hero-section-2.jpg",
+    heading: "Discover more about Rwanda mining week",
     paragraph:
-      "Maximise your visibility, connect with top investors, and position your brand at the forefront of the mining\nsector. Enquire about sponsorship opportunities today!",
+      "Annually held in December and co-organized by the Rwanda Mines, Petroleum and Gas Board (RMB|), Rwanda Mining Association and the School of Mining and Geology, College of Science and Technology, University of Rwanda",
     buttons: [
       {
-        label: "ENQUIRE NOW",
+        label: "DISCOVER MORE",
         bgColor: "bg-[#60a5fa]",
         textColor: "text-black",
       },
     ],
   },
   {
-    backgroundImage: "/hero-section-slide-3.png",
-    heading:
-      "Looking to put your brand at the heart of African mining's biggest stage?",
-    paragraph: "Get the 2026 Exhibitor Brochure to explore what's possible.",
-    buttons: [
-      {
-        label: "DOWNLOAD THE BROCHURE",
-        bgColor: "bg-[#60a5fa]",
-        textColor: "text-black",
-      },
-    ],
-  },
-  {
-    backgroundImage: "/hero-section-slide-4.png",
-    heading: "Download the post-event report",
+    backgroundImage: "/hero-section-3.jpg",
+    heading: "Take Part In Rwanda Mining Week by being a sponsor",
     paragraph:
-      "Download the official Post-Event Report for key stats, audience insights, and event highlights.",
+      "Rwanda Mining Week is a unique opportunity to showcase your company's expertise and connect with key industry players.",
     buttons: [
       {
-        label: "DOWNLOAD THE REPORT",
+        label: "Be a sponsor",
+        bgColor: "bg-[#60a5fa]",
+        textColor: "text-black",
+      },
+    ],
+  },
+  {
+    backgroundImage: "/hero-section-4.jpg",
+    heading: "Take part in Rwanda Mining Week by being an exhibitor",
+    paragraph:
+      "Rwanda Mining Week is a unique opportunity to showcase your company's expertise and connect with key industry players.",
+    buttons: [
+      {
+        label: "Be an exhibitor",
         bgColor: "bg-[#60a5fa]",
         textColor: "text-black",
       },
@@ -65,6 +61,7 @@ const delay = 10000; // 10 seconds, matches slideshow interval
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -106,6 +103,20 @@ const HeroSection = () => {
                     <button
                       key={btnIndex}
                       className={`font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide ${button.bgColor} ${button.textColor}`}
+                      onClick={() => {
+                        if (
+                          button.label === "REGISTER INTEREST" ||
+                          button.label === "Be a sponsor" ||
+                          button.label === "Be an exhibitor"
+                        ) {
+                          navigate("/register-interest");
+                        } else if (button.label === "DISCOVER MORE") {
+                          const aboutSection = document.getElementById("about");
+                          if (aboutSection) {
+                            aboutSection.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }
+                      }}
                     >
                       {button.label}
                     </button>

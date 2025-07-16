@@ -25,10 +25,14 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ item, depth = 0 }) => {
       onMouseLeave={() => setIsOpen(false)}
     >
       <Link
-        to={item.to || "#"}
+        to={
+          item.label === "Exhibitor or Sponsor"
+            ? "/exhibit-or-sponsor-why"
+            : item.to || "#"
+        }
         className={`flex items-center px-3 py-2 rounded text-base font-medium transition-colors ${
           hasChildren ? "cursor-pointer" : ""
-        } text-gray-700 group-hover:text-[#64a63a]`}
+        } text-gray-700 group-hover:text-[#2563eb]`}
       >
         {item.label}
         {hasChildren && (
@@ -54,7 +58,7 @@ const NavDropdown: React.FC<NavDropdownProps> = ({ item, depth = 0 }) => {
                 ) : (
                   <Link
                     to={child.to || "#"}
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#64a63a] hover:text-white"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#2563eb] hover:text-white"
                   >
                     {child.label}
                   </Link>

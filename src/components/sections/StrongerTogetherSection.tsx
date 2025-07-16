@@ -5,8 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 const StrongerTogetherSection = () => {
-  const videoId = "p80HK0DOprA"; // Mining Indaba 2026 theme video
-  const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  const embedUrl = "https://www.youtube.com/embed/rEoO5DLQ0ZY";
 
   return (
     <section className="py-16 bg-white relative">
@@ -31,12 +30,7 @@ const StrongerTogetherSection = () => {
             &ldquo;Stronger together: Progress through partnerships&rdquo;
           </h2>
           <p className="mb-4 text-[#000000]">
-            The growth of mining in Africa, across the entire ecosystem, thrives
-            on collaboration &ndash; where governments, businesses, investors,
-            communities, and innovators must unite. In doing so we can work
-            collectively towards a common goal &ndash; building a stronger
-            industry and continent, together by harnessing the power of building
-            a strong mining value chain.
+          The theme for this year is " Mining for Community Development." This aims at reflecting and strategizing on how best mining operations and benefits must be placed at the heart of communities’ wealth and health while mitigating environmental footprints.
           </p>
           <p className="mb-4 text-[#000000]">
             <span className="font-bold">Our reality:</span> As an industry we
@@ -44,12 +38,13 @@ const StrongerTogetherSection = () => {
             collaboratively.
           </p>
           <p className="mb-6 text-[#000000]">
-            <span className="font-bold">Our mission:</span> To achieve the
-            greatest progress through partnerships by unlocking transformative
-            solutions. A single, aligned industry of empowered people across the
-            ecosystem enables us to navigate complexities, embrace innovation,
-            and secure a resilient, inclusive future for mining. United efforts
-            lead to shared success!
+            <span className="font-bold">Our mission:</span> The objectives of Rwanda Mining Week 2024 are as follows:
+
+i. To showcase the Rwandan mineral endowments and the entire mineral value chain
+
+ii. To discuss best practices to enhance sustainability and mining impact on communities.
+
+iii. To create space for networking, partnerships, and collaborations necessary to drive Rwanda’s mining sector growth.
           </p>
           <button className="bg-[#2563eb] hover:bg-[#1e3a8a] text-white font-bold px-6 py-2 rounded text-sm shadow-md uppercase tracking-wide self-start">
             WHAT&apos;S NEXT

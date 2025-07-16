@@ -4,6 +4,7 @@ import FooterSection from "../components/sections/FooterSection";
 const ClientZone = () => {
   return (
     <>
+      <div className="pt-[112px]"></div>
       {/* Header with gradient background */}
       <div className="w-full py-8 text-white text-center bg-gradient-to-r from-[#2563eb] via-[#60a5fa] to-[#a7e0ff]">
         <h1 className="text-4xl md:text-5xl font-bold">Client Zone</h1>

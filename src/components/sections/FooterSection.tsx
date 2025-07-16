@@ -14,8 +14,8 @@ const FooterSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex flex-col items-center md:items-start">
             <img
-              src="/footer_logo.png"
-              alt="Mining Indaba Logo"
+              src="/master.png"
+              alt="Rwanda Mining Week Logo"
               className="h-16 mb-4"
             />
             {/* Follow Us */}
@@ -62,11 +62,11 @@ const FooterSection = () => {
           {/* Column 2: Venue and Dates */}
           <div className="text-white">
             <span className="text-lg font-bold mb-2 block">VENUE</span>
-            <p>CTICC</p>
-            <p>Cape Town</p>
-            <p>South Africa</p>
+            <p>Kigali Convention Centre</p>
+            <p>Kigali</p>
+            <p>Rwanda</p>
             <span className="text-lg font-bold mt-4 mb-2 block">DATES</span>
-            <p>9-12 February 2026</p>
+            <p>7-11 July 2025</p>
           </div>
 
           {/* Column 3: Contacts */}
@@ -75,18 +75,18 @@ const FooterSection = () => {
             <span className="font-semibold mb-1 block">ENQUIRIES</span>
             <p>
               <a
-                href="mailto:info@miningindaba.com"
+                href="mailto:info@rwandaminingweek.com"
                 className="hover:underline text-white"
               >
-                info@miningindaba.com
+                info@rwandaminingweek.com
               </a>
             </p>
             <span className="font-semibold mt-4 mb-1 block">HELPLINE</span>
-            <p>+44 (0)20 3855 9557</p>
+            <p>+250 788 123 456</p>
             <span className="font-semibold mt-4 mb-1 block">
               VISITOR SUPPORT
             </span>
-            <p>+44 (0)20 3855 9557</p>
+            <p>+250 788 123 456</p>
           </div>
 
           {/* Column 4: Quick Links */}
@@ -94,42 +94,57 @@ const FooterSection = () => {
             <span className="text-lg font-bold mb-2 block">QUICK LINKS</span>
             <ul>
               <li>
-                <a href="#" className="hover:underline text-white">
-                  About
+                <a
+                  href="/about/mining-indaba"
+                  className="hover:underline text-white"
+                >
+                  About Rwanda Mining Week
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
-                  Plan your visit
+                <a
+                  href="/register-interest"
+                  className="hover:underline text-white"
+                >
+                  Register Interest
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
-                  FAQs
+                <a
+                  href="/about/highlights"
+                  className="hover:underline text-white"
+                >
+                  Highlights
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
-                  Exhibitor list
+                <a href="/client-zone" className="hover:underline text-white">
+                  Client Zone
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
-                  Why attend
+                <a
+                  href="/exhibit-sponsor/why"
+                  className="hover:underline text-white"
+                >
+                  Why Exhibit or Sponsor
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
-                  Why associate your brand
+                <a href="/partners" className="hover:underline text-white">
+                  Partners
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
+                <a href="/about/media" className="hover:underline text-white">
                   PR & Media
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:underline text-white">
+                <a
+                  href="mailto:info@rwandaminingweek.com"
+                  className="hover:underline text-white"
+                >
                   Contact us
                 </a>
               </li>

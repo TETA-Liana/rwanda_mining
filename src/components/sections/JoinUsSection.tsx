@@ -8,7 +8,7 @@ const JoinUsSection = () => {
     >
       <div className="container">
         <h2 className="text-4xl font-bold mb-4">
-          Join Us at Mining Indaba 2026
+          Join Us at Rwanda Mining Week
         </h2>
         <p className="text-lg mb-8 px-4 ">
           Mining Indaba 2026 is where African and global mining leaders connect
