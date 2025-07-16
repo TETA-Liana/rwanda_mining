@@ -5,7 +5,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/events')}>
           <div className="text-2xl text-blue-700 mb-2">📅</div>
           <div className="font-bold text-lg">Events</div>
@@ -17,6 +17,10 @@ const Dashboard = () => {
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/exhibitors')}>
           <div className="text-2xl text-blue-700 mb-2">🏢</div>
           <div className="font-bold text-lg">Exhibitors</div>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/attendees')}>
+          <div className="text-2xl text-blue-700 mb-2">🧑‍🤝‍🧑</div>
+          <div className="font-bold text-lg">Attendees</div>
         </div>
         <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center cursor-pointer hover:bg-blue-50 transition" onClick={() => navigate('/admin/requests')}>
           <div className="text-2xl text-blue-700 mb-2">📨</div>

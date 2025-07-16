@@ -5,15 +5,36 @@ const RequestsManager: React.FC = () => {
   const [search, setSearch] = useState('');
   const [type, setType] = useState<'all' | 'sponsor' | 'exhibitor'>('all');
   const [loading, setLoading] = useState(false);
+  const [actionLoading, setActionLoading] = useState<{[key: string]: boolean}>({});
 
-  useEffect(() => {
+  const fetchRequests = () => {
     setLoading(true);
     fetch(`/api/requests?type=${type}&search=${encodeURIComponent(search)}`)
       .then(res => res.json())
       .then(data => setRequests(data))
       .catch(() => setRequests([]))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchRequests();
+    // eslint-disable-next-line
   }, [search, type]);
+
+  const handleAction = async (req: any, action: 'grant' | 'deny') => {
+    setActionLoading(l => ({ ...l, [req.type + '-' + req.id]: true }));
+    let url = '';
+    if (req.type === 'sponsor') {
+      url = `/api/requests/sponsor/${req.id}/${action}`;
+    } else if (req.type === 'exhibitor') {
+      url = `/api/requests/exhibitor/${req.id}/${action}`;
+    } else if (req.type === 'attendee') {
+      url = `/api/requests/attendee/${req.id}/${action}`;
+    }
+    await fetch(url, { method: 'POST' });
+    setActionLoading(l => ({ ...l, [req.type + '-' + req.id]: false }));
+    fetchRequests();
+  };
 
   return (
     <div className="p-6">
@@ -40,31 +61,56 @@ const RequestsManager: React.FC = () => {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          <table className="min-w-full text-left">
+          <table className="w-full text-left text-sm">
             <thead>
               <tr className="bg-gray-100">
-                <th className="py-2 px-4 font-semibold">Type</th>
-                <th className="py-2 px-4 font-semibold">Name</th>
-                <th className="py-2 px-4 font-semibold">Company</th>
-                <th className="py-2 px-4 font-semibold">Event</th>
-                <th className="py-2 px-4 font-semibold">Email</th>
-                <th className="py-2 px-4 font-semibold">Phone</th>
-                <th className="py-2 px-4 font-semibold">Submitted</th>
+                <th className="py-1 px-2 font-semibold">Type</th>
+                <th className="py-1 px-2 font-semibold">Name</th>
+                <th className="py-1 px-2 font-semibold">Company</th>
+                <th className="py-1 px-2 font-semibold">Event</th>
+                <th className="py-1 px-2 font-semibold">Email</th>
+                <th className="py-1 px-2 font-semibold">Submitted</th>
+                <th className="py-1 px-2 font-semibold">Status</th>
+                <th className="py-1 px-2 font-semibold">Actions</th>
               </tr>
             </thead>
             <tbody>
               {requests.length === 0 ? (
-                <tr><td colSpan={7} className="text-center py-4">No requests found.</td></tr>
+                <tr>
+                  <td colSpan={8} className="text-center py-2">No requests found.</td>
+                </tr>
               ) : (
                 requests.map((req, idx) => (
                   <tr key={req.type + '-' + req.id + '-' + idx} className="border-b">
-                    <td className="py-2 px-4 capitalize">{req.type}</td>
-                    <td className="py-2 px-4">{req.name}</td>
-                    <td className="py-2 px-4">{req.company}</td>
-                    <td className="py-2 px-4">{req.event}</td>
-                    <td className="py-2 px-4">{req.email}</td>
-                    <td className="py-2 px-4">{req.phone}</td>
-                    <td className="py-2 px-4">{req.createdAt ? new Date(req.createdAt).toLocaleString() : ''}</td>
+                    <td className="py-1 px-2 capitalize">{req.type}</td>
+                    <td className="py-1 px-2 break-words">{req.name}</td>
+                    <td className="py-1 px-2 break-words">{req.company}</td>
+                    <td className="py-1 px-2 break-words">{req.event}</td>
+                    <td className="py-1 px-2 break-words">{req.email}</td>
+                    <td className="py-1 px-2">{req.createdAt ? new Date(req.createdAt).toLocaleDateString() : ''}</td>
+                    <td className="py-1 px-2">{req.raw && req.raw.status ? req.raw.status : 'PENDING'}</td>
+                    <td className="py-1 px-2">
+                      {(!req.raw || req.raw.status === 'PENDING') ? (
+                        <>
+                          <button
+                            className="bg-green-500 text-white px-2 py-1 rounded mr-1 text-xs"
+                            disabled={actionLoading[req.type + '-' + req.id]}
+                            onClick={() => handleAction(req, 'grant')}
+                          >
+                            {actionLoading[req.type + '-' + req.id] ? 'Granting...' : 'Grant'}
+                          </button>
+                          <button
+                            className="bg-red-500 text-white px-2 py-1 rounded text-xs"
+                            disabled={actionLoading[req.type + '-' + req.id]}
+                            onClick={() => handleAction(req, 'deny')}
+                          >
+                            {actionLoading[req.type + '-' + req.id] ? 'Denying...' : 'Deny'}
+                          </button>
+                        </>
+                      ) : (
+                        <span className="text-gray-400">No actions</span>
+                      )}
+                    </td>
                   </tr>
                 ))
               )}

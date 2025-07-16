@@ -79,40 +79,76 @@ const RegisterInterest = () => {
       return;
     }
     try {
-      // Exhibitor request
-      const res = await fetch("/api/requests/exhibitor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          country: form.country,
-          email: form.email,
-          phoneCode: form.phoneCode,
-          phoneNumber: form.phoneNumber,
-          companyName: form.companyName,
-          jobTitle: form.jobTitle,
-          jobFunction: form.jobFunction,
-          event: form.event,
-          exhibitingDetails: form.exhibitingDetails,
-        }),
-      });
-      if (!res.ok) throw new Error("Failed to register interest");
-      setSuccess("Thank you for registering your interest!");
-      setForm({
-        firstName: "",
-        lastName: "",
-        country: "",
-        email: "",
-        phoneCode: "",
-        phoneNumber: "",
-        companyName: "",
-        jobTitle: "",
-        jobFunction: "",
-        event:"",
-        interestedIn: "",
-        exhibitingDetails: "",
-      });
+      if (form.interestedIn === "Attending") {
+        // Attendee request
+        const res = await fetch("/api/requests/attendee", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            country: form.country,
+            email: form.email,
+            phoneCode: form.phoneCode,
+            phoneNumber: form.phoneNumber,
+            companyName: form.companyName,
+            jobTitle: form.jobTitle,
+            jobFunction: form.jobFunction,
+            event: form.event,
+          }),
+        });
+        if (!res.ok) throw new Error("Failed to register interest");
+        setSuccess("Thank you for registering your interest!");
+        setForm({
+          firstName: "",
+          lastName: "",
+          country: "",
+          email: "",
+          phoneCode: "",
+          phoneNumber: "",
+          companyName: "",
+          jobTitle: "",
+          jobFunction: "",
+          event:"",
+          interestedIn: "",
+          exhibitingDetails: "",
+        });
+      } else {
+        // Exhibitor request
+        const res = await fetch("/api/requests/exhibitor", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            country: form.country,
+            email: form.email,
+            phoneCode: form.phoneCode,
+            phoneNumber: form.phoneNumber,
+            companyName: form.companyName,
+            jobTitle: form.jobTitle,
+            jobFunction: form.jobFunction,
+            event: form.event,
+            exhibitingDetails: form.exhibitingDetails,
+          }),
+        });
+        if (!res.ok) throw new Error("Failed to register interest");
+        setSuccess("Thank you for registering your interest!");
+        setForm({
+          firstName: "",
+          lastName: "",
+          country: "",
+          email: "",
+          phoneCode: "",
+          phoneNumber: "",
+          companyName: "",
+          jobTitle: "",
+          jobFunction: "",
+          event:"",
+          interestedIn: "",
+          exhibitingDetails: "",
+        });
+      }
     } catch (err) {
       setError(
         "There was an error submitting your registration. Please try again."
@@ -163,6 +199,7 @@ const RegisterInterest = () => {
       setSponsorForm({
         sponsorName: "",
         sponsorCompany: "",
+        sponsorType: "",
         sponsorBudget: "",
         sponsorEmail: "",
         sponsorPhoneCode: "",
@@ -188,7 +225,7 @@ const RegisterInterest = () => {
       {/* Header with gradient background */}
       <div className="bg-gradient-to-r from-[#1e3a8a] to-[#2563eb] py-8 text-white text-center relative z-10">
         <h1 className="text-4xl md:text-5xl font-bold">
-          Register your Interest for Mining Indaba 2026
+          Register your Interest for Rwanda Mining Week
         </h1>
       </div>
 

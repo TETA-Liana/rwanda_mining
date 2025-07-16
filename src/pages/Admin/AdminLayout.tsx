@@ -6,6 +6,7 @@ const navItems = [
   { name: 'Events', path: '/admin/events', icon: '📅' },
   { name: 'Sponsors', path: '/admin/sponsors', icon: '🤝' },
   { name: 'Exhibitors', path: '/admin/exhibitors', icon: '🏢' },
+  { name: 'Attendees', path: '/admin/attendees', icon: '🧑‍🤝‍🧑' },
   { name: 'Requests', path: '/admin/requests', icon: '📨' },
   { name: 'Highlights', path: '/admin/highlights', icon: '✨' },
   { name: 'Articles', path: '/admin/articles', icon: '📰' },

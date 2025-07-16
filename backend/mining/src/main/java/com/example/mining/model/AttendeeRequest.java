@@ -9,18 +9,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SponsorRequest {
+public class AttendeeRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sponsorName;
-    private String sponsorCompany;
-    private String sponsorBudget;
-    private String sponsorEmail;
-    private String sponsorPhoneCode;
-    private String sponsorPhone;
-    private String sponsorNotes;
+    private String firstName;
+    private String lastName;
+    private String country;
+    private String email;
+    private String phoneCode;
+    private String phoneNumber;
+    private String companyName;
+    private String jobTitle;
+    private String jobFunction;
     private String event;
     private LocalDateTime createdAt;
     private String status = "PENDING"; // PENDING, GRANTED, DENIED

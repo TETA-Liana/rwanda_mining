@@ -26,6 +26,8 @@ public class ExhibitorRequest {
     private String event;
     private String exhibitingDetails;
     private LocalDateTime createdAt;
+    private String status = "PENDING"; // PENDING, GRANTED, DENIED
+    private LocalDateTime grantedAt;
 
     @PrePersist
     protected void onCreate() {

@@ -38,6 +38,7 @@ import ExhibitorsManager from "./pages/Admin/ExhibitorsManager";
 import SponsorsManager from "./pages/Admin/SponsorsManager";
 import AdminLayout from "./pages/Admin/AdminLayout";
 import AttendeesListPage from "./pages/Admin/AttendeesListPage";
+import AttendeesManager from "./pages/Admin/AttendeesManager";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path="events" element={<EventsManager />} />
           <Route path="requests" element={<RequestsManager />} />
           <Route path="sponsors" element={<SponsorsManager />} />
+          <Route path="attendees" element={<AttendeesManager />} />
           <Route path="exhibitors" element={<ExhibitorsManager />} />
           <Route
             path="events/:eventId/attendees"

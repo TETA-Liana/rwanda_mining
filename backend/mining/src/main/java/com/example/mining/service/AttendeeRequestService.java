@@ -1,7 +1,7 @@
 package com.example.mining.service;
 
-import com.example.mining.model.ExhibitorRequest;
-import com.example.mining.repository.ExhibitorRequestRepository;
+import com.example.mining.model.AttendeeRequest;
+import com.example.mining.repository.AttendeeRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,24 +13,22 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import java.io.ByteArrayOutputStream;
 import org.springframework.core.io.ByteArrayResource;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ExhibitorRequestService {
+public class AttendeeRequestService {
     @Autowired
-    private ExhibitorRequestRepository exhibitorRequestRepository;
-
+    private AttendeeRequestRepository attendeeRequestRepository;
     @Autowired
     private JavaMailSender mailSender;
 
-    public ExhibitorRequest save(ExhibitorRequest request) {
-        return exhibitorRequestRepository.save(request);
+    public AttendeeRequest save(AttendeeRequest request) {
+        return attendeeRequestRepository.save(request);
     }
 
-    public List<ExhibitorRequest> getAll(String search) {
-        List<ExhibitorRequest> all = exhibitorRequestRepository.findAll();
+    public List<AttendeeRequest> getAll(String search) {
+        List<AttendeeRequest> all = attendeeRequestRepository.findAll();
         if (search == null || search.isEmpty()) return all;
         String s = search.toLowerCase();
         return all.stream().filter(r ->
@@ -41,36 +39,33 @@ public class ExhibitorRequestService {
         ).collect(Collectors.toList());
     }
 
-    public ExhibitorRequest getById(Long id) {
-        return exhibitorRequestRepository.findById(id).orElse(null);
+    public AttendeeRequest getById(Long id) {
+        return attendeeRequestRepository.findById(id).orElse(null);
     }
 
-    public ExhibitorRequest grantRequest(Long id) {
-        ExhibitorRequest req = exhibitorRequestRepository.findById(id).orElseThrow();
+    public AttendeeRequest grantRequest(Long id) {
+        AttendeeRequest req = attendeeRequestRepository.findById(id).orElseThrow();
         req.setStatus("GRANTED");
         req.setGrantedAt(java.time.LocalDateTime.now());
-        ExhibitorRequest saved = exhibitorRequestRepository.save(req);
-        // Send granted email with badge/QR
+        AttendeeRequest saved = attendeeRequestRepository.save(req);
         sendGrantedEmailWithQR(req);
         return saved;
     }
-    public ExhibitorRequest denyRequest(Long id) {
-        ExhibitorRequest req = exhibitorRequestRepository.findById(id).orElseThrow();
+    public AttendeeRequest denyRequest(Long id) {
+        AttendeeRequest req = attendeeRequestRepository.findById(id).orElseThrow();
         req.setStatus("DENIED");
-        ExhibitorRequest saved = exhibitorRequestRepository.save(req);
-        // Send denial email
-        sendEmail(req.getEmail(), "Exhibitor Request Denied", "We regret to inform you that your exhibitor request was denied.");
+        AttendeeRequest saved = attendeeRequestRepository.save(req);
+        sendEmail(req.getEmail(), "Attendance Request Denied", "We regret to inform you that your attendance request was denied.");
         return saved;
     }
-    public List<ExhibitorRequest> getGrantedExhibitors() {
-        return exhibitorRequestRepository.findAll().stream()
+    public List<AttendeeRequest> getGrantedAttendees() {
+        return attendeeRequestRepository.findAll().stream()
             .filter(r -> "GRANTED".equals(r.getStatus()))
             .toList();
     }
-
-    public void sendGrantedEmailWithQR(ExhibitorRequest req) {
+    public void sendGrantedEmailWithQR(AttendeeRequest req) {
         try {
-            String qrContent = "Exhibitor Badge: " + req.getFirstName() + " " + req.getLastName() + ", Company: " + req.getCompanyName() + ", Event: " + req.getEvent();
+            String qrContent = "Attendee Badge: " + req.getFirstName() + " " + req.getLastName() + ", Company: " + req.getCompanyName() + ", Event: " + req.getEvent();
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(qrContent, BarcodeFormat.QR_CODE, 250, 250);
             ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
@@ -80,15 +75,14 @@ public class ExhibitorRequestService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(req.getEmail());
-            helper.setSubject("Exhibitor Request Granted - Digital Badge");
-            helper.setText("Congratulations! Your exhibitor request is granted. Attached is your digital badge QR code. Please present this at the event.", false);
+            helper.setSubject("Attendance Granted - Digital Badge");
+            helper.setText("Congratulations! Your attendance is granted. Attached is your digital badge QR code. Please present this at the event.", false);
             helper.addAttachment("badge-qr.png", new ByteArrayResource(pngData));
             mailSender.send(message);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    // Real email sending
     public void sendEmail(String to, String subject, String body) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
